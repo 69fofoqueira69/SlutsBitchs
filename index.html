@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Perfis</title>
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <header class="container header">
+      <h1>Catálogo de Perfis</h1>
+      <p>Explore personagens com busca, filtros e visualização completa.</p>
+    </header>
+
+    <main class="container">
+      <section class="toolbar">
+        <div id="search-root"></div>
+        <div id="filters-root"></div>
+      </section>
+
+      <section>
+        <p id="results-count" class="results-count"></p>
+        <div id="cards-root" class="cards-grid"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/pages/home.js"></script>
+  </body>
+</html>
