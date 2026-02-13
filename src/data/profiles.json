@@ -1,0 +1,156 @@
+[
+  {
+    "id": "aurora-nox",
+    "name": "Aurora Nox",
+    "title": "Guardiã Arcana",
+    "shortDescription": "Especialista em magia estelar e proteção de cidades flutuantes.",
+    "description": "Aurora lidera uma ordem de guardiões que protegem rotas celestes. É conhecida por combinar estratégia com empatia, mantendo sua equipe unida mesmo em missões críticas.",
+    "type": "Fantasia",
+    "personality": "Líder",
+    "attributes": [
+      "Estratégica",
+      "Empática",
+      "Resiliente"
+    ],
+    "categories": [
+      "Heroína",
+      "Magia",
+      "Aventura"
+    ],
+    "tags": [
+      "defesa",
+      "estrelas",
+      "equipe"
+    ],
+    "personalInfo": {
+      "origem": "Cidadela de Lumen",
+      "idade": "29",
+      "ocupacao": "Capitã da Guarda Arcana"
+    },
+    "media": {
+      "cover": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "videos": [
+        "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+      ],
+      "gifs": [
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3V0cmhhMXQ0Nzg5MHN6Y3V1cW5mZml2b2xkeXBlM3Q4MW9ydXplaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BzyTuYCmvSORqs1ABM/giphy.gif"
+      ]
+    },
+    "extraContent": {
+      "curiosidades": [
+        "Nunca perdeu uma rota sob sua supervisão.",
+        "Coleciona mapas celestes antigos."
+      ],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/aurora-nox"
+      ]
+    }
+  },
+  {
+    "id": "kael-rift",
+    "name": "Kael Rift",
+    "title": "Rastreador Urbano",
+    "shortDescription": "Analista tático focado em investigações de alta complexidade.",
+    "description": "Kael atua em operações discretas, cruzando dados e padrões comportamentais para localizar ameaças. Seu maior diferencial é a precisão em ambientes caóticos.",
+    "type": "Cyberpunk",
+    "personality": "Analítico",
+    "attributes": [
+      "Observador",
+      "Racional",
+      "Ágil"
+    ],
+    "categories": [
+      "Investigação",
+      "Tecnologia"
+    ],
+    "tags": [
+      "dados",
+      "cidade",
+      "padrões"
+    ],
+    "personalInfo": {
+      "origem": "Setor Neon-7",
+      "idade": "34",
+      "ocupacao": "Consultor de Inteligência"
+    },
+    "media": {
+      "cover": "https://images.unsplash.com/photo-1529078155058-5d716f45d604?auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "videos": [
+        "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+      ],
+      "gifs": [
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWNzeWV3YmdkYnNld2FzdzBvazNldjFqa3owOXJqM2JjaDdidW1jaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0HlBO7eyXzSZkJri/giphy.gif"
+      ]
+    },
+    "extraContent": {
+      "curiosidades": [
+        "Mantém um diário criptografado com casos resolvidos.",
+        "Treina parkour para missões em megacidades."
+      ],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/kael-rift"
+      ]
+    }
+  },
+  {
+    "id": "selene-vale",
+    "name": "Selene Vale",
+    "title": "Diplomata Interdimensional",
+    "shortDescription": "Mediadora entre facções e culturas de mundos distintos.",
+    "description": "Selene conduz negociações entre povos com históricos conflitantes. Sua habilidade de adaptação cultural a torna essencial em missões de paz e cooperação.",
+    "type": "Sci-Fi",
+    "personality": "Comunicativa",
+    "attributes": [
+      "Carismática",
+      "Paciente",
+      "Versátil"
+    ],
+    "categories": [
+      "Diplomacia",
+      "Exploração"
+    ],
+    "tags": [
+      "acordos",
+      "culturas",
+      "viagens"
+    ],
+    "personalInfo": {
+      "origem": "Anel de Orion",
+      "idade": "31",
+      "ocupacao": "Embaixadora"
+    },
+    "media": {
+      "cover": "https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "videos": [
+        "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+      ],
+      "gifs": [
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmpncWhvMjM4NDA3eTZ4eGdjc2FvY3I4OGw1ZnVhZzJicW9uY3V6bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYC0LajbaPoEADu/giphy.gif"
+      ]
+    },
+    "extraContent": {
+      "curiosidades": [
+        "Fala 9 idiomas interestelares.",
+        "Desenvolveu protocolos de mediação usados em 3 sistemas."
+      ],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/selene-vale"
+      ]
+    }
+  }
+]
