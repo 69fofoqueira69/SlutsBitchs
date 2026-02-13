@@ -1,11 +1,12 @@
 :root {
   color-scheme: dark;
-  --bg: #0f1020;
-  --panel: #1b1d34;
-  --text: #ebecff;
-  --muted: #a9abd6;
-  --accent: #7a7dff;
-  --outline: #31345c;
+  --bg: #2b001f;
+  --panel: #3a0030;
+  --text: #ff8fd0;
+  --muted: #ffb6de;
+  --accent: #ff1493;   /* DeepPink */
+  --highlight: #00ff00; /* Lime */
+  --outline: #00cc00;
 }
 
 * {
@@ -15,7 +16,7 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
-  background: linear-gradient(180deg, #0b0c18, var(--bg));
+  background: linear-gradient(180deg, #170012, var(--bg));
   color: var(--text);
 }
 
@@ -43,13 +44,9 @@ body {
 
 .filter-block {
   border: 1px solid var(--outline);
-  background: #161830;
+  background: #250020;
   border-radius: 10px;
   padding: 0.7rem;
-}
-
-.filter-block legend {
-  padding: 0 0.3rem;
 }
 
 input,
@@ -61,28 +58,20 @@ select {
   padding: 0.7rem 0.8rem;
 }
 
+input:focus,
+select:focus,
+.btn:focus,
+.link:focus,
+.card-link:focus {
+  outline: 2px solid var(--highlight);
+  outline-offset: 2px;
+}
+
 .filters-wrap {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.8rem;
-  align-items: start;
-}
-
-.checkbox-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.checkbox-chip {
-  border: 1px solid var(--outline);
-  border-radius: 999px;
-  padding: 0.2rem 0.55rem;
-  background: var(--panel);
-}
-
-.checkbox-chip input {
-  margin-right: 0.25rem;
+  align-items: end;
 }
 
 .cards-grid {
@@ -92,11 +81,25 @@ select {
   padding-bottom: 2.5rem;
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .card {
+  height: 100%;
   background: var(--panel);
   border: 1px solid var(--outline);
   border-radius: 12px;
   overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-link:hover .card,
+.card-link:focus .card {
+  transform: translateY(-4px);
+  border-color: var(--highlight);
+  box-shadow: 0 0 0 2px #00ff0040;
 }
 
 .card img,
@@ -129,7 +132,9 @@ video {
 }
 
 .chips li {
-  background: #2b2d51;
+  background: #1f471f;
+  color: var(--highlight);
+  border: 1px solid var(--outline);
   border-radius: 999px;
   padding: 0.25rem 0.65rem;
   font-size: 0.85rem;
@@ -139,17 +144,29 @@ video {
 .link {
   display: inline-block;
   margin-top: 0.6rem;
-  color: white;
+  color: #170012;
   text-decoration: none;
   background: var(--accent);
   padding: 0.55rem 0.8rem;
   border-radius: 8px;
-  border: none;
+  border: 1px solid var(--highlight);
+}
+
+.btn:hover,
+.link:hover {
+  background: var(--highlight);
+  color: #170012;
 }
 
 .btn.ghost {
   background: transparent;
+  color: var(--text);
   border: 1px solid var(--outline);
+}
+
+.btn.ghost:hover {
+  background: #1f471f;
+  color: var(--highlight);
 }
 
 .results-count,
@@ -201,7 +218,7 @@ video {
   border: 1px solid var(--outline);
   border-radius: 10px;
   padding: 0.6rem 0.8rem;
-  background: #161830;
+  background: #250020;
 }
 
 @media (max-width: 780px) {

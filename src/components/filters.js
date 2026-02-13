@@ -1,4 +1,4 @@
-function uniqueValues(profiles, field) {
+function uniqueArrayValues(profiles, field) {
   return [...new Set(profiles.flatMap((profile) => profile[field] || []))].sort();
 }
 
@@ -14,83 +14,76 @@ function buildSelect(label, field, values) {
   return `
     <label class="filter-block">
       <span>${label}</span>
-      <select data-filter="${field}">${options}</select>
+      <select data-filter="${field}">
+        ${options}
+      </select>
     </label>
   `;
 }
 
-function buildCheckboxGroup(label, field, values) {
-  return `
-    <fieldset class="filter-block">
-      <legend>${label}</legend>
-      <div class="checkbox-group">
-        ${values
-          .map(
-            (value) => `
-            <label class="checkbox-chip">
-              <input type="checkbox" data-filter-group="${field}" value="${value}" />
-              <span>${value}</span>
-            </label>
-          `
-          )
-          .join('')}
-      </div>
-    </fieldset>
-  `;
-}
-
 export function renderFilters(container, profiles, onChange) {
-  const types = uniqueScalarValues(profiles, 'type');
-  const personalities = uniqueScalarValues(profiles, 'personality');
-  const attributes = uniqueValues(profiles, 'attributes');
-  const categories = uniqueValues(profiles, 'categories');
+  const filters = [
+    {
+      label: 'Tipo de personagem',
+      field: 'type',
+      values: uniqueScalarValues(profiles, 'type')
+    },
+    {
+      label: 'Personalidade',
+      field: 'personality',
+      values: uniqueScalarValues(profiles, 'personality')
+    },
+    {
+      label: 'Atributo',
+      field: 'attribute',
+      values: uniqueArrayValues(profiles, 'attributes')
+    },
+    {
+      label: 'Categoria',
+      field: 'category',
+      values: uniqueArrayValues(profiles, 'categories')
+    },
+    {
+      label: 'Tag',
+      field: 'tag',
+      values: uniqueArrayValues(profiles, 'tags')
+    }
+  ];
 
   container.innerHTML = `
     <div class="filters-wrap">
-      ${buildSelect('Tipo de personagem', 'type', types)}
-      ${buildSelect('Personalidade', 'personality', personalities)}
-      ${buildCheckboxGroup('Atributos', 'attributes', attributes)}
-      ${buildCheckboxGroup('Categorias', 'categories', categories)}
-      <button id="clear-filters" class="btn ghost" type="button">Limpar filtros</button>
+      ${filters
+        .map(({ label, field, values }) => buildSelect(label, field, values))
+        .join('')}
+      <button id="clear-filters" class="btn ghost" type="button">
+        Limpar filtros
+      </button>
     </div>
   `;
 
   const state = {
     type: '',
     personality: '',
-    attributes: [],
-    categories: []
+    attribute: '',
+    category: '',
+    tag: ''
   };
 
   container.querySelectorAll('select[data-filter]').forEach((select) => {
     select.addEventListener('change', (event) => {
-      state[event.target.dataset.filter] = event.target.value;
-      onChange({ ...state });
-    });
-  });
-
-  container.querySelectorAll('input[data-filter-group]').forEach((input) => {
-    input.addEventListener('change', (event) => {
-      const group = event.target.dataset.filterGroup;
-      const selected = [...container.querySelectorAll(`input[data-filter-group="${group}"]:checked`)].map(
-        (item) => item.value
-      );
-      state[group] = selected;
+      const field = event.target.dataset.filter;
+      state[field] = event.target.value;
       onChange({ ...state });
     });
   });
 
   container.querySelector('#clear-filters').addEventListener('click', () => {
-    state.type = '';
-    state.personality = '';
-    state.attributes = [];
-    state.categories = [];
+    Object.keys(state).forEach((key) => {
+      state[key] = '';
+    });
 
     container.querySelectorAll('select[data-filter]').forEach((select) => {
       select.value = '';
-    });
-    container.querySelectorAll('input[data-filter-group]').forEach((input) => {
-      input.checked = false;
     });
 
     onChange({ ...state });

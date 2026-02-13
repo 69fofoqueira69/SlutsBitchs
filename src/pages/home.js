@@ -13,33 +13,16 @@ const state = {
   filters: {
     type: '',
     personality: '',
-    attributes: [],
-    categories: []
+    attribute: '',
+    category: '',
+    tag: ''
   },
   profiles: []
 };
 
-function containsAll(sourceList, selectedList) {
-  return selectedList.every((item) => sourceList.includes(item));
-}
-
 function matchesSearch(profile, text) {
   if (!text) return true;
-
-  return [
-    profile.name,
-    profile.title,
-    profile.shortDescription,
-    profile.description,
-    profile.type,
-    profile.personality,
-    ...profile.attributes,
-    ...profile.categories,
-    ...profile.tags
-  ]
-    .join(' ')
-    .toLowerCase()
-    .includes(text);
+  return profile.name.toLowerCase().includes(text);
 }
 
 function filterProfiles() {
@@ -49,15 +32,20 @@ function filterProfiles() {
     const matchesType = !state.filters.type || profile.type === state.filters.type;
     const matchesPersonality =
       !state.filters.personality || profile.personality === state.filters.personality;
-    const matchesAttributes = containsAll(profile.attributes, state.filters.attributes);
-    const matchesCategories = containsAll(profile.categories, state.filters.categories);
+    const matchesAttribute =
+      !state.filters.attribute || profile.attributes.includes(state.filters.attribute);
+    const matchesCategory =
+      !state.filters.category || profile.categories.includes(state.filters.category);
+    const matchesTag =
+      !state.filters.tag || profile.tags.includes(state.filters.tag);
 
     return (
       matchesSearch(profile, text) &&
       matchesType &&
       matchesPersonality &&
-      matchesAttributes &&
-      matchesCategories
+      matchesAttribute &&
+      matchesCategory &&
+      matchesTag
     );
   });
 
