@@ -36,7 +36,8 @@ function filterProfiles() {
       !state.filters.attribute || profile.attributes.includes(state.filters.attribute);
     const matchesCategory =
       !state.filters.category || profile.categories.includes(state.filters.category);
-    const matchesTag = !state.filters.tag || profile.tags.includes(state.filters.tag);
+    const matchesTag =
+      !state.filters.tag || profile.tags.includes(state.filters.tag);
 
     return (
       matchesSearch(profile, text) &&

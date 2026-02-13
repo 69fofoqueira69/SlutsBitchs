@@ -4,8 +4,8 @@
   --panel: #3a0030;
   --text: #ff8fd0;
   --muted: #ffb6de;
-  --accent: #ff1493;
-  --highlight: #00ff00;
+  --accent: #ff1493;   /* DeepPink */
+  --highlight: #00ff00; /* Lime */
   --outline: #00cc00;
 }
 
