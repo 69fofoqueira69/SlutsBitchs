@@ -4,8 +4,8 @@
   --panel: #3a0030;
   --text: #ff8fd0;
   --muted: #ffb6de;
-  --accent: #ff1493;
-  --highlight: #00ff00;
+  --accent: #ff1493;    /* DeepPink */
+  --highlight: #00ff00; /* Lime */
   --outline: #00cc00;
 }
 
@@ -189,6 +189,27 @@ video {
   margin: 1rem 0;
 }
 
+.profile-avatar {
+  animation: subtle-rotate 8s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-rotate {
+  from { transform: rotate(-1deg) scale(1.01); }
+  to { transform: rotate(1deg) scale(1.01); }
+}
+
+.tag-inline {
+  color: var(--highlight);
+  font-weight: 700;
+}
+
+.media-counts {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.7rem;
+}
+
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -219,28 +240,6 @@ video {
   border-radius: 10px;
   padding: 0.6rem 0.8rem;
   background: #250020;
-}
-
-
-.profile-avatar {
-  animation: subtle-rotate 8s ease-in-out infinite alternate;
-}
-
-@keyframes subtle-rotate {
-  from { transform: rotate(-1deg) scale(1.01); }
-  to { transform: rotate(1deg) scale(1.01); }
-}
-
-.tag-inline {
-  color: var(--highlight);
-  font-weight: 700;
-}
-
-.media-counts {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.7rem;
 }
 
 .gallery-modal {

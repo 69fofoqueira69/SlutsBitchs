@@ -4,40 +4,16 @@
     "name": "Aurora Nox",
     "title": "Guardiã Arcana",
     "shortDescription": "Especialista em magia estelar e proteção de cidades flutuantes.",
-    "description": "Aurora lidera uma ordem de guardiões que protegem rotas celestes e fortalece alianças entre cidades.",
-    "fullDescription": "Aurora combina disciplina tática e sensibilidade diplomática. Em operações, analisa riscos, coordena a equipe e protege rotas estratégicas. Fora de missão, mantém programas de treinamento e mentoria para novos guardiões.",
+    "description": "Aurora lidera uma ordem de guardiões que protegem rotas celestes. É conhecida por combinar estratégia com empatia, mantendo sua equipe unida mesmo em missões críticas.",
     "type": "Fantasia",
     "personality": "Líder",
-    "gender": "Mulher",
-    "age": { "value": 29, "tag": "Vagabunda", "range": "22–34", "emoji": "🔥" },
-    "universe": "Cidadela de Lumen",
-    "heightMeters": 1.72,
-    "weightKg": 64,
-    "species": "Humana",
-    "hairColor": "Prateado",
-    "hairStyle": "Longo ondulado",
-    "eyeColor": "Violeta",
-    "skinColor": "Clara",
     "attributes": ["Estratégica", "Empática", "Resiliente"],
     "categories": ["Heroína", "Magia", "Aventura"],
     "tags": ["defesa", "estrelas", "equipe"],
-    "measurements": {
-      "hips": { "value": 95, "unit": "cm", "tag": "Melão", "range": "37.6–97.5", "emoji": "🍑" },
-      "waist": { "value": 68, "unit": "cm", "tag": "Atletica", "range": "30.1–80", "emoji": "⏳" },
-      "thighs": { "value": 52, "unit": "cm", "tag": "Atletica", "range": "20.5–53.6", "emoji": "🦵" },
-      "chest": { "value": 88, "unit": "cm", "tag": "Melancia", "range": "87.6–242", "emoji": "🍒" }
-    },
-    "experience": { "partnersCount": 3, "encountersCount": 20 },
-    "fetishes": ["roleplay", "dominância leve"],
-    "favoritePosition": "Cowgirl",
-    "favoriteOutfit": "Armadura cerimonial",
-    "occupation": "Capitã da Guarda Arcana",
-    "profileImage": {
-      "rotation": true,
-      "images": [
-        "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80"
-      ]
+    "personalInfo": {
+      "origem": "Cidadela de Lumen",
+      "idade": "29",
+      "ocupacao": "Capitã da Guarda Arcana"
     },
     "media": {
       "cover": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80",
@@ -45,9 +21,62 @@
         "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80"
       ],
-      "videos": ["https://samplelib.com/lib/preview/mp4/sample-5s.mp4"],
-      "gifs": ["https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3V0cmhhMXQ0Nzg5MHN6Y3V1cW5mZml2b2xkeXBlM3Q4MW9ydXplaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BzyTuYCmvSORqs1ABM/giphy.gif"],
-      "counts": { "images": 2, "videos": 1, "gifs": 1 }
+      "videos": [
+        "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+      ],
+      "gifs": [
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3V0cmhhMXQ0Nzg5MHN6Y3V1cW5mZml2b2xkeXBlM3Q4MW9ydXplaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BzyTuYCmvSORqs1ABM/giphy.gif"
+      ]
+    },
+    "extraContent": {
+      "curiosidades": [
+        "Nunca perdeu uma rota sob sua supervisão.",
+        "Coleciona mapas celestes antigos."
+      ],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/aurora-nox"
+      ]
+    }
+  },
+  {
+    "id": "kael-rift",
+    "name": "Kael Rift",
+    "title": "Rastreador Urbano",
+    "shortDescription": "Analista tático focado em investigações de alta complexidade.",
+    "description": "Kael atua em operações discretas, cruzando dados e padrões comportamentais para localizar ameaças. Seu maior diferencial é a precisão em ambientes caóticos.",
+    "type": "Cyberpunk",
+    "personality": "Analítico",
+    "attributes": ["Observador", "Racional", "Ágil"],
+    "categories": ["Investigação", "Tecnologia"],
+    "tags": ["dados", "cidade", "padrões"],
+    "personalInfo": {
+      "origem": "Setor Neon-7",
+      "idade": "34",
+      "ocupacao": "Consultor de Inteligência"
+    },
+    "media": {
+      "cover": "https://images.unsplash.com/photo-1529078155058-5d716f45d604?auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "videos": [
+        "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+      ],
+      "gifs": [
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWNzeWV3YmdkYnNld2FzdzBvazNldjFqa3owOXJqM2JjaDdidW1jaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0HlBO7eyXzSZkJri/giphy.gif"
+      ]
+    },
+    "extraContent": {
+      "curiosidades": [
+        "Mantém um diário criptografado com casos resolvidos.",
+        "Treina parkour para missões em megacidades."
+      ],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/kael-rift"
+      ]
     }
   },
   {
@@ -55,40 +84,16 @@
     "name": "Selene Vale",
     "title": "Diplomata Interdimensional",
     "shortDescription": "Mediadora entre facções e culturas de mundos distintos.",
-    "description": "Selene conduz negociações entre povos com históricos conflitantes.",
-    "fullDescription": "Selene atua em missões diplomáticas de alto risco, criando protocolos de mediação e cooperação. É reconhecida por escuta ativa, leitura de contexto e comunicação não violenta.",
+    "description": "Selene conduz negociações entre povos com históricos conflitantes. Sua habilidade de adaptação cultural a torna essencial em missões de paz e cooperação.",
     "type": "Sci-Fi",
     "personality": "Comunicativa",
-    "gender": "Futanari",
-    "age": { "value": 31, "tag": "Vagabunda", "range": "22–34", "emoji": "🔥" },
-    "universe": "Anel de Orion",
-    "heightMeters": 1.75,
-    "weightKg": 67,
-    "species": "Humana",
-    "hairColor": "Preto",
-    "hairStyle": "Curto repicado",
-    "eyeColor": "Azul",
-    "skinColor": "Morena",
     "attributes": ["Carismática", "Paciente", "Versátil"],
     "categories": ["Diplomacia", "Exploração"],
     "tags": ["acordos", "culturas", "viagens"],
-    "measurements": {
-      "hips": { "value": 98, "unit": "cm", "tag": "Melancia", "range": "97.6–270", "emoji": "🍑" },
-      "waist": { "value": 70, "unit": "cm", "tag": "Atletica", "range": "30.1–80", "emoji": "⏳" },
-      "thighs": { "value": 54, "unit": "cm", "tag": "Larga", "range": "53.7–148", "emoji": "🦵" },
-      "chest": { "value": 90, "unit": "cm", "tag": "Melancia", "range": "87.6–242", "emoji": "🍒" }
-    },
-    "experience": { "partnersCount": 5, "encountersCount": 35 },
-    "fetishes": ["voyeur", "lingerie"],
-    "favoritePosition": "Missionário",
-    "favoriteOutfit": "Uniforme diplomático",
-    "occupation": "Embaixadora",
-    "profileImage": {
-      "rotation": true,
-      "images": [
-        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
-      ]
+    "personalInfo": {
+      "origem": "Anel de Orion",
+      "idade": "31",
+      "ocupacao": "Embaixadora"
     },
     "media": {
       "cover": "https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=800&q=80",
@@ -96,9 +101,22 @@
         "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
       ],
-      "videos": ["https://samplelib.com/lib/preview/mp4/sample-5s.mp4"],
-      "gifs": ["https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmpncWhvMjM4NDA3eTZ4eGdjc2FvY3I4OGw1ZnVhZzJicW9uY3V6bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYC0LajbaPoEADu/giphy.gif"],
-      "counts": { "images": 2, "videos": 1, "gifs": 1 }
+      "videos": [
+        "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+      ],
+      "gifs": [
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmpncWhvMjM4NDA3eTZ4eGdjc2FvY3I4OGw1ZnVhZzJicW9uY3V6bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYC0LajbaPoEADu/giphy.gif"
+      ]
+    },
+    "extraContent": {
+      "curiosidades": [
+        "Fala 9 idiomas interestelares.",
+        "Desenvolveu protocolos de mediação usados em 3 sistemas."
+      ],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/selene-vale"
+      ]
     }
   },
   {
@@ -107,51 +125,28 @@
     "title": "Criadora e personalidade de mídia",
     "shortDescription": "Figura pública de origem libanesa, com atuação em entretenimento e presença digital global.",
     "description": "Perfil realista com foco em identidade, características físicas e organização de mídia para catálogo.",
-    "fullDescription": "Mia Khalifa é apresentada neste catálogo como perfil realista com campos estruturados para identidade, medidas e mídia. O registro foi preparado para expansão futura com novos conteúdos, mantendo organização modular e consistência de dados.",
     "type": "Realista",
     "personality": "Confiante",
-    "gender": "Mulher",
-    "age": { "value": 33, "tag": "Vagabunda", "range": "22–34", "emoji": "🔥" },
-    "universe": "Realista",
-    "heightMeters": 1.57,
-    "weightKg": 55,
-    "species": "Humana",
-    "hairColor": "Castanho escuro",
-    "hairStyle": "Longo com mechas",
-    "eyeColor": "Castanho escuro",
-    "skinColor": "Morena clara",
     "attributes": ["Comunicativa", "Expressiva", "Carismática"],
     "categories": ["Realista", "Mídia", "Celebridade"],
     "tags": ["realista", "catálogo", "perfil"],
-    "measurements": {
-      "hips": { "value": 92, "unit": "cm", "tag": "Melão", "range": "37.6–97.5", "emoji": "🍑" },
-      "waist": { "value": 66, "unit": "cm", "tag": "Atletica", "range": "30.1–80", "emoji": "⏳" },
-      "thighs": { "value": 55, "unit": "cm", "tag": "Larga", "range": "53.7–148", "emoji": "🦵" },
-      "chest": { "value": 102, "unit": "cm", "tag": "Melancia", "range": "87.6–242", "emoji": "🍒" }
-    },
-    "experience": { "partnersCount": 200, "encountersCount": 500 },
-    "fetishes": ["Moda", "Esportes", "Viagens"],
-    "favoritePosition": "Entrevistas e presença em eventos",
-    "favoriteOutfit": "Looks casuais e vestidos de evento",
-    "occupation": "Personalidade de mídia",
-    "profileImage": {
-      "rotation": true,
-      "images": [
-        "./src/assets/mia-1.svg",
-        "./src/assets/mia-2.svg",
-        "./src/assets/mia-3.svg"
-      ]
+    "personalInfo": {
+      "origem": "Líbano / Estados Unidos",
+      "idade": "33",
+      "ocupacao": "Personalidade de mídia"
     },
     "media": {
-      "cover": "./src/assets/mia-1.svg",
-      "images": [
-        "./src/assets/mia-1.svg",
-        "./src/assets/mia-2.svg",
-        "./src/assets/mia-3.svg"
-      ],
+      "cover": "https://images.unsplash.com/photo-... (substitua por imagem real se quiser)",
+      "images": [],
       "videos": [],
-      "gifs": [],
-      "counts": { "images": 3, "videos": 0, "gifs": 0 }
+      "gifs": []
+    },
+    "extraContent": {
+      "curiosidades": [],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/mia-khalifa"
+      ]
     }
   }
 ]
