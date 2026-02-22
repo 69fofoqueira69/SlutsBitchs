@@ -118,5 +118,35 @@
         "https://example.com/perfil/selene-vale"
       ]
     }
+  },
+  {
+    "id": "mia-khalifa",
+    "name": "Mia Khalifa",
+    "title": "Criadora e personalidade de mídia",
+    "shortDescription": "Figura pública de origem libanesa, com atuação em entretenimento e presença digital global.",
+    "description": "Perfil realista com foco em identidade, características físicas e organização de mídia para catálogo.",
+    "type": "Realista",
+    "personality": "Confiante",
+    "attributes": ["Comunicativa", "Expressiva", "Carismática"],
+    "categories": ["Realista", "Mídia", "Celebridade"],
+    "tags": ["realista", "catálogo", "perfil"],
+    "personalInfo": {
+      "origem": "Líbano / Estados Unidos",
+      "idade": "33",
+      "ocupacao": "Personalidade de mídia"
+    },
+    "media": {
+      "cover": "https://images.unsplash.com/photo-... (substitua por imagem real se quiser)",
+      "images": [],
+      "videos": [],
+      "gifs": []
+    },
+    "extraContent": {
+      "curiosidades": [],
+      "historia": "Perfil em evolução para futuras narrativas.",
+      "links": [
+        "https://example.com/perfil/mia-khalifa"
+      ]
+    }
   }
 ]

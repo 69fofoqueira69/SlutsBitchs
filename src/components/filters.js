@@ -3,7 +3,9 @@ function uniqueArrayValues(profiles, field) {
 }
 
 function uniqueScalarValues(profiles, field) {
-  return [...new Set(profiles.map((profile) => profile[field]).filter(Boolean))].sort();
+  return [...new Set(
+    profiles.map((profile) => profile[field]).filter(Boolean)
+  )].sort();
 }
 
 function buildSelect(label, field, values) {
@@ -53,7 +55,9 @@ export function renderFilters(container, profiles, onChange) {
   container.innerHTML = `
     <div class="filters-wrap">
       ${filters
-        .map(({ label, field, values }) => buildSelect(label, field, values))
+        .map(({ label, field, values }) =>
+          buildSelect(label, field, values)
+        )
         .join('')}
       <button id="clear-filters" class="btn ghost" type="button">
         Limpar filtros

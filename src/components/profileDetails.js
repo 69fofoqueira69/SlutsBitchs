@@ -36,7 +36,9 @@ function renderConditionalMeasurements(profile) {
     ['Mulher', 'Futanari'].includes(profile.gender) &&
     profile.computedMeasurements?.chest
   ) {
-    blocks.push(formatMeasurement('Peito', profile.computedMeasurements.chest));
+    blocks.push(
+      formatMeasurement('Peito', profile.computedMeasurements.chest)
+    );
   }
 
   if (!blocks.length) {
@@ -178,18 +180,9 @@ export function renderProfileDetails(container, profile) {
       <section>
         <h2>Medidas</h2>
         <dl class="info-grid">
-          ${formatMeasurement(
-            'Bunda',
-            profile.computedMeasurements.hips
-          )}
-          ${formatMeasurement(
-            'Cintura',
-            profile.computedMeasurements.waist
-          )}
-          ${formatMeasurement(
-            'Coxas',
-            profile.computedMeasurements.thighs
-          )}
+          ${formatMeasurement('Bunda', profile.computedMeasurements.hips)}
+          ${formatMeasurement('Cintura', profile.computedMeasurements.waist)}
+          ${formatMeasurement('Coxas', profile.computedMeasurements.thighs)}
         </dl>
 
         <h3>Medidas condicionais</h3>

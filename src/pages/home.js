@@ -22,7 +22,7 @@ const state = {
 
 function matchesSearch(profile, text) {
   if (!text) return true;
-  return profile.name.toLowerCase().includes(text);
+  return profile.name.toLowerCase().includes(text.toLowerCase());
 }
 
 function filterProfiles() {

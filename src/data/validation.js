@@ -29,6 +29,8 @@ export function validateProfile(profile) {
 
   const hasMedia =
     profile.media &&
+    typeof profile.media === 'object' &&
+    !Array.isArray(profile.media) &&
     isNonEmptyString(profile.media.cover) &&
     isStringArray(profile.media.images || []) &&
     isStringArray(profile.media.videos || []) &&
