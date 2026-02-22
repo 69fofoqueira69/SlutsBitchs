@@ -189,10 +189,70 @@ video {
   margin: 1rem 0;
 }
 
+.profile-avatar {
+  animation: subtle-rotate 8s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-rotate {
+  from { transform: rotate(-1deg) scale(1.01); }
+  to { transform: rotate(1deg) scale(1.01); }
+}
+
+.tag-inline {
+  color: var(--highlight);
+  font-weight: 700;
+}
+
+.media-counts {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.7rem;
+}
+
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 0.8rem;
+}
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.gallery-modal.is-open {
+  display: flex;
+}
+
+.gallery-dialog {
+  width: min(900px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--outline);
+  border-radius: 12px;
+  padding: 0.8rem;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: 0.6rem;
+  align-items: start;
+}
+
+#gallery-viewer {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+}
+
+.gallery-viewer-media {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 10px;
 }
 
 .info-grid {

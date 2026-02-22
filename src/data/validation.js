@@ -7,11 +7,25 @@ function isStringArray(value) {
 }
 
 export function validateProfile(profile) {
-  const requiredStringFields = ['id', 'name', 'title', 'shortDescription', 'description', 'type', 'personality'];
+  const requiredStringFields = [
+    'id',
+    'name',
+    'title',
+    'shortDescription',
+    'description',
+    'type',
+    'personality'
+  ];
+
   const requiredArrayFields = ['attributes', 'categories', 'tags'];
 
-  const hasRequiredStrings = requiredStringFields.every((field) => isNonEmptyString(profile[field]));
-  const hasRequiredArrays = requiredArrayFields.every((field) => isStringArray(profile[field]));
+  const hasRequiredStrings = requiredStringFields.every((field) =>
+    isNonEmptyString(profile[field])
+  );
+
+  const hasRequiredArrays = requiredArrayFields.every((field) =>
+    isStringArray(profile[field])
+  );
 
   const hasMedia =
     profile.media &&
@@ -34,8 +48,11 @@ export function validateProfiles(profiles) {
   }
 
   const invalidItems = profiles.filter((profile) => !validateProfile(profile));
+
   if (invalidItems.length > 0) {
-    throw new Error(`Foram encontrados ${invalidItems.length} perfis inválidos nos dados.`);
+    throw new Error(
+      `Foram encontrados ${invalidItems.length} perfis inválidos nos dados.`
+    );
   }
 
   return profiles;

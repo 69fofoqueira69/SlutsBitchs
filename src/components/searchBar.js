@@ -11,6 +11,7 @@ export function renderSearchBar(container, onSearch) {
   `;
 
   const input = container.querySelector('#search-input');
+
   input.addEventListener('input', (event) => {
     onSearch(event.target.value);
   });
