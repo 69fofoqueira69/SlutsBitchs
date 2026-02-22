@@ -11,7 +11,8 @@
     ├── data
     │   ├── profiles.json
     │   ├── repository.js
-    │   ├── validation.js
+    │   ├── tagRules.js
+    │   └── validation.js
     ├── pages
     │   ├── home.js
     │   └── profile.js

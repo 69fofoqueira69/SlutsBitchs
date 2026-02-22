@@ -21,33 +21,26 @@ const state = {
 };
 
 function matchesSearch(profile, text) {
-  if (!text) return true;
   return profile.name.toLowerCase().includes(text.toLowerCase());
 }
 
 function filterProfiles() {
   const text = state.searchTerm.trim().toLowerCase();
-
   const filtered = state.profiles.filter((profile) => {
     const matchesType =
       !state.filters.type || profile.type === state.filters.type;
-
     const matchesPersonality =
       !state.filters.personality ||
       profile.personality === state.filters.personality;
-
     const matchesAttribute =
       !state.filters.attribute ||
       profile.attributes.includes(state.filters.attribute);
-
     const matchesCategory =
       !state.filters.category ||
       profile.categories.includes(state.filters.category);
-
     const matchesTag =
       !state.filters.tag ||
       profile.tags.includes(state.filters.tag);
-
     return (
       matchesSearch(profile, text) &&
       matchesType &&
@@ -57,7 +50,6 @@ function filterProfiles() {
       matchesTag
     );
   });
-
   resultsCount.textContent = `${filtered.length} perfil(is) encontrado(s)`;
   renderProfileCards(cardsRoot, filtered);
 }
@@ -65,17 +57,14 @@ function filterProfiles() {
 async function init() {
   try {
     state.profiles = await getProfiles();
-
     renderSearchBar(searchRoot, (value) => {
       state.searchTerm = value;
       filterProfiles();
     });
-
     renderFilters(filtersRoot, state.profiles, (filters) => {
       state.filters = filters;
       filterProfiles();
     });
-
     filterProfiles();
   } catch (error) {
     cardsRoot.innerHTML =

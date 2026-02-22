@@ -9,9 +9,7 @@ export function renderSearchBar(container, onSearch) {
       />
     </label>
   `;
-
   const input = container.querySelector('#search-input');
-
   input.addEventListener('input', (event) => {
     onSearch(event.target.value);
   });
