@@ -15,15 +15,16 @@ export function renderProfileCards(container, profiles) {
         >
           <article class="card">
             <img
-              src="${profile.media.cover}"
+              src="${profile.media?.cover || ''}"
               alt="Foto principal de ${profile.name}"
+              loading="lazy"
             />
             <div class="card-body">
               <h3>${profile.name}</h3>
-              <p class="subtitle">${profile.title}</p>
-              <p>${profile.shortDescription}</p>
+              ${profile.title ? `<p class="subtitle">${profile.title}</p>` : ''}
+              <p>${profile.shortDescription || ''}</p>
               <ul class="chips">
-                ${profile.attributes
+                ${(profile.attributes || [])
                   .slice(0, 3)
                   .map((attribute) => `<li>${attribute}</li>`)
                   .join('')}

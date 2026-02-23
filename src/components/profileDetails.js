@@ -22,8 +22,8 @@ function formatMeasurement(label, item) {
       <dd>
         ${item.value} ${item.unit || ''} · 
         <span class="tag-inline">${item.tag || ''}</span> 
-        ${item.emoji || ''} · 
-        ${item.range || ''}
+        ${item.emoji || ''} 
+        ${item.range ? `· ${item.range}` : ''}
       </dd>
     </div>
   `;
@@ -106,21 +106,21 @@ export function renderProfileDetails(container, profile) {
     <header class="profile-header">
       <img 
         class="profile-avatar" 
-        src="${profile.media.cover}" 
+        src="${profile.media?.cover || ''}" 
         alt="Foto principal de ${profile.name}" 
       />
       <div>
         <h1>${profile.name}</h1>
-        <p class="subtitle">${profile.title}</p>
+        <p class="subtitle">${profile.title || ''}</p>
         <p>${profile.shortDescription || profile.description || ''}</p>
 
         <ul class="chips">
-          <li>Gênero: ${profile.gender}</li>
+          ${profile.gender ? `<li>Gênero: ${profile.gender}</li>` : ''}
           ${
             profile.age
               ? `<li>Idade: ${profile.age.value} · ${profile.age.tag || ''} ${
                   profile.age.emoji || ''
-                } · ${profile.age.range || ''}</li>`
+                } ${profile.age.range ? `· ${profile.age.range}` : ''}</li>`
               : ''
           }
           ${profile.universe ? `<li>Universo: ${profile.universe}</li>` : ''}
@@ -129,7 +129,12 @@ export function renderProfileDetails(container, profile) {
     </header>
 
     ${
-      profile.heightMeters || profile.weightKg
+      profile.heightMeters ||
+      profile.weightKg ||
+      profile.species ||
+      profile.hairColor ||
+      profile.eyeColor ||
+      profile.skinColor
         ? `
       <section>
         <h2>Detalhes físicos básicos</h2>
@@ -153,8 +158,8 @@ export function renderProfileDetails(container, profile) {
           }
           ${
             profile.hairColor
-              ? `<div><dt>Cabelo</dt><dd>${profile.hairColor} · ${
-                  profile.hairStyle || ''
+              ? `<div><dt>Cabelo</dt><dd>${profile.hairColor} ${
+                  profile.hairStyle ? `· ${profile.hairStyle}` : ''
                 }</dd></div>`
               : ''
           }
@@ -208,25 +213,7 @@ export function renderProfileDetails(container, profile) {
         : ''
     }
 
-    ${
-      profile.personalInfo
-        ? `
-      <section>
-        <h2>Informações pessoais</h2>
-        <dl class="info-grid">
-          ${Object.entries(profile.personalInfo)
-            .map(
-              ([key, value]) =>
-                `<div><dt>${labelize(key)}</dt><dd>${value}</dd></div>`
-            )
-            .join('')}
-        </dl>
-      </section>
-    `
-        : ''
-    }
-
-    ${renderMediaGallery(profile.media)}
+    ${renderMediaGallery(profile.media || {})}
 
     ${
       profile.extraContent
@@ -242,6 +229,6 @@ export function renderProfileDetails(container, profile) {
     }
   `;
 
-  setupMediaGallery(container, profile.media);
+  setupMediaGallery(container, profile.media || {});
   setupProfileRotation(container, profile);
 }

@@ -1,5 +1,7 @@
 function uniqueArrayValues(profiles, field) {
-  return [...new Set(profiles.flatMap((profile) => profile[field] || []))].sort();
+  return [...new Set(
+    profiles.flatMap((profile) => profile[field] || [])
+  )].sort();
 }
 
 function uniqueScalarValues(profiles, field) {

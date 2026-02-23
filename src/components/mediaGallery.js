@@ -80,16 +80,19 @@ export function setupMediaGallery(container, media) {
   const viewer = container.querySelector('#gallery-viewer');
 
   function renderCurrent() {
+    if (!viewer) return;
     viewer.innerHTML = renderViewerItem(items[currentIndex]);
   }
 
   function openModal() {
+    if (!modal) return;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     renderCurrent();
   }
 
   function closeModal() {
+    if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   }
