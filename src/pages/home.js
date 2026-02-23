@@ -1,9 +1,9 @@
-import { renderFilters } from '../components/filters.js';
+
 import { renderProfileCards } from '../components/profileCard.js';
 import { renderSearchBar } from '../components/searchBar.js';
 import { getProfiles } from '../data/repository.js';
 
-const searchRoot = document.querySelector('#search-root');
+
 const filtersRoot = document.querySelector('#filters-root');
 const cardsRoot = document.querySelector('#cards-root');
 const resultsCount = document.querySelector('#results-count');
