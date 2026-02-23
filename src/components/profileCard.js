@@ -13,9 +13,6 @@ export function renderProfileCards(container, profiles) {
             <div class="card-content">
               <h2>${profile.name}</h2>
               <p>${profile.shortDescription}</p>
-              <ul class="chips">
-                ${(profile.tags || []).slice(0, 14).map((tag) => `<li>${tag}</li>`).join('')}
-              </ul>
             </div>
           </a>
         </article>
