@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#222"/>
+  <circle cx="400" cy="350" r="180" fill="#ff1493"/>
+  <text x="50%" y="75%" text-anchor="middle" fill="#32cd32" font-size="56" font-family="Arial">Mia Profile 2</text>
+</svg>
