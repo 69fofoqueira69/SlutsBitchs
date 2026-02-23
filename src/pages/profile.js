@@ -10,7 +10,10 @@ async function init() {
     const id = params.get('id');
     const profile = id ? await getProfileById(id) : null;
 
-    renderProfileDetails(profileRoot, profile ? buildComputedProfile(profile) : null);
+    renderProfileDetails(
+      profileRoot,
+      profile ? buildComputedProfile(profile) : null
+    );
   } catch (error) {
     profileRoot.innerHTML = '<p>Erro ao carregar perfil.</p>';
     console.error(error);

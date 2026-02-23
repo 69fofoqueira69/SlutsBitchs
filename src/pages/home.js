@@ -13,7 +13,8 @@ const state = {
   filters: {
     type: '',
     personality: '',
-    gender: '',
+    attribute: '',
+    category: '',
     tag: ''
   },
   profiles: []
@@ -21,20 +22,40 @@ const state = {
 
 function matchesSearch(profile, text) {
   if (!text) return true;
-  return profile.name.toLowerCase().includes(text);
+  return profile.name.toLowerCase().includes(text.toLowerCase());
 }
 
 function filterProfiles() {
   const text = state.searchTerm.trim().toLowerCase();
 
   const filtered = state.profiles.filter((profile) => {
-    const matchesType = !state.filters.type || profile.type === state.filters.type;
-    const matchesPersonality =
-      !state.filters.personality || profile.personality === state.filters.personality;
-    const matchesGender = !state.filters.gender || profile.gender === state.filters.gender;
-    const matchesTag = !state.filters.tag || profile.tags.includes(state.filters.tag);
+    const matchesType =
+      !state.filters.type || profile.type === state.filters.type;
 
-    return matchesSearch(profile, text) && matchesType && matchesPersonality && matchesGender && matchesTag;
+    const matchesPersonality =
+      !state.filters.personality ||
+      profile.personality === state.filters.personality;
+
+    const matchesAttribute =
+      !state.filters.attribute ||
+      profile.attributes.includes(state.filters.attribute);
+
+    const matchesCategory =
+      !state.filters.category ||
+      profile.categories.includes(state.filters.category);
+
+    const matchesTag =
+      !state.filters.tag ||
+      profile.tags.includes(state.filters.tag);
+
+    return (
+      matchesSearch(profile, text) &&
+      matchesType &&
+      matchesPersonality &&
+      matchesAttribute &&
+      matchesCategory &&
+      matchesTag
+    );
   });
 
   resultsCount.textContent = `${filtered.length} perfil(is) encontrado(s)`;
@@ -57,7 +78,8 @@ async function init() {
 
     filterProfiles();
   } catch (error) {
-    cardsRoot.innerHTML = '<p class="empty-state">Erro ao carregar dados dos perfis.</p>';
+    cardsRoot.innerHTML =
+      '<p class="empty-state">Erro ao carregar dados dos perfis.</p>';
     console.error(error);
   }
 }

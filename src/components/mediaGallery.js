@@ -10,33 +10,53 @@ function renderViewerItem(item) {
     return `
       <video controls preload="metadata" class="gallery-viewer-media">
         <source src="${item.src}" type="video/mp4" />
+        Seu navegador não suporta vídeo.
       </video>
     `;
   }
 
-  return `<img class="gallery-viewer-media" src="${item.src}" alt="Mídia do perfil" />`;
+  return `
+    <img 
+      class="gallery-viewer-media" 
+      src="${item.src}" 
+      alt="Mídia do perfil" 
+      loading="lazy"
+    />
+  `;
 }
 
 export function renderMediaGallery(media) {
   const items = mediaItems(media);
-  const counts = media.counts || {
+
+  const counts = {
     images: (media.images || []).length,
     videos: (media.videos || []).length,
     gifs: (media.gifs || []).length
   };
 
-  const hasItems = items.length > 0;
+  if (!items.length) {
+    return `
+      <section>
+        <h2>Mídia</h2>
+        <p class="empty-state">Nenhuma mídia cadastrada.</p>
+      </section>
+    `;
+  }
 
   return `
     <section>
       <h2>Mídia</h2>
+
       <div class="media-counts">
         <span>Imagens: ${counts.images}</span>
         <span>Vídeos: ${counts.videos}</span>
         <span>GIFs: ${counts.gifs}</span>
       </div>
-      ${hasItems ? '<button id="open-gallery" class="btn" type="button">Abrir Galeria</button>' : '<p class="empty-state">Nenhuma mídia cadastrada.</p>'}
-      ${hasItems ? `
+
+      <button id="open-gallery" class="btn" type="button">
+        Abrir Galeria
+      </button>
+
       <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
         <div class="gallery-dialog">
           <button id="gallery-close" class="btn ghost" type="button">Fechar</button>
@@ -45,7 +65,6 @@ export function renderMediaGallery(media) {
           <button id="gallery-next" class="btn ghost" type="button">▶</button>
         </div>
       </div>
-      ` : ''}
     </section>
   `;
 }
@@ -61,16 +80,19 @@ export function setupMediaGallery(container, media) {
   const viewer = container.querySelector('#gallery-viewer');
 
   function renderCurrent() {
+    if (!viewer) return;
     viewer.innerHTML = renderViewerItem(items[currentIndex]);
   }
 
   function openModal() {
+    if (!modal) return;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     renderCurrent();
   }
 
   function closeModal() {
+    if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   }
@@ -85,22 +107,23 @@ export function setupMediaGallery(container, media) {
     renderCurrent();
   }
 
-  container.querySelector('#open-gallery').addEventListener('click', openModal);
-  container.querySelector('#gallery-close').addEventListener('click', closeModal);
-  container.querySelector('#gallery-next').addEventListener('click', next);
-  container.querySelector('#gallery-prev').addEventListener('click', prev);
+  container.querySelector('#open-gallery')?.addEventListener('click', openModal);
+  container.querySelector('#gallery-close')?.addEventListener('click', closeModal);
+  container.querySelector('#gallery-next')?.addEventListener('click', next);
+  container.querySelector('#gallery-prev')?.addEventListener('click', prev);
 
-  modal.addEventListener('click', (event) => {
+  modal?.addEventListener('click', (event) => {
     if (event.target === modal) closeModal();
   });
 
-  modal.addEventListener('touchstart', (event) => {
+  modal?.addEventListener('touchstart', (event) => {
     touchStartX = event.changedTouches[0].clientX;
   });
 
-  modal.addEventListener('touchend', (event) => {
+  modal?.addEventListener('touchend', (event) => {
     const delta = event.changedTouches[0].clientX - touchStartX;
     if (Math.abs(delta) < 40) return;
+
     if (delta < 0) next();
     else prev();
   });

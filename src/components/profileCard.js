@@ -1,24 +1,37 @@
 export function renderProfileCards(container, profiles) {
   if (!profiles.length) {
-    container.innerHTML = '<p class="empty-state">Nenhum perfil encontrado.</p>';
+    container.innerHTML =
+      '<p class="empty-state">Nenhum perfil encontrado para os critérios selecionados.</p>';
     return;
   }
 
   container.innerHTML = profiles
     .map(
       (profile) => `
-        <article class="card">
-          <a class="card-link" href="./profile.html?id=${profile.id}" aria-label="Abrir perfil de ${profile.name}">
-            <img src="${profile.media.cover}" alt="Foto principal de ${profile.name}" />
-            <div class="card-content">
-              <h2>${profile.name}</h2>
-              <p>${profile.shortDescription}</p>
+        <a
+          class="card-link"
+          href="./profile.html?id=${profile.id}"
+          aria-label="Abrir perfil de ${profile.name}"
+        >
+          <article class="card">
+            <img
+              src="${profile.media?.cover || ''}"
+              alt="Foto principal de ${profile.name}"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h3>${profile.name}</h3>
+              ${profile.title ? `<p class="subtitle">${profile.title}</p>` : ''}
+              <p>${profile.shortDescription || ''}</p>
               <ul class="chips">
-                ${(profile.tags || []).slice(0, 3).map((tag) => `<li>${tag}</li>`).join('')}
+                ${(profile.attributes || [])
+                  .slice(0, 3)
+                  .map((attribute) => `<li>${attribute}</li>`)
+                  .join('')}
               </ul>
             </div>
-          </a>
-        </article>
+          </article>
+        </a>
       `
     )
     .join('');
