@@ -9,7 +9,12 @@
     "type": "Realista",
     "personality": "Confiante",
     "gender": "Mulher",
-    "age": { "value": 33, "tag": "Adulto", "range": "30–39", "emoji": "🔥" },
+    "age": {
+      "value": 33,
+      "tag": "Vagabunda",
+      "range": "22–34",
+      "emoji": "🔥"
+    },
     "universe": "Realista",
     "heightMeters": 1.57,
     "weightKg": 55,
@@ -18,17 +23,50 @@
     "hairStyle": "Longo com mechas",
     "eyeColor": "Castanho escuro",
     "skinColor": "Morena clara",
-    "attributes": ["Comunicativa", "Expressiva", "Carismática"],
-    "categories": ["Realista", "Mídia", "Celebridade"],
-    "tags": ["realista", "catálogo", "perfil"],
+    "tags": [
+      "Confiante",
+      "Carismática",
+      "Realista"
+    ],
     "measurements": {
-      "hips": { "value": 92, "unit": "cm", "tag": "Proporcional", "range": "80–100", "emoji": "📏" },
-      "waist": { "value": 66, "unit": "cm", "tag": "Definida", "range": "60–75", "emoji": "📐" },
-      "thighs": { "value": 55, "unit": "cm", "tag": "Atlética", "range": "50–65", "emoji": "🦵" },
-      "chest": { "value": 102, "unit": "cm", "tag": "Proporcional", "range": "90–110", "emoji": "📏" }
+      "hips": {
+        "value": 92,
+        "unit": "cm",
+        "tag": "Melão",
+        "range": "37.6–97.5",
+        "emoji": "🍑"
+      },
+      "waist": {
+        "value": 66,
+        "unit": "cm",
+        "tag": "Atletica",
+        "range": "30.1–80",
+        "emoji": "⏳"
+      },
+      "thighs": {
+        "value": 55,
+        "unit": "cm",
+        "tag": "Larga",
+        "range": "53.7–148",
+        "emoji": "🦵"
+      },
+      "chest": {
+        "value": 102,
+        "unit": "cm",
+        "tag": "Melancia",
+        "range": "87.6–242",
+        "emoji": "🍒"
+      }
     },
-    "experience": { "partnersCount": 200, "encountersCount": 500 },
-    "fetishes": ["Moda", "Esportes", "Viagens"],
+    "experience": {
+      "partnersCount": 200,
+      "encountersCount": 500
+    },
+    "fetishes": [
+      "Moda",
+      "Esportes",
+      "Viagens"
+    ],
     "favoritePosition": "Entrevistas e presença em eventos",
     "favoriteOutfit": "Looks casuais e vestidos de evento",
     "occupation": "Personalidade de mídia",
@@ -48,7 +86,12 @@
         "./src/assets/mia-3.svg"
       ],
       "videos": [],
-      "gifs": []
+      "gifs": [],
+      "counts": {
+        "images": 3,
+        "videos": 0,
+        "gifs": 0
+      }
     }
   }
 ]

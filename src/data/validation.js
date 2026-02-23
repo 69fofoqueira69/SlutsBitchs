@@ -29,9 +29,7 @@ function isMeasurementObject(value) {
 
 function hasBasicMeasurements(measurements) {
   const required = ['hips', 'waist', 'thighs'];
-  return required.every(
-    (key) => measurements[key] && isNumber(measurements[key].value)
-  );
+  return required.every((key) => measurements[key] && isNumber(measurements[key].value));
 }
 
 function hasValidAgeObject(age) {
@@ -46,119 +44,69 @@ function hasValidAgeObject(age) {
 }
 
 export function validateProfile(profile) {
-  const commonRequiredStringFields = [
+  const requiredStringFields = [
     'id',
     'name',
     'title',
     'shortDescription',
     'description',
     'type',
-    'personality'
+    'personality',
+    'gender',
+    'universe',
+    'species',
+    'hairColor',
+    'hairStyle',
+    'eyeColor',
+    'skinColor',
+    'favoritePosition',
+    'favoriteOutfit',
+    'occupation',
+    'fullDescription'
   ];
 
-  const commonRequiredArrayFields = ['attributes', 'categories', 'tags'];
+  const requiredArrayFields = ['tags', 'fetishes'];
 
-  const hasCommonRequiredStrings = commonRequiredStringFields.every((field) =>
-    isNonEmptyString(profile[field])
-  );
+  const hasRequiredStrings = requiredStringFields.every((field) => isNonEmptyString(profile[field]));
+  const hasRequiredArrays = requiredArrayFields.every((field) => isStringArray(profile[field]));
 
-  const hasCommonRequiredArrays = commonRequiredArrayFields.every((field) =>
-    isStringArray(profile[field])
-  );
+  const ageValue = typeof profile.age === 'object' ? profile.age.value : profile.age;
+  const hasValidAge = hasValidAgeObject(profile.age) && calculateAgeTag(ageValue) === profile.age.tag;
+
+  const hasBaseNumbers =
+    isNumber(profile.heightMeters) &&
+    isNumber(profile.weightKg) &&
+    isNumber(profile.experience?.partnersCount) &&
+    isNumber(profile.experience?.encountersCount);
+
+  const hasProfileImage =
+    profile.profileImage &&
+    typeof profile.profileImage.rotation === 'boolean' &&
+    isStringArray(profile.profileImage.images || []);
 
   const hasMedia =
     profile.media &&
-    typeof profile.media === 'object' &&
-    !Array.isArray(profile.media) &&
     isNonEmptyString(profile.media.cover) &&
     isStringArray(profile.media.images || []) &&
     isStringArray(profile.media.videos || []) &&
     isStringArray(profile.media.gifs || []);
 
-  if (profile.type === 'Realista') {
-    const realistaRequiredStringFields = [
-      'gender',
-      'universe',
-      'species',
-      'hairColor',
-      'hairStyle',
-      'eyeColor',
-      'skinColor',
-      'favoritePosition',
-      'favoriteOutfit',
-      'occupation',
-      'fullDescription'
-    ];
+  const hasMeasurements =
+    profile.measurements && typeof profile.measurements === 'object' && hasBasicMeasurements(profile.measurements);
 
-    const realistaRequiredArrayFields = ['fetishes'];
+  const measurementEntries = Object.values(profile.measurements || {});
+  const hasMeasurementObjects = measurementEntries.every(isMeasurementObject);
 
-    const hasRealistaRequiredStrings = realistaRequiredStringFields.every(
-      (field) => isNonEmptyString(profile[field])
-    );
-
-    const hasRealistaRequiredArrays = realistaRequiredArrayFields.every(
-      (field) => isStringArray(profile[field])
-    );
-
-    const ageValue =
-      typeof profile.age === 'object' ? profile.age.value : profile.age;
-
-    const hasValidAge =
-      hasValidAgeObject(profile.age) &&
-      calculateAgeTag(ageValue) === profile.age.tag;
-
-    const hasBaseNumbers =
-      isNumber(profile.heightMeters) &&
-      isNumber(profile.weightKg) &&
-      isNumber(profile.experience?.partnersCount) &&
-      isNumber(profile.experience?.encountersCount);
-
-    const hasProfileImage =
-      profile.profileImage &&
-      typeof profile.profileImage.rotation === 'boolean' &&
-      isStringArray(profile.profileImage.images || []);
-
-    const hasMeasurements =
-      profile.measurements &&
-      typeof profile.measurements === 'object' &&
-      hasBasicMeasurements(profile.measurements);
-
-    const measurementEntries = Object.values(profile.measurements || {});
-    const hasMeasurementObjects =
-      measurementEntries.length > 0 &&
-      measurementEntries.every(isMeasurementObject);
-
-    return (
-      hasCommonRequiredStrings &&
-      hasCommonRequiredArrays &&
-      hasRealistaRequiredStrings &&
-      hasRealistaRequiredArrays &&
-      hasValidAge &&
-      hasBaseNumbers &&
-      hasProfileImage &&
-      hasMedia &&
-      hasMeasurements &&
-      hasMeasurementObjects
-    );
-  } else {
-    const hasPersonalInfo =
-      profile.personalInfo &&
-      typeof profile.personalInfo === 'object' &&
-      !Array.isArray(profile.personalInfo);
-
-    const hasExtraContent =
-      profile.extraContent &&
-      typeof profile.extraContent === 'object' &&
-      !Array.isArray(profile.extraContent);
-
-    return (
-      hasCommonRequiredStrings &&
-      hasCommonRequiredArrays &&
-      hasMedia &&
-      hasPersonalInfo &&
-      hasExtraContent
-    );
-  }
+  return (
+    hasRequiredStrings &&
+    hasRequiredArrays &&
+    hasValidAge &&
+    hasBaseNumbers &&
+    hasProfileImage &&
+    hasMedia &&
+    hasMeasurements &&
+    hasMeasurementObjects
+  );
 }
 
 export function validateProfiles(profiles) {
@@ -166,14 +114,9 @@ export function validateProfiles(profiles) {
     throw new Error('Formato inválido: esperado um array de perfis.');
   }
 
-  const invalidItems = profiles.filter(
-    (profile) => !validateProfile(profile)
-  );
-
+  const invalidItems = profiles.filter((profile) => !validateProfile(profile));
   if (invalidItems.length > 0) {
-    throw new Error(
-      `Foram encontrados ${invalidItems.length} perfis inválidos nos dados.`
-    );
+    throw new Error(`Foram encontrados ${invalidItems.length} perfis inválidos nos dados.`);
   }
 
   return profiles;
