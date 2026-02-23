@@ -1,0 +1,3 @@
+# Evita conflitos de merge no dataset principal de perfis.
+# Em caso de pull/merge concorrente, mantém a versão local deste arquivo.
+src/data/profiles.json merge=ours
