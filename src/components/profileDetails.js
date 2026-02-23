@@ -127,4 +127,7 @@ export function renderProfileDetails(container, profile) {
 
   setupMediaGallery(container, profile.media);
   setupProfileRotation(container, profile);
+  `;
+
+  setupMediaGallery(container, profile.media);
 }

@@ -136,6 +136,9 @@ function normalizeProfile(rawProfile) {
     media
   };
 }
+import { validateProfiles } from './validation.js';
+
+const DATA_PATH = './src/data/profiles.json';
 
 export async function getProfiles() {
   const response = await fetch(DATA_PATH);
@@ -147,6 +150,7 @@ export async function getProfiles() {
   const data = await response.json();
   const normalized = data.map(normalizeProfile);
   return validateProfiles(normalized);
+  return validateProfiles(data);
 }
 
 export async function getProfileById(id) {

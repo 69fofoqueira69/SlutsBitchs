@@ -35,6 +35,7 @@ function filterProfiles() {
     const matchesTag = !state.filters.tag || profile.tags.includes(state.filters.tag);
 
     return matchesSearch(profile, text) && matchesType && matchesPersonality && matchesGender && matchesTag;
+    return matchesSearch(profile, text);
   });
 
   resultsCount.textContent = `${filtered.length} perfil(is) encontrado(s)`;
