@@ -73,17 +73,17 @@
     "profileImage": {
       "rotation": true,
       "images": [
-        "./src/assets/mia-1.svg",
-        "./src/assets/mia-2.svg",
-        "./src/assets/mia-3.svg"
+        "./src/assets/Mia-Khalifa-1.png",
+        "./src/assets/Mia-Khalifa-2.png",
+        "./src/assets/Mia-Khalifa-3.png"
       ]
     },
     "media": {
-      "cover": "./src/assets/mia-1.svg",
+      "cover": "./src/assets/Mia-Khalifa-1.png",
       "images": [
-        "./src/assets/mia-1.svg",
-        "./src/assets/mia-2.svg",
-        "./src/assets/mia-3.svg"
+        "./src/assets/Mia-Khalifa-1.png",
+        "./src/assets/Mia-Khalifa-2.png",
+        "./src/assets/Mia-Khalifa-3.png"
       ],
       "videos": [],
       "gifs": [],
