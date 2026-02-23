@@ -27,20 +27,6 @@ function renderConditionalMeasurements(profile) {
   return `<dl class="info-grid">${blocks.join('')}</dl>`;
 }
 
-function setupProfileRotation(container, profile) {
-  const imageList = profile.profileImage?.images || [];
-  if (!profile.profileImage?.rotation || imageList.length <= 1) return;
-
-  const avatar = container.querySelector('.profile-avatar');
-  if (!avatar) return;
-
-  let index = 0;
-  setInterval(() => {
-    index = (index + 1) % imageList.length;
-    avatar.src = imageList[index];
-  }, 3000);
-}
-
 export function renderProfileDetails(container, profile) {
   if (!profile) {
     container.innerHTML = `
@@ -118,13 +104,7 @@ export function renderProfileDetails(container, profile) {
     </section>
 
     ${renderMediaGallery(profile.media)}
-
-    <section>
-      <h2>Tags do perfil</h2>
-      ${renderList(profile.tags)}
-    </section>
   `;
 
   setupMediaGallery(container, profile.media);
-  setupProfileRotation(container, profile);
 }
