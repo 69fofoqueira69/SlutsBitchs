@@ -84,7 +84,7 @@ function normalizeProfile(rawProfile) {
 
   const name = rawProfile.identity.name || rawProfile.name || 'Perfil';
   const ageSource = rawProfile.identity.age || rawProfile.age || { value: 18 };
-  const ageValue = Number(ageSource.value);
+  const ageValue = typeof ageSource === 'object' && ageSource?.value != null ? Number(ageSource.value) : 18;
   const computedAge = calculateAgeData(ageValue);
 
   const profileImages = rawProfile.profileImage?.images || rawProfile.media?.images || [];
@@ -136,9 +136,6 @@ function normalizeProfile(rawProfile) {
     media
   };
 }
-import { validateProfiles } from './validation.js';
-
-const DATA_PATH = './src/data/profiles.json';
 
 export async function getProfiles() {
   const response = await fetch(DATA_PATH);
@@ -150,7 +147,6 @@ export async function getProfiles() {
   const data = await response.json();
   const normalized = data.map(normalizeProfile);
   return validateProfiles(normalized);
-  return validateProfiles(data);
 }
 
 export async function getProfileById(id) {
