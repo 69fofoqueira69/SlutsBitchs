@@ -119,10 +119,7 @@ export function renderProfileDetails(container, profile) {
 
     ${renderMediaGallery(profile.media)}
 
-    <section>
-      <h2>Tags do perfil</h2>
-      ${renderList(profile.tags)}
-    </section>
+   
   `;
 
   setupMediaGallery(container, profile.media);
