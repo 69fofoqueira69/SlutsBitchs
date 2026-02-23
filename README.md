@@ -27,6 +27,7 @@ src/
 ## Arquitetura (resumo)
 
 - **Fonte única de dados:** `src/data/profiles.json`.
+- **Normalização de schema:** `repository.js` adapta automaticamente perfis no formato legado ou no formato com blocos (`identity`, `basicPhysicalDetails`, `preferences`, `sexualExperience`) para evitar erros de carregamento, incluindo fallback de capa/imagem quando arrays de mídia vierem vazios.
 - **Validação de contrato:** `validation.js` valida campos obrigatórios do perfil e objetos de idade/medidas no formato `{ value, tag, range, emoji }`.
 - **Tags automáticas:** `tagRules.js` calcula idade (`calculateAgeTag` + `calculateAgeData`) e metadados das medidas (`calculateMeasurementData`) por faixa.
 - **Renderização condicional:** `profileDetails.js` mostra blocos condicionais por gênero/tipo e exibe apenas os dados principais (sem mostrar limites/faixas na UI).

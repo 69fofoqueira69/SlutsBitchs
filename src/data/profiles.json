@@ -2,6 +2,10 @@
   {
     "id": "mia-khalifa",
     "name": "Mia Khalifa",
+    "title": "Criadora e personalidade de mídia",
+    "shortDescription": "Figura pública de origem libanesa, com atuação em entretenimento e presença digital global.",
+    "description": "Perfil realista com foco em identidade, características físicas e organização de mídia para catálogo.",
+    "fullDescription": "Mia Khalifa é apresentada neste catálogo como perfil realista com campos estruturados para identidade, medidas e mídia. O registro foi preparado para expansão futura com novos conteúdos, mantendo organização modular e consistência de dados.",
     "title": "Atriz pornô ativa",
     "shortDescription": "Puta libanesa insaciável, estrela pornô que continua filmando cenas hardcore, chupando rola em gangbangs e levando porra na cara e na buceta regular.",
     "description": "Mia Khalifa, a vadia libanesa de 33 anos que fodeu o mundo inteiro e continua fodendo sem parar. Com peitos melancia falsos que balançam em cada estocada profunda, cintura fina de academia e uma bunda melão perfeita para ser apertada enquanto leva rola no cu ou na buceta.",
@@ -12,6 +16,8 @@
     "age": {
       "value": 33,
       "tag": "Vagabunda",
+      "range": "22–34",
+      "emoji": "🔥"
       "range": "22 a 34",
       "emoji": ""
     },
@@ -20,6 +26,12 @@
     "weightKg": 55,
     "species": "Humana",
     "hairColor": "Castanho escuro",
+    "hairStyle": "Longo com mechas",
+    "eyeColor": "Castanho escuro",
+    "skinColor": "Morena clara",
+    "tags": [
+      "Confiante",
+      "Carismática",
     "hairStyle": "Longo, ondulado ou liso com mechas",
     "eyeColor": "Castanho escuro / Preto",
     "skinColor": "Morena clara / Oliva",
@@ -46,6 +58,8 @@
       "thighs": {
         "value": 55,
         "unit": "cm",
+        "tag": "Larga",
+        "range": "53.7–148",
         "tag": "Atletica",
         "range": "20.5–53.6",
         "emoji": "🦵"
@@ -63,6 +77,28 @@
       "encountersCount": 500
     },
     "fetishes": [
+      "Moda",
+      "Esportes",
+      "Viagens"
+    ],
+    "favoritePosition": "Entrevistas e presença em eventos",
+    "favoriteOutfit": "Looks casuais e vestidos de evento",
+    "occupation": "Personalidade de mídia",
+    "profileImage": {
+      "rotation": true,
+      "images": [
+        "./src/assets/mia-1.svg",
+        "./src/assets/mia-2.svg",
+        "./src/assets/mia-3.svg"
+      ]
+    },
+    "media": {
+      "cover": "./src/assets/mia-1.svg",
+      "images": [
+        "./src/assets/mia-1.svg",
+        "./src/assets/mia-2.svg",
+        "./src/assets/mia-3.svg"
+      ],
       "Deepthroat",
       "Interracial",
       "Gangbang",
