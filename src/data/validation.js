@@ -33,9 +33,8 @@ function hasBasicMeasurements(measurements) {
 }
 
 function hasValidAgeObject(age) {
+  if (!age || typeof age !== 'object') return false;
   return (
-    age &&
-    typeof age === 'object' &&
     isInteger(age.value) &&
     isNonEmptyString(age.tag) &&
     isNonEmptyString(age.range) &&
@@ -70,7 +69,7 @@ export function validateProfile(profile) {
   const hasRequiredStrings = requiredStringFields.every((field) => isNonEmptyString(profile[field]));
   const hasRequiredArrays = requiredArrayFields.every((field) => isStringArray(profile[field]));
 
-  const ageValue = typeof profile.age === 'object' ? profile.age.value : profile.age;
+  const ageValue = profile.age?.value;
   const hasValidAge = hasValidAgeObject(profile.age) && calculateAgeTag(ageValue) === profile.age.tag;
 
   const hasBaseNumbers =
@@ -116,7 +115,7 @@ export function validateProfiles(profiles) {
 
   const invalidItems = profiles.filter((profile) => !validateProfile(profile));
   if (invalidItems.length > 0) {
-    throw new Error(`Foram encontrados ${invalidItems.length} perfis inválidos nos dados.`);
+    throw new Error(`Foram encontrados ${invalidItems.length} perfis inválidos nos dados. Verifique campos como age, measurements ou media.`);
   }
 
   return profiles;
