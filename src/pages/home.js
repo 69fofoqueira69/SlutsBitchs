@@ -3,7 +3,7 @@ import { renderSearchBar } from '../components/searchBar.js';
 import { renderFilters } from '../components/filters.js';
 import { getProfiles } from '../data/repository.js';
 
-const toolbarRoot = document.querySelector('#toolbar-root');
+const searchRoot = document.querySelector('#search-root');
 const filtersRoot = document.querySelector('#filters-root');
 const cardsRoot = document.querySelector('#cards-root');
 const resultsCount = document.querySelector('#results-count');
@@ -25,7 +25,7 @@ function matchesSearch(profile, text) {
 }
 
 function filterProfiles() {
-  const text = state.searchTerm;
+  const text = state.searchTerm.trim().toLowerCase();
 
   const filtered = state.profiles.filter((profile) => {
     const matchesType = !state.filters.type || profile.type === state.filters.type;
@@ -46,8 +46,8 @@ async function init() {
   try {
     state.profiles = await getProfiles();
 
-    if (toolbarRoot) {
-      renderSearchBar(toolbarRoot, (value) => {
+    if (searchRoot) {
+      renderSearchBar(searchRoot, (value) => {
         state.searchTerm = value;
         filterProfiles();
       });
@@ -63,7 +63,7 @@ async function init() {
     filterProfiles();
   } catch (error) {
     if (cardsRoot) {
-      cardsRoot.textContent = 'Erro ao carregar dados dos perfis.';
+      cardsRoot.innerHTML = '<p class="empty-state">Erro ao carregar dados dos perfis.</p>';
     }
     console.error(error);
   }
