@@ -7,15 +7,18 @@ function uniqueScalarValues(profiles, field) {
 }
 
 function buildSelect(label, field, values) {
-  const options = ['<option value="">Todos</option>']
-    .concat(values.map((value) => `<option value="${value}">${value}</option>`))
+  const options = values
+    .map((value) => `<option value="${value}">${value}</option>`)
     .join('');
 
   return `
-    <label class="filter-block">
-      <span>${label}</span>
-      <select data-filter="${field}">${options}</select>
-    </label>
+    <div class="filter-block">
+      <label for="${field}-select">${label}</label>
+      <select id="${field}-select" data-filter="${field}">
+        <option value="">Todos</option>
+        ${options}
+      </select>
+    </div>
   `;
 }
 
@@ -30,7 +33,7 @@ export function renderFilters(container, profiles, onChange) {
   container.innerHTML = `
     <div class="filters-wrap">
       ${filters.map(({ label, field, values }) => buildSelect(label, field, values)).join('')}
-      <button id="clear-filters" class="btn ghost" type="button">Limpar filtros</button>
+      <button id="clear-filters" class="btn ghost">Limpar filtros</button>
     </div>
   `;
 
