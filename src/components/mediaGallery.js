@@ -1,20 +1,16 @@
 function mediaItems(media) {
   const images = (media.images || []).map((src) => ({ type: 'image', src }));
-  const gifs = (media.gifs || []).map((src) => ({ type: 'image', src }));
+  const gifs = (media.gifs || []).map((src) => ({ type: 'gif', src }));
   const videos = (media.videos || []).map((src) => ({ type: 'video', src }));
   return [...images, ...gifs, ...videos];
 }
 
 function renderViewerItem(item) {
   if (item.type === 'video') {
-    return `
-      <video controls preload="metadata" class="gallery-viewer-media">
-        <source src="${item.src}" type="video/mp4" />
-      </video>
-    `;
+    return `<video class="gallery-viewer-media" controls src="${item.src}" aria-label="Vídeo"></video>`;
   }
-
-  return `<img class="gallery-viewer-media" src="${item.src}" alt="Mídia do perfil" />`;
+  const tag = item.type === 'gif' ? 'img' : 'img';  // GIFs são imagens animadas
+  return `<${tag} class="gallery-viewer-media" src="${item.src}" alt="Mídia" loading="lazy">`;
 }
 
 export function renderMediaGallery(media) {
@@ -28,23 +24,23 @@ export function renderMediaGallery(media) {
   const hasItems = items.length > 0;
 
   return `
-    <section>
+    <section class="media-grid">
       <h2>Mídia</h2>
       <div class="media-counts">
-        <span>Imagens: ${counts.images}</span>
-        <span>Vídeos: ${counts.videos}</span>
-        <span>GIFs: ${counts.gifs}</span>
+        <p>Imagens: ${counts.images}</p>
+        <p>Vídeos: ${counts.videos}</p>
+        <p>GIFs: ${counts.gifs}</p>
       </div>
-      ${hasItems ? '<button id="open-gallery" class="btn" type="button">Abrir Galeria</button>' : '<p class="empty-state">Nenhuma mídia cadastrada.</p>'}
+      ${hasItems ? '<button id="open-gallery" class="btn">Abrir Galeria</button>' : '<p class="empty-state">Nenhuma mídia cadastrada.</p>'}
       ${hasItems ? `
-      <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
-        <div class="gallery-dialog">
-          <button id="gallery-close" class="btn ghost" type="button">Fechar</button>
-          <button id="gallery-prev" class="btn ghost" type="button">◀</button>
-          <div id="gallery-viewer"></div>
-          <button id="gallery-next" class="btn ghost" type="button">▶</button>
-        </div>
-      </div>
+        <dialog id="gallery-modal" class="gallery-modal">
+          <div class="gallery-dialog">
+            <button id="gallery-prev" aria-label="Anterior">←</button>
+            <button id="gallery-next" aria-label="Próximo">→</button>
+            <div id="gallery-viewer"></div>
+            <button id="gallery-close" aria-label="Fechar">×</button>
+          </div>
+        </dialog>
       ` : ''}
     </section>
   `;
