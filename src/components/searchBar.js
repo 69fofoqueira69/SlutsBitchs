@@ -1,11 +1,12 @@
 export function renderSearchBar(container, onSearch) {
   container.innerHTML = `
-    <label class="search-wrap">
-      <span>Buscar perfil por nome</span>
-      <input id="search-input" type="search" placeholder="Digite o nome do perfil" />
-    </label>
+    <div class="search-wrap">
+      <label for="search-input">Buscar perfil por nome</label>
+      <input type="text" id="search-input" placeholder="Digite o nome...">
+    </div>
   `;
-
   const input = container.querySelector('#search-input');
-  input.addEventListener('input', (event) => onSearch(event.target.value));
+  if (input) {
+    input.addEventListener('input', (event) => onSearch(event.target.value.trim().toLowerCase()));
+  }
 }
