@@ -39,11 +39,10 @@ export function renderProfileDetails(container, profile) {
         <div class="tinder-overlay">
           <h1>${identity.name}, ${identity.age.value}</h1>
           <p>${identity.gender} • ${identity.universe}</p>
-          <p>${profile.shortDescription}</p>
         </div>
       </div>
 
-      <section>
+      <section class="about-section">
         <h2>Sobre</h2>
         <p>${profile.fullDescription}</p>
       </section>
