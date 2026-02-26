@@ -4,12 +4,12 @@ Projeto em **HTML + CSS + JavaScript (ES Modules)** para listar personagens em c
 
 ## Arquitetura (curta)
 
-- `src/data/profiles.json`: base de dados mock no schema solicitado (`identity`, `basicPhysicalDetails`, `measurements`, `preferences`, `media`).
-- `src/data/tagRules.js`: regras de classificação por faixa para idade e medidas.
-- `src/data/repository.js`: carregamento, normalização e campos derivados (texto de busca, contadores de mídia, medidas visíveis por gênero).
-- `src/pages/home.js` + `src/components/profileCard.js`: busca e grid de cards (imagem + nome + descrição curta), com o card inteiro como botão/link.
-- `src/pages/profile.js` + `src/components/profileDetails.js`: página completa de personagem, com layout “tinder-like” para desktop e galeria de imagens.
-- `src/styles/main.css`: tema visual e responsividade.
+- `src/Dados/Perfils.json`: base mock de perfis com chaves em português (`identidade`, `detalhesFisicosBasicos`, `medidas`, `preferencias`, `midia`).
+- `src/Dados/Parametros.js`: regras de classificação por faixa para idade e medidas.
+- `src/Dados/Repositorio.js`: carregamento, normalização e campos derivados (texto de busca, contagens de mídia, medidas visíveis por gênero).
+- `src/Paginas/Menu.js` + `src/Componentes/Card.js`: busca e grid de cards (imagem + nome + descrição curta).
+- `src/Paginas/Perfil.js` + `src/Componentes/Detalhes.js`: página completa do perfil com layout dividido em duas colunas e galeria.
+- `src/Estilos/Estilo.css`: tema visual e responsividade.
 
 ## Rodar localmente
 
@@ -17,5 +17,5 @@ Projeto em **HTML + CSS + JavaScript (ES Modules)** para listar personagens em c
 python3 -m http.server 4173
 ```
 
-- Home: `http://localhost:4173/index.html`
-- Perfil: `http://localhost:4173/profile.html?id=mia-khalifa`
+- Menu: `http://localhost:4173/index.html`
+- Perfil: `http://localhost:4173/Perfil.html?id=mia-khalifa`
