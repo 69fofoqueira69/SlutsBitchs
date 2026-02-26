@@ -69,11 +69,19 @@ input {
 
 .tinder-profile {
   display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 1rem;
   max-width: 980px;
   margin: 0 auto;
 }
 
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+}
 .tinder-profile section {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -257,4 +265,15 @@ input {
   text-align: center;
   margin: .75rem 0 0;
   color: var(--muted);
+}
+
+
+@media (max-width: 900px) {
+  .tinder-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section {
+    min-height: auto;
+  }
 }
