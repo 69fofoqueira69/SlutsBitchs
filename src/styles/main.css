@@ -74,10 +74,8 @@ input {
   margin: 0 auto;
 }
 
-.profile-top {
-  display: grid;
+.six-block-layout {
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 1rem;
   align-items: stretch;
 }
 
@@ -87,6 +85,18 @@ input {
   justify-content: center;
   min-height: 420px;
 }
+
+.hero-section {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.full-width,
+.media-grid {
+  grid-column: 1 / -1;
+}
+
 .tinder-profile section {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -274,7 +284,7 @@ input {
 
 
 @media (max-width: 900px) {
-  .profile-top {
+  .six-block-layout {
     grid-template-columns: 1fr;
   }
 
