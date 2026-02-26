@@ -1,4 +1,5 @@
 import { getVisibleMeasurements } from '../data/repository.js';
+import { renderizarGaleriaDeMidia, configurarGaleriaDeMidia } from './galeriaMidia.js';
 
 const MEASUREMENT_LABELS = {
   ass: 'Bunda',
@@ -18,15 +19,6 @@ function renderMeasurementItem(measurement) {
       <span>${measurement.emoji || '📌'} ${MEASUREMENT_LABELS[measurement.key] || measurement.key}</span>
       <strong>${measurement.value} cm · ${measurement.tag || '—'}</strong>
     </li>
-  `;
-}
-
-function renderMedia(images) {
-  if (!images.length) return '<p class="empty-state">Sem imagens cadastradas.</p>';
-  return `
-    <div class="profile-media-grid">
-      ${images.map((image) => `<img src="${image}" alt="Imagem de perfil" loading="lazy">`).join('')}
-    </div>
   `;
 }
 
@@ -87,10 +79,9 @@ export function renderProfileDetails(container, profile) {
         </ul>
       </section>
 
-      <section>
-        <h2>Fotos</h2>
-        ${renderMedia(media.images)}
-      </section>
+      ${renderizarGaleriaDeMidia(media)}
     </article>
   `;
+
+  configurarGaleriaDeMidia(container, media);
 }
