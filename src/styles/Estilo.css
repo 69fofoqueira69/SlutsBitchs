@@ -8,21 +8,16 @@
   --accent: #ff4fa3;
   --border: #5f315e;
 }
-
 * { box-sizing: border-box; }
-
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
   background: radial-gradient(circle at top, #2a1135 0%, var(--bg) 45%);
   color: var(--text);
 }
-
 .container { width: min(1120px, 92vw); margin: 0 auto; padding: 1.5rem 0 2.5rem; }
-
 h1 { margin-bottom: 0.25rem; }
-
-.search-wrap { display: grid; gap: 0.4rem; margin-bottom: 1.25rem; }
+.pesquisa-wrap { display: grid; gap: 0.4rem; margin-bottom: 1.25rem; }
 input {
   background: var(--panel);
   color: var(--text);
@@ -30,15 +25,12 @@ input {
   border-radius: 12px;
   padding: 0.75rem 0.9rem;
 }
-
-.cards-grid {
+.perfis-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1rem;
 }
-
-.card-link { text-decoration: none; color: inherit; display: block; }
-
+.link-card { text-decoration: none; color: inherit; display: block; }
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -47,15 +39,12 @@ input {
   height: 100%;
   transition: transform .2s ease, border-color .2s ease;
 }
-
-.card-link:hover .card,
-.card-link:focus .card { transform: translateY(-4px); border-color: var(--accent); }
-
+.link-card:hover .card,
+.link-card:focus .card { transform: translateY(-4px); border-color: var(--accent); }
 .card img { width: 100%; height: 220px; object-fit: cover; }
-.card-body { padding: 0.9rem; }
-.subtitle { color: var(--muted); margin-bottom: 0.25rem; }
-
-.results-count, .empty-state { color: var(--muted); }
+.corpo-card { padding: 0.9rem; }
+.subtitulo { color: var(--muted); margin-bottom: 0.25rem; }
+.contagem-resultados, .estado-vazio { color: var(--muted); }
 .link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -66,60 +55,52 @@ input {
   border-radius: 10px;
   background: var(--panel);
 }
-
-.tinder-profile {
+.perfil {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 1rem;
   max-width: 980px;
   margin: 0 auto;
 }
-
-
-.about-section {
+.secao-sobre {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 420px;
 }
-.tinder-profile section {
+.perfil section {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 1rem;
 }
-
-.tinder-hero {
+.heroi-perfil {
   position: relative;
   min-height: 420px;
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid var(--border);
 }
-
-.tinder-hero img {
+.heroi-perfil img {
   width: 100%;
   height: 100%;
   min-height: 420px;
   object-fit: cover;
 }
-
-.tinder-overlay {
+.sobreposicao-perfil {
   position: absolute;
   inset: auto 0 0 0;
   padding: 1.25rem;
   background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 65%);
 }
-
-.detail-list {
+.lista-detalhes {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   gap: .65rem;
 }
-
-.detail-list li {
+.lista-detalhes li {
   border: 1px solid var(--border);
   background: var(--panel-soft);
   border-radius: 10px;
@@ -129,39 +110,32 @@ input {
   justify-content: space-between;
   gap: .5rem;
 }
-
-.detail-list li span { color: var(--muted); }
-
-.profile-media-grid {
+.lista-detalhes li span { color: var(--muted); }
+.grade-midias-perfil {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: .75rem;
 }
-
-.profile-media-grid img {
+.grade-midias-perfil img {
   width: 100%;
   height: 220px;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--border);
 }
-
-.media-grid h2 {
+.grade-midias h2 {
   margin-top: 0;
 }
-
-.media-counts {
+.contagens-midias {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   color: var(--muted);
 }
-
-.media-counts p {
+.contagens-midias p {
   margin: 0;
 }
-
-.media-thumb {
+.miniatura-midia {
   position: relative;
   display: block;
   width: 100%;
@@ -172,21 +146,18 @@ input {
   padding: 0;
   cursor: pointer;
 }
-
-.media-thumb img,
-.media-thumb video {
+.miniatura-midia img,
+.miniatura-midia video {
   width: 100%;
   height: 220px;
   object-fit: cover;
   display: block;
 }
-
-.media-thumb:hover,
-.media-thumb:focus-visible {
+.miniatura-midia:hover,
+.miniatura-midia:focus-visible {
   border-color: var(--accent);
 }
-
-.media-badge {
+.emblema-midia {
   position: absolute;
   right: .5rem;
   bottom: .5rem;
@@ -196,8 +167,7 @@ input {
   padding: .2rem .55rem;
   font-size: .72rem;
 }
-
-.gallery-modal {
+.modal-galeria {
   border: 0;
   background: transparent;
   padding: 0;
@@ -207,16 +177,14 @@ input {
   max-height: none;
   display: none;
 }
-
-.gallery-modal.is-open {
+.modal-galeria.is-open {
   display: grid;
   place-items: center;
   background: rgba(0, 0, 0, 0.78);
   position: fixed;
   inset: 0;
 }
-
-.gallery-dialog {
+.dialogo-galeria {
   position: relative;
   width: min(92vw, 900px);
   background: var(--panel);
@@ -224,17 +192,15 @@ input {
   border-radius: 14px;
   padding: 1rem 3.2rem;
 }
-
-.gallery-viewer-media {
+.midia-visualizador-galeria {
   width: 100%;
   max-height: 75vh;
   border-radius: 10px;
   object-fit: contain;
   background: #050405;
 }
-
-.gallery-control,
-.gallery-close {
+.controle-galeria,
+.fechar-galeria {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -246,34 +212,27 @@ input {
   border-radius: 999px;
   cursor: pointer;
 }
-
-.gallery-control:hover,
-.gallery-close:hover {
+.controle-galeria:hover,
+.fechar-galeria:hover {
   border-color: var(--accent);
 }
-
-#gallery-prev { left: .6rem; }
-#gallery-next { right: .6rem; }
-
-.gallery-close {
+#galeria-anterior { left: .6rem; }
+#galeria-proximo { right: .6rem; }
+.fechar-galeria {
   top: .8rem;
   right: .8rem;
   transform: none;
 }
-
-.gallery-counter {
+.contador-galeria {
   text-align: center;
   margin: .75rem 0 0;
   color: var(--muted);
 }
-
-
 @media (max-width: 900px) {
-  .tinder-profile {
+  .perfil {
     grid-template-columns: 1fr;
   }
-
-  .about-section {
+  .secao-sobre {
     min-height: auto;
   }
 }
