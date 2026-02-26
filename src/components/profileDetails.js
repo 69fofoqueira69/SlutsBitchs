@@ -34,19 +34,20 @@ export function renderProfileDetails(container, profile) {
   container.innerHTML = `
     <a href="./index.html" class="link">← Voltar</a>
     <article class="tinder-profile">
-      <div class="tinder-hero">
-        <img src="${media.images[0] || ''}" alt="${identity.name}">
-        <div class="tinder-overlay">
-          <h1>${identity.name}, ${identity.age.value}</h1>
-          <p>${identity.gender} • ${identity.universe}</p>
-          <p>${profile.shortDescription}</p>
+      <div class="profile-top">
+        <div class="tinder-hero">
+          <img src="${media.images[0] || ''}" alt="${identity.name}">
+          <div class="tinder-overlay">
+            <h1>${identity.name}, ${identity.age.value}</h1>
+            <p>${identity.gender} • ${identity.universe}</p>
+          </div>
         </div>
-      </div>
 
-      <section>
-        <h2>Sobre</h2>
-        <p>${profile.fullDescription}</p>
-      </section>
+        <section class="about-section">
+          <h2>Sobre mim</h2>
+          <p>${profile.fullDescription}</p>
+        </section>
+      </div>
 
       <section>
         <h2>Detalhes básicos</h2>
