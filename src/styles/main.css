@@ -74,8 +74,8 @@ input {
   margin: 0 auto;
 }
 
-.six-block-layout {
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+.split-profile-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
 }
 
@@ -92,10 +92,6 @@ input {
   background: transparent !important;
 }
 
-.full-width,
-.media-grid {
-  grid-column: 1 / -1;
-}
 
 .tinder-profile section {
   background: var(--panel);
@@ -284,7 +280,7 @@ input {
 
 
 @media (max-width: 900px) {
-  .six-block-layout {
+  .split-profile-layout {
     grid-template-columns: 1fr;
   }
 

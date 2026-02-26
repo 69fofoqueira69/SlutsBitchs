@@ -33,7 +33,7 @@ export function renderProfileDetails(container, profile) {
 
   container.innerHTML = `
     <a href="./index.html" class="link">← Voltar</a>
-    <article class="tinder-profile six-block-layout">
+    <article class="tinder-profile split-profile-layout">
       <section class="hero-section">
         <div class="tinder-hero">
           <img src="${media.images[0] || ''}" alt="${identity.name}">
@@ -49,7 +49,7 @@ export function renderProfileDetails(container, profile) {
         <p>${profile.fullDescription}</p>
       </section>
 
-      <section class="full-width">
+      <section>
         <h2>Detalhes básicos</h2>
         <ul class="detail-list">
           <li><span>Altura</span><strong>${basicPhysicalDetails.height}</strong></li>
@@ -61,14 +61,14 @@ export function renderProfileDetails(container, profile) {
         </ul>
       </section>
 
-      <section class="full-width">
+      <section>
         <h2>Medidas</h2>
         <ul class="detail-list">
           ${measurements.map(renderMeasurementItem).join('')}
         </ul>
       </section>
 
-      <section class="full-width">
+      <section>
         <h2>Experiência e preferências</h2>
         <ul class="detail-list">
           <li><span>Experiências registradas</span><strong>${sexualExperience.sexCount}</strong></li>
