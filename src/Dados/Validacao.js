@@ -1,4 +1,4 @@
-import { calculateAgeTag } from './tagRules.js';
+import { calcularDadosIdade } from './Parametros.js';
 
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
@@ -70,7 +70,7 @@ export function validateProfile(profile) {
   const hasRequiredArrays = requiredArrayFields.every((field) => isStringArray(profile[field]));
 
   const ageValue = profile.age?.value;
-  const hasValidAge = hasValidAgeObject(profile.age) && calculateAgeTag(ageValue) === profile.age.tag;
+  const hasValidAge = hasValidAgeObject(profile.age) && calcularDadosIdade(ageValue) === profile.age.tag;
 
   const hasBaseNumbers =
     isNumber(profile.heightMeters) &&
