@@ -114,9 +114,9 @@
     "descricaoCompleta": "Perfil completo em formato estruturado para navegação estilo catálogo desktop.",
     "midia": {
       "imagens": [
-        "./src/Midias/Mia-Khalifa-1.png",
-        "./src/Midias/Mia-Khalifa-2.png",
-        "./src/Midias/Mia-Khalifa-3.png"
+        "./src/Midia/Mia-Khalifa-1.png",
+        "./src/Midia/Mia-Khalifa-2.png",
+        "./src/Midia/Mia-Khalifa-3.png"
       ],
       "videos": [],
       "gifs": [],
@@ -241,8 +241,8 @@
     "descricaoCompleta": "Exploradora disciplinada, resistente e estratégica, com perfil visual para interface estilo swipe.",
     "midia": {
       "imagens": [
-        "./src/Midias/mia-1.svg",
-        "./src/Midias/mia-2.svg"
+        "./src/Midia/mia-1.svg",
+        "./src/Midia/mia-2.svg"
       ],
       "videos": [],
       "gifs": [],
@@ -367,8 +367,8 @@
     "descricaoCompleta": "Perfil original com foco em moda noturna, música eletrônica e identidade visual marcante.",
     "midia": {
       "imagens": [
-        "./src/Midias/mia-3.svg",
-        "./src/Midias/mia-2.svg"
+        "./src/Midia/mia-3.svg",
+        "./src/Midia/mia-2.svg"
       ],
       "videos": [],
       "gifs": [],
