@@ -25,12 +25,14 @@ input {
   border-radius: 12px;
   padding: 0.75rem 0.9rem;
 }
-.perfis-grid {
+.perfis-grid,
+.cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: .85rem;
 }
-.link-card { text-decoration: none; color: inherit; display: block; }
+.link-card,
+.card-link { text-decoration: none; color: inherit; display: block; }
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -40,10 +42,22 @@ input {
   transition: transform .2s ease, border-color .2s ease;
 }
 .link-card:hover .card,
-.link-card:focus .card { transform: translateY(-4px); border-color: var(--accent); }
-.card img { width: 100%; height: 220px; object-fit: cover; }
-.corpo-card { padding: 0.9rem; }
-.subtitulo { color: var(--muted); margin-bottom: 0.25rem; }
+.link-card:focus .card,
+.card-link:hover .card,
+.card-link:focus .card { transform: translateY(-4px); border-color: var(--accent); }
+.card img { width: 100%; height: 170px; object-fit: cover; }
+.corpo-card,
+.card-body { padding: 0.75rem; }
+.subtitulo,
+.subtitle { color: var(--muted); margin-bottom: 0.25rem; }
+.card-body h3 {
+  margin: 0 0 .2rem;
+  font-size: 1rem;
+}
+.card-body p {
+  margin: 0;
+  font-size: .9rem;
+}
 .contagem-resultados, .estado-vazio { color: var(--muted); }
 .link {
   display: inline-block;
