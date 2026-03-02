@@ -1,11 +1,9 @@
 import { renderizarCards } from '../Componentes/Card.js';
 import { renderizarPesquisa } from '../Componentes/Pesquisa.js';
-import { renderizarCriadorPerfil } from '../Componentes/CriadorPerfil.js';
 import { buscarPerfils } from '../Dados/Repositorio.js';
 
 const raizPesquisa = document.querySelector('#Pesquisa-root');
 const raizCards = document.querySelector('#Perfis-root');
-const raizAdmin = document.querySelector('#Admin-root');
 const contagemResultados = document.querySelector('#contagem-resultados');
 
 const estado = {
@@ -36,9 +34,6 @@ async function iniciar() {
       filtrarPerfils();
     });
 
-    if (raizAdmin) {
-      renderizarCriadorPerfil(raizAdmin, () => carregarPerfis(), () => estado.perfils);
-    }
 
     await carregarPerfis();
   } catch (erro) {
