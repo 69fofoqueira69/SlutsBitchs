@@ -43,6 +43,7 @@ export function renderizarGaleria(midia) {
   const itens = embaralhar(itensMidia(midia));
   const destaques = selecionarDestaques(itens);
   const totalMidias = itens.length;
+  const itensCodificados = encodeURIComponent(JSON.stringify(itens));
 
   if (!itens.length) {
     return '<p class="empty-state">Nenhuma mídia cadastrada.</p>';
@@ -58,6 +59,8 @@ export function renderizarGaleria(midia) {
       <div class="profile-media-grid" id="gallery-thumbs">
         ${destaques.map((item, indice) => renderizarMiniatura(item, indice)).join('')}
       </div>
+
+      <div id="gallery-data" data-items="${itensCodificados}" hidden></div>
 
       ${itens.length > destaques.length ? '<p class="media-note">Mostrando algumas mídias. Abra qualquer item para navegar por todas.</p>' : ''}
 
@@ -76,10 +79,13 @@ export function renderizarGaleria(midia) {
 
 export function configurarGaleria(container) {
   const thumbs = [...container.querySelectorAll('.media-thumb')];
-  const itens = thumbs.map((thumb) => ({
-    src: thumb.dataset.src,
-    tipo: thumb.dataset.tipo
-  }));
+  const dadosGaleria = container.querySelector('#gallery-data');
+  const itens = dadosGaleria
+    ? JSON.parse(decodeURIComponent(dadosGaleria.dataset.items || '[]'))
+    : thumbs.map((thumb) => ({
+      src: thumb.dataset.src,
+      tipo: thumb.dataset.tipo
+    }));
 
   if (!itens.length) return;
 
