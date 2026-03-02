@@ -8,6 +8,8 @@ const GITHUB_CONFIG_EMBUTIDA = {
   branch: 'main'
 };
 
+const CHAVE_CONFIG_GITHUB = 'github-config-criador-perfil';
+
 const CAMPOS_MEDIDAS = {
   ass: { rotulo: 'bunda', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
   cintura: { rotulo: 'cintura', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
@@ -193,6 +195,41 @@ function validarConfiguracaoGithub() {
   }
 }
 
+function carregarConfiguracaoGithubPersistida() {
+  try {
+    const bruto = localStorage.getItem(CHAVE_CONFIG_GITHUB);
+    if (!bruto) return;
+
+    const configuracao = JSON.parse(bruto);
+
+    Object.keys(GITHUB_CONFIG_EMBUTIDA).forEach((chave) => {
+      const valor = String(configuracao?.[chave] || '').trim();
+      if (valor) GITHUB_CONFIG_EMBUTIDA[chave] = valor;
+    });
+  } catch (erro) {
+    localStorage.removeItem(CHAVE_CONFIG_GITHUB);
+  }
+}
+
+function salvarConfiguracaoGithubPersistida(configuracao) {
+  localStorage.setItem(CHAVE_CONFIG_GITHUB, JSON.stringify(configuracao));
+}
+
+function montarConfiguracaoGithub(form) {
+  const configuracao = {
+    token: textoOuPadrao(form.elements.githubToken?.value),
+    owner: textoOuPadrao(form.elements.githubOwner?.value),
+    repo: textoOuPadrao(form.elements.githubRepo?.value, 'SlutsBitchs'),
+    branch: textoOuPadrao(form.elements.githubBranch?.value, 'main')
+  };
+
+  Object.assign(GITHUB_CONFIG_EMBUTIDA, configuracao);
+  salvarConfiguracaoGithubPersistida(configuracao);
+  validarConfiguracaoGithub();
+
+  return configuracao;
+}
+
 export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPerfisAtuais) {
   container.innerHTML = `
     <div class="acoes-admin-topo">
@@ -205,6 +242,19 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
         <input name="modo" type="hidden" value="criar">
         <input name="idPerfil" type="hidden" value="">
         <div class="grade-admin">
+          <label>GitHub owner
+            <input name="githubOwner" type="text" placeholder="seu-usuario" required>
+          </label>
+          <label>GitHub token
+            <input name="githubToken" type="password" placeholder="github_pat_..." required>
+          </label>
+          <label>Repositório
+            <input name="githubRepo" type="text" value="SlutsBitchs" required>
+          </label>
+          <label>Branch
+            <input name="githubBranch" type="text" value="main" required>
+          </label>
+
           <label class="campo-edicao oculto">Selecionar perfil para editar
             <select name="perfilExistente" id="perfil-existente"></select>
           </label>
@@ -275,6 +325,12 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
   const selectPerfil = container.querySelector('#perfil-existente');
   const camposEdicao = Array.from(container.querySelectorAll('.campo-edicao'));
 
+  carregarConfiguracaoGithubPersistida();
+  form.elements.githubOwner.value = GITHUB_CONFIG_EMBUTIDA.owner;
+  form.elements.githubToken.value = GITHUB_CONFIG_EMBUTIDA.token;
+  form.elements.githubRepo.value = GITHUB_CONFIG_EMBUTIDA.repo;
+  form.elements.githubBranch.value = GITHUB_CONFIG_EMBUTIDA.branch;
+
   function trocarModo(modo) {
     form.elements.modo.value = modo;
     const editando = modo === 'editar';
@@ -322,12 +378,12 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
     const dados = new FormData(form);
 
     try {
-      validarConfiguracaoGithub();
+      const githubConfig = montarConfiguracaoGithub(form);
       const perfil = criarPerfilBase(Object.fromEntries(dados.entries()));
       const arquivosMidia = Array.from(dados.getAll('midias')).filter((item) => item instanceof File);
 
       await salvarPerfilNoGithub({
-        ...GITHUB_CONFIG_EMBUTIDA,
+        ...githubConfig,
         perfil,
         arquivosMidia,
         modo: String(dados.get('modo') || 'criar')
