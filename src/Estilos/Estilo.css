@@ -18,6 +18,10 @@ body {
 .container { width: min(1120px, 92vw); margin: 0 auto; padding: 1.5rem 0 2.5rem; }
 h1 { margin-bottom: 0.25rem; }
 .pesquisa-wrap { display: grid; gap: 0.4rem; margin-bottom: 1.25rem; }
+
+#Perfis-root {
+  margin-top: 1.5rem;
+}
 input {
   background: var(--panel);
   color: var(--text);
@@ -318,6 +322,10 @@ input {
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: .75rem;
 }
+.media-grid {
+  max-height: 620px;
+  overflow: auto;
+}
 .media-counts {
   display: flex;
   flex-wrap: wrap;
@@ -426,4 +434,124 @@ input {
   .about-section {
     min-height: auto;
   }
+}
+
+.topo-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.botao-admin {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+
+.modal-admin {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel);
+  color: var(--text);
+  width: min(840px, 94vw);
+}
+
+.form-admin {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.grade-admin {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.grade-admin label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.grade-admin textarea {
+  min-height: 90px;
+  resize: vertical;
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem;
+}
+
+.status-admin {
+  color: var(--muted);
+  min-height: 1.2rem;
+}
+
+.acoes-admin {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.acoes-admin button {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--panel-soft);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+
+.campo-cheio {
+  grid-column: 1 / -1;
+}
+
+.textarea-json {
+  min-height: 320px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.83rem;
+  line-height: 1.35;
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem;
+  resize: vertical;
+}
+
+.acoes-topo-admin {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.botao-admin.destaque,
+.acoes-admin .destaque {
+  background: linear-gradient(180deg, #ff5eb0, #d92f84);
+  border-color: #ff82c1;
+  color: #fff;
+  font-weight: 700;
+}
+
+.modal-admin {
+  max-height: 92vh;
+  overflow: auto;
+}
+
+select,
+textarea {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.65rem 0.85rem;
+}
+
+#seletor-perfil-edicao {
+  width: 100%;
 }
