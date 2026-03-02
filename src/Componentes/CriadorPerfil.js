@@ -2,8 +2,8 @@ import { calcularDadosIdade, calcularDadosMedida } from '../Dados/Parametros.js'
 import { salvarPerfilNoGithub } from '../Dados/GithubRepositorio.js';
 
 const GITHUB_CONFIG_EMBUTIDA = {
-  token: '',
-  owner: '',
+  token: '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',
+  owner: '69fofoqueira69',
   repo: 'SlutsBitchs',
   branch: 'main'
 };
