@@ -7,7 +7,7 @@ const ROTULOS_MEDIDAS = {
   coxas: 'Coxas',
   peitos: 'Peito',
   buceta: 'Buceta',
-  anus: 'Cu',
+  cu: 'Cu',
   tamanhoRola: 'Rola',
   grossuraRola: 'Grossura da rola',
   bolas: 'Bolas'
@@ -22,42 +22,69 @@ function renderizarItemMedida(medida) {
   `;
 }
 
+function equalizarAlturaCaixas(container) {
+  const caixas = Array.from(container.querySelectorAll('.caixa-perfil'));
+  if (!caixas.length) return;
+
+  const caixaDetalhesBasicos = caixas.find((caixa) => caixa.querySelector('h2')?.textContent?.trim() === 'Detalhes básicos');
+  const caixaMedidas = caixas.find((caixa) => caixa.querySelector('h2')?.textContent?.trim() === 'Medidas');
+
+  caixas.forEach((caixa) => {
+    caixa.style.height = 'auto';
+  });
+
+  const alturaBase = Math.max(
+    caixaDetalhesBasicos?.scrollHeight || 0,
+    caixaMedidas?.scrollHeight || 0
+  );
+
+  if (!alturaBase) return;
+
+  caixas.forEach((caixa) => {
+    caixa.style.height = `${alturaBase}px`;
+  });
+}
+
 export function renderizarDetalhes(container, perfil) {
   if (!perfil) {
-    container.innerHTML = '<p clbunda="empty-state">Perfil não encontrado.</p>';
+    container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
     return;
   }
 
   const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
+  const midiasPerfil = [...(midia.imagens || []), ...(midia.gifs || [])];
+  const capaAleatoria = midiasPerfil.length
+    ? midiasPerfil[Math.floor(Math.random() * midiasPerfil.length)]
+    : '';
   const medidas = buscarMedidasVisiveis(perfil);
 
   container.innerHTML = `
-    <a href="./index.html" clbunda="link">← Voltar</a>
-    <article clbunda="tinder-profile">
-      <div clbunda="profile-column">
-        <div clbunda="tinder-hero">
-          <img src="${midia.imagens[0] || ''}" alt="${identidade.nome}">
-          <div clbunda="tinder-overlay">
+    <a href="./index.html" class="link">← Voltar</a>
+    <article class="perfil">
+      <div class="coluna-perfil">
+        <div class="heroi-perfil caixa-perfil">
+          <img src="${capaAleatoria}" alt="${identidade.nome}">
+          <div class="sobreposicao-perfil">
             <h1>${identidade.nome}, ${identidade.idade.value}</h1>
             <p>${identidade.genero} • ${identidade.universo}</p>
           </div>
         </div>
 
-        <section>
+        <section class="caixa-perfil">
           <h2>Detalhes básicos</h2>
-          <ul clbunda="detail-list">
+          <ul class="lista-detalhes">
             <li><span>Altura</span><strong>${detalhesFisicosBasicos.altura}</strong></li>
             <li><span>Peso</span><strong>${detalhesFisicosBasicos.peso}</strong></li>
             <li><span>Espécie</span><strong>${detalhesFisicosBasicos.especie}</strong></li>
             <li><span>Cabelo</span><strong>${detalhesFisicosBasicos.corCabelo} · ${detalhesFisicosBasicos.estiloCabelo}</strong></li>
-            <li><span>Olhos</span><strong>${detalhesFisicosBasicos.eyeColor}</strong></li>
+            <li><span>Olhos</span><strong>${detalhesFisicosBasicos.olhos}</strong></li>
             <li><span>Pele</span><strong>${detalhesFisicosBasicos.pele}</strong></li>
           </ul>
         </section>
 
-        <section>
+        <section class="caixa-perfil">
           <h2>Experiência e preferências</h2>
-          <ul clbunda="detail-list">
+          <ul class="lista-detalhes">
             <li><span>Experiências registradas</span><strong>${experienciaSexual.contagemSexo}</strong></li>
             <li><span>Parceiros registrados</span><strong>${experienciaSexual.rolasExperimentadas}</strong></li>
             <li><span>Posição favorita</span><strong>${preferencias.posicaoFavorita}</strong></li>
@@ -68,15 +95,15 @@ export function renderizarDetalhes(container, perfil) {
         </section>
       </div>
 
-      <div clbunda="profile-column">
-        <section clbunda="about-section">
+      <div class="coluna-perfil">
+        <section class="secao-sobre caixa-perfil">
           <h2>Sobre</h2>
           <p>${perfil.descricaoCompleta}</p>
         </section>
 
-        <section>
+        <section class="caixa-perfil">
           <h2>Medidas</h2>
-          <ul clbunda="detail-list">
+          <ul class="lista-detalhes">
             ${medidas.map(renderizarItemMedida).join('')}
           </ul>
         </section>
@@ -88,4 +115,12 @@ export function renderizarDetalhes(container, perfil) {
   `;
 
   configurarGaleria(container, midia);
+  equalizarAlturaCaixas(container);
+
+  if (container._onResizeEqualizar) {
+    window.removeEventListener('resize', container._onResizeEqualizar);
+  }
+
+  container._onResizeEqualizar = () => equalizarAlturaCaixas(container);
+  window.addEventListener('resize', container._onResizeEqualizar);
 }

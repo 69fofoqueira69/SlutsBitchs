@@ -33,7 +33,7 @@ function isMeasurementObject(value) {
 }
 
 function hasBasicMeasurements(measurements) {
-  const required = ['ass', 'cintura', 'coxas'];
+  const required = ['bunda', 'cintura', 'coxas'];
   return required.every((key) => measurements[key] && isNumber(measurements[key].value));
 }
 
@@ -70,7 +70,7 @@ export function validateProfile(profile) {
     isNonEmptyString(detalhes.especie) &&
     isNonEmptyString(detalhes.corCabelo) &&
     isNonEmptyString(detalhes.estiloCabelo) &&
-    isNonEmptyString(detalhes.eyeColor) &&
+    isNonEmptyString(detalhes.olhos) &&
     isNonEmptyString(detalhes.pele) &&
     isNonEmptyString(preferencias.posicaoFavorita) &&
     isNonEmptyString(preferencias.roupaFavorita) &&
@@ -79,7 +79,6 @@ export function validateProfile(profile) {
   const hasRequiredArrays =
     isStringArray(preferencias.fetiche || []) &&
     isStringArray(midia.imagens || []) &&
-    isStringArray(midia.videos || []) &&
     isStringArray(midia.gifs || []);
 
   const ageValue = idade?.value;
@@ -92,16 +91,14 @@ export function validateProfile(profile) {
 
   const hasBaseNumbers =
     isNumber(experiencia.rolasExperimentadas) &&
-    isNumber(experiencia.contagemSexo);
+    isString(experiencia.contagemSexo);
 
   const hasMedia =
     midia &&
     typeof midia === 'object' &&
     hasRequiredArrays &&
     typeof midia.contagens === 'object' &&
-    isInteger(midia.contagens.imagens) &&
-    isInteger(midia.contagens.videos) &&
-    isInteger(midia.contagens.gifs);
+    isInteger(midia.contagens.total);
 
   const hasMeasurements = medidas && typeof medidas === 'object' && hasBasicMeasurements(medidas);
 

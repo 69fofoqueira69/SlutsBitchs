@@ -1,28 +1,14 @@
 function itensMidia(midia) {
   const imagens = (midia.imagens || []).map((src) => ({ tipo: 'imagem', src }));
   const gifs = (midia.gifs || []).map((src) => ({ tipo: 'gif', src }));
-  const videos = (midia.videos || []).map((src) => ({ tipo: 'video', src }));
-  return [...imagens, ...gifs, ...videos];
+  return [...imagens, ...gifs];
 }
 
 function renderizarItemVisualizador(item) {
-  if (item.tipo === 'video') {
-    return `<video class="gallery-viewer-media" controls autoplay src="${item.src}" aria-label="Vídeo"></video>`;
-  }
-
   return `<img class="gallery-viewer-media" src="${item.src}" alt="Mídia" loading="lazy">`;
 }
 
 function renderizarMiniatura(item, indice) {
-  if (item.tipo === 'video') {
-    return `
-      <button class="media-thumb media-thumb-video" data-index="${indice}" aria-label="Abrir vídeo ${indice + 1}">
-        <video muted playsinline preload="metadata" src="${item.src}"></video>
-        <span class="media-badge">Vídeo</span>
-      </button>
-    `;
-  }
-
   const emblema = item.tipo === 'gif' ? '<span class="media-badge">GIF</span>' : '';
   return `
     <button class="media-thumb" data-index="${indice}" aria-label="Abrir mídia ${indice + 1}">
@@ -34,23 +20,17 @@ function renderizarMiniatura(item, indice) {
 
 export function renderizarGaleria(midia) {
   const itens = itensMidia(midia);
-  const contagens = midia.contagens || {
-    imagens: (midia.imagens || []).length,
-    videos: (midia.videos || []).length,
-    gifs: (midia.gifs || []).length
-  };
+  const totalMidias = itens.length;
 
   if (!itens.length) {
     return '<p class="empty-state">Nenhuma mídia cadastrada.</p>';
   }
 
   return `
-    <section class="media-grid">
+    <section class="media-grid caixa-perfil">
       <h2>Mídia</h2>
       <div class="media-counts">
-        <p>Imagens: ${contagens.imagens}</p>
-        <p>Vídeos: ${contagens.videos}</p>
-        <p>GIFs: ${contagens.gifs}</p>
+        <p>Total de mídias: ${totalMidias}</p>
       </div>
 
       <div class="profile-media-grid" id="gallery-thumbs">

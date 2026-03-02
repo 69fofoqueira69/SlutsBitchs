@@ -47,12 +47,9 @@ function normalizarPerfil(perfil) {
     medidas: comMedidasCalculadas(perfil),
     midia: {
       imagens: midia.imagens || [],
-      videos: midia.videos || [],
       gifs: midia.gifs || [],
       contagens: {
-        imagens: (midia.imagens || []).length,
-        videos: (midia.videos || []).length,
-        gifs: (midia.gifs || []).length
+        total: (midia.imagens || []).length + (midia.gifs || []).length
       }
     },
     textoPesquisavel: [
