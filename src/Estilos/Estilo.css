@@ -43,7 +43,18 @@ h1 { margin-bottom: 0.25rem; }
 .bloco-pesquisa p {
   margin-top: 0;
 }
-.pesquisa-wrap { display: grid; gap: 0.4rem; margin-bottom: 1.25rem; }
+
+.search-wrap,
+.pesquisa-wrap {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.bloco-pesquisa {
+  margin-bottom: 1.75rem;
+}
+
 input {
   background: var(--panel);
   color: var(--text);
