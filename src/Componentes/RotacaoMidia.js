@@ -5,6 +5,17 @@ function listaMidias(midia = {}) {
   return [...imagens, ...gifs];
 }
 
+function indiceAleatorio(maximo) {
+  return Math.floor(Math.random() * maximo);
+}
+
+export function buscarMidiaInicialAleatoria(midia = {}) {
+  const midias = listaMidias(midia);
+  if (!midias.length) return '';
+
+  return midias[indiceAleatorio(midias.length)];
+}
+
 export function serializarMidias(midia) {
   return encodeURIComponent(JSON.stringify(listaMidias(midia)));
 }
@@ -20,7 +31,9 @@ export function configurarRotacaoMidia(container, seletorImagem, intervaloMs = 2
 
     if (lista.length <= 1) return;
 
-    let indiceAtual = 0;
+    let indiceAtual = indiceAleatorio(lista.length);
+    imagem.src = lista[indiceAtual];
+
     const timer = setInterval(() => {
       indiceAtual = (indiceAtual + 1) % lista.length;
       imagem.src = lista[indiceAtual];

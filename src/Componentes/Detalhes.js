@@ -1,6 +1,6 @@
 import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
 import { renderizarGaleria, configurarGaleria } from './Galeria.js';
-import { serializarMidias, configurarRotacaoMidia } from './RotacaoMidia.js';
+import { buscarMidiaInicialAleatoria, serializarMidias, configurarRotacaoMidia } from './RotacaoMidia.js';
 
 const ROTULOS_MEDIDAS = {
   bunda: 'Bunda',
@@ -31,13 +31,13 @@ export function renderizarDetalhes(container, perfil) {
 
   const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
   const medidas = buscarMedidasVisiveis(perfil);
-  const capa = midia.imagens[0] || midia.gifs?.[0] || '';
+  const capa = buscarMidiaInicialAleatoria(midia);
   const midiasSerializadas = serializarMidias(midia);
 
   container.innerHTML = `
     <a href="./index.html" class="link">← Voltar</a>
     <article class="perfil">
-      <div class="coluna-perfil">
+      <div class="linha-perfil">
         <div class="heroi-perfil">
           <img class="perfil-media-rotativa" src="${capa}" data-midias="${midiasSerializadas}" alt="${identidade.nome}">
           <div class="sobreposicao-perfil">
@@ -46,6 +46,13 @@ export function renderizarDetalhes(container, perfil) {
           </div>
         </div>
 
+        <section class="secao-sobre">
+          <h2>Sobre</h2>
+          <p>${perfil.descricaoCompleta}</p>
+        </section>
+      </div>
+
+      <div class="linha-perfil">
         <section>
           <h2>Detalhes básicos</h2>
           <ul class="lista-detalhes">
@@ -59,6 +66,15 @@ export function renderizarDetalhes(container, perfil) {
         </section>
 
         <section>
+          <h2>Medidas</h2>
+          <ul class="lista-detalhes">
+            ${medidas.map(renderizarItemMedida).join('')}
+          </ul>
+        </section>
+      </div>
+
+      <div class="linha-perfil">
+        <section>
           <h2>Experiência e preferências</h2>
           <ul class="lista-detalhes">
             <li><span>Experiências registradas</span><strong>${experienciaSexual.contagemSexo}</strong></li>
@@ -69,24 +85,9 @@ export function renderizarDetalhes(container, perfil) {
             <li><span>Interesses</span><strong>${(preferencias.fetiche || []).join(', ') || '—'}</strong></li>
           </ul>
         </section>
-      </div>
-
-      <div class="coluna-perfil">
-        <section class="secao-sobre">
-          <h2>Sobre</h2>
-          <p>${perfil.descricaoCompleta}</p>
-        </section>
-
-        <section>
-          <h2>Medidas</h2>
-          <ul class="lista-detalhes">
-            ${medidas.map(renderizarItemMedida).join('')}
-          </ul>
-        </section>
 
         ${renderizarGaleria(midia)}
       </div>
-
     </article>
   `;
 

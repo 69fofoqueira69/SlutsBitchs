@@ -1,4 +1,4 @@
-import { serializarMidias, configurarRotacaoMidia } from './RotacaoMidia.js';
+import { buscarMidiaInicialAleatoria, serializarMidias, configurarRotacaoMidia } from './RotacaoMidia.js';
 
 export function renderizarCards(container, perfils) {
   if (!perfils.length) {
@@ -10,7 +10,7 @@ export function renderizarCards(container, perfils) {
     <div class="cards-grid">
       ${perfils
         .map((perfil) => {
-          const capa = perfil.midia.imagens[0] || perfil.midia.gifs?.[0] || '';
+          const capa = buscarMidiaInicialAleatoria(perfil.midia);
           const midiasSerializadas = serializarMidias(perfil.midia);
 
           return `
