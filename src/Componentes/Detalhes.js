@@ -1,5 +1,6 @@
 import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
 import { renderizarGaleria, configurarGaleria } from './Galeria.js';
+import { serializarMidias, configurarRotacaoMidia } from './RotacaoMidia.js';
 
 const ROTULOS_MEDIDAS = {
   bunda: 'Bunda',
@@ -30,13 +31,15 @@ export function renderizarDetalhes(container, perfil) {
 
   const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
   const medidas = buscarMedidasVisiveis(perfil);
+  const capa = midia.imagens[0] || midia.gifs?.[0] || '';
+  const midiasSerializadas = serializarMidias(midia);
 
   container.innerHTML = `
     <a href="./index.html" class="link">← Voltar</a>
     <article class="perfil">
       <div class="coluna-perfil">
         <div class="heroi-perfil">
-          <img src="${midia.imagens[0] || ''}" alt="${identidade.nome}">
+          <img class="perfil-media-rotativa" src="${capa}" data-midias="${midiasSerializadas}" alt="${identidade.nome}">
           <div class="sobreposicao-perfil">
             <h1>${identidade.nome}, ${identidade.idade.value}</h1>
             <p>${identidade.genero} • ${identidade.universo}</p>
@@ -87,5 +90,6 @@ export function renderizarDetalhes(container, perfil) {
     </article>
   `;
 
+  configurarRotacaoMidia(container, '.perfil-media-rotativa', 2600);
   configurarGaleria(container);
 }
