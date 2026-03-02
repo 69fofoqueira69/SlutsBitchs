@@ -20,6 +20,18 @@ const CAMPOS_MEDIDAS = {
   bolas: { rotulo: 'bolas', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] }
 };
 
+const CAMPOS_MEDIDAS = {
+  ass: { rotulo: 'bunda', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  cintura: { rotulo: 'cintura', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  coxas: { rotulo: 'coxas', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  peitos: { rotulo: 'peitos', obrigatorioPara: ['Mulher', 'Futanari'], appliesTo: ['Mulher', 'Futanari'] },
+  buceta: { rotulo: 'buceta', obrigatorioPara: ['Mulher'], appliesTo: ['Mulher'] },
+  anus: { rotulo: 'anus', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  tamanhoRola: { rotulo: 'tamanho da rola', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] },
+  grossuraRola: { rotulo: 'grossura da rola', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] },
+  bolas: { rotulo: 'bolas', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] }
+};
+
 function slugify(texto) {
   return texto
     .normalize('NFD')
@@ -39,13 +51,6 @@ function numeroOuZero(valor) {
   return Number.isFinite(numero) && numero > 0 ? numero : 0;
 }
 
-function separarListaEmLinhas(valor) {
-  return String(valor || '')
-    .split('\n')
-    .map((item) => item.trim())
-    .filter(Boolean);
-}
-
 function medir(tipo, valor, genero) {
   const configuracao = CAMPOS_MEDIDAS[tipo] || {};
   const calculada = calcularDadosMedida(tipo, valor);
@@ -62,6 +67,7 @@ function medir(tipo, valor, genero) {
 
 function validarCamposObrigatoriosPorGenero({ genero, nome, descricaoCurta, descricaoCompleta, idade, medidas }) {
   const faltando = [];
+
   if (!nome) faltando.push('nome');
   if (!descricaoCurta) faltando.push('descrição curta');
   if (!descricaoCompleta) faltando.push('descrição completa');
@@ -69,7 +75,9 @@ function validarCamposObrigatoriosPorGenero({ genero, nome, descricaoCurta, desc
 
   for (const [campo, config] of Object.entries(CAMPOS_MEDIDAS)) {
     if (!config.obrigatorioPara?.includes(genero)) continue;
-    if (!medidas[campo] || medidas[campo] <= 0) faltando.push(config.rotulo);
+    if (!medidas[campo] || medidas[campo] <= 0) {
+      faltando.push(config.rotulo);
+    }
   }
 
   if (faltando.length) {
@@ -77,20 +85,34 @@ function validarCamposObrigatoriosPorGenero({ genero, nome, descricaoCurta, desc
   }
 }
 
-function criarPerfilBase(dadosBrutos, idExistente = '') {
+function criarPerfilBase(dadosBrutos) {
   const nome = textoOuPadrao(dadosBrutos.nome);
   const genero = textoOuPadrao(dadosBrutos.genero, 'Mulher');
   const universo = textoOuPadrao(dadosBrutos.universo, 'Original');
   const idadeValor = Math.trunc(Number(dadosBrutos.idade || 0));
   const descricaoCurta = textoOuPadrao(dadosBrutos.descricaoCurta);
   const descricaoCompleta = textoOuPadrao(dadosBrutos.descricaoCompleta);
-  const medidasValores = Object.fromEntries(Object.keys(CAMPOS_MEDIDAS).map((campo) => [campo, numeroOuZero(dadosBrutos[campo])]));
+  const medidasValores = Object.fromEntries(
+    Object.keys(CAMPOS_MEDIDAS).map((campo) => [campo, numeroOuZero(dadosBrutos[campo])])
+  );
 
-  validarCamposObrigatoriosPorGenero({ genero, nome, descricaoCurta, descricaoCompleta, idade: idadeValor, medidas: medidasValores });
+  validarCamposObrigatoriosPorGenero({
+    genero,
+    nome,
+    descricaoCurta,
+    descricaoCompleta,
+    idade: idadeValor,
+    medidas: medidasValores
+  });
 
   return {
-    id: idExistente || slugify(nome),
-    identidade: { nome, genero, universo, idade: calcularDadosIdade(idadeValor) },
+    id: slugify(nome),
+    identidade: {
+      nome,
+      genero,
+      universo,
+      idade: calcularDadosIdade(idadeValor)
+    },
     descricaoCurta,
     detalhesFisicosBasicos: {
       altura: textoOuPadrao(dadosBrutos.altura),
@@ -101,13 +123,18 @@ function criarPerfilBase(dadosBrutos, idExistente = '') {
       eyeColor: textoOuPadrao(dadosBrutos.eyeColor),
       pele: textoOuPadrao(dadosBrutos.pele)
     },
-    medidas: Object.fromEntries(Object.keys(CAMPOS_MEDIDAS).map((campo) => [campo, medir(campo, medidasValores[campo], genero)])),
+    medidas: Object.fromEntries(
+      Object.keys(CAMPOS_MEDIDAS).map((campo) => [campo, medir(campo, medidasValores[campo], genero)])
+    ),
     experienciaSexual: {
       rolasExperimentadas: Math.max(0, Number(dadosBrutos.rolasExperimentadas || 0)),
       contagemSexo: Math.max(0, Number(dadosBrutos.contagemSexo || 0))
     },
     preferencias: {
-      fetiche: String(dadosBrutos.fetiches || '').split(',').map((item) => item.trim()).filter(Boolean),
+      fetiche: String(dadosBrutos.fetiches || '')
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean),
       posicaoFavorita: textoOuPadrao(dadosBrutos.posicaoFavorita),
       roupaFavorita: textoOuPadrao(dadosBrutos.roupaFavorita),
       ocupacao: textoOuPadrao(dadosBrutos.ocupacao)
@@ -173,17 +200,20 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
         <input name="modo" type="hidden" value="criar">
         <input name="idPerfil" type="hidden" value="">
         <div class="grade-admin">
-          <label class="campo-edicao oculto">Perfil para editar
-            <select name="perfilExistente" id="perfil-existente"></select>
-          </label>
+          <label>Token GitHub<input name="token" type="password" required autocomplete="off"></label>
+          <label>Owner<input name="owner" type="text" required placeholder="seu-usuario"></label>
+          <label>Repositório<input name="repo" type="text" required placeholder="SlutsBitchs"></label>
+          <label>Branch<input name="branch" type="text" value="main" required></label>
 
           <label>Nome<input name="nome" type="text" placeholder=""></label>
           <label>Gênero<input name="genero" type="text" value="Mulher"></label>
           <label>Universo<input name="universo" type="text" placeholder=""></label>
           <label>Idade<input name="idade" type="number" min="18" placeholder=""></label>
+
           <label>Descrição curta<textarea name="descricaoCurta" placeholder=""></textarea></label>
           <label>Descrição completa<textarea name="descricaoCompleta" placeholder=""></textarea></label>
           <label>Fetiches (separados por vírgula)<input name="fetiches" type="text" placeholder=""></label>
+
           <label>Altura<input name="altura" type="text" placeholder=""></label>
           <label>Peso<input name="peso" type="text" placeholder=""></label>
           <label>Espécie<input name="especie" type="text" placeholder=""></label>
@@ -191,6 +221,7 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
           <label>Estilo do cabelo<input name="estiloCabelo" type="text" placeholder=""></label>
           <label>Cor dos olhos<input name="eyeColor" type="text" placeholder=""></label>
           <label>Pele<input name="pele" type="text" placeholder=""></label>
+
           <label>Bunda (cm)<input name="ass" type="number" step="0.1" min="0" placeholder=""></label>
           <label>Cintura (cm)<input name="cintura" type="number" step="0.1" min="0" placeholder=""></label>
           <label>Coxas (cm)<input name="coxas" type="number" step="0.1" min="0" placeholder=""></label>
@@ -200,12 +231,14 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
           <label>Tamanho rola (cm)<input name="tamanhoRola" type="number" step="0.1" min="0" placeholder=""></label>
           <label>Grossura rola (cm)<input name="grossuraRola" type="number" step="0.1" min="0" placeholder=""></label>
           <label>Bolas (cm)<input name="bolas" type="number" step="0.1" min="0" placeholder=""></label>
+
           <label>Parceiros registrados<input name="rolasExperimentadas" type="number" min="0" placeholder=""></label>
           <label>Experiências registradas<input name="contagemSexo" type="number" min="0" placeholder=""></label>
           <label>Posição favorita<input name="posicaoFavorita" type="text" placeholder=""></label>
           <label>Roupa favorita<input name="roupaFavorita" type="text" placeholder=""></label>
           <label>Ocupação<input name="ocupacao" type="text" placeholder=""></label>
-          <label>Mídias novas (imagens, gifs e vídeos)
+
+          <label>Mídias (imagens, gifs e vídeos)
             <input name="midias" type="file" multiple accept="image/*,video/*">
           </label>
 
@@ -279,11 +312,7 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
     const dados = new FormData(form);
 
     try {
-      if (!GITHUB_CONFIG_EMBUTIDA.token || !GITHUB_CONFIG_EMBUTIDA.owner || !GITHUB_CONFIG_EMBUTIDA.repo) {
-        throw new Error('Configure token/owner/repo em GITHUB_CONFIG_EMBUTIDA dentro de src/Componentes/CriadorPerfil.js');
-      }
-
-      const perfil = criarPerfilBase(Object.fromEntries(dados.entries()), String(dados.get('idPerfil') || '').trim());
+      const perfil = criarPerfilBase(Object.fromEntries(dados.entries()));
       const arquivosMidia = Array.from(dados.getAll('midias')).filter((item) => item instanceof File);
 
       await salvarPerfilNoGithub({
