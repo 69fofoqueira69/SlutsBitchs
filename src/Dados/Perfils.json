@@ -1,10 +1,10 @@
 [
   {
-    "id": "mia-khalifa",
+    "id": "MK",
     "identidade": {
       "nome": "Mia Khalifa",
       "genero": "Mulher",
-      "universo": "Realista",
+      "universo": "Realidade",
       "idade": {
         "value": 33,
         "tag": "Vagabunda",
@@ -12,370 +12,46 @@
         "emoji": "🔥"
       }
     },
-    "descricaoCurta": "Figura pública com presença digital e carreira internacional.",
+    "descricaoCurta": "Ex-pornstar libanesa-americana que fodeu o mundo em 3 meses e virou lenda da putaria hardcore.",
     "detalhesFisicosBasicos": {
       "altura": "157 cm",
       "peso": "55 kg",
       "especie": "Humana",
-      "corCabelo": "Castanho escuro",
-      "estiloCabelo": "Longo ondulado",
-      "eyeColor": "Castanho escuro",
-      "pele": "Oliva"
-    },
-    "medidas": {
-      "ass": {
-        "value": 92,
-        "tag": "Melão",
-        "range": "37.6–97.5",
-        "emoji": "🍑"
-      },
-      "cintura": {
-        "value": 66,
-        "tag": "Atletica",
-        "range": "30.1–80",
-        "emoji": "⏳"
-      },
-      "coxas": {
-        "value": 55,
-        "tag": "Larga",
-        "range": "53.7–148",
-        "emoji": "🦵"
-      },
-      "peitos": {
-        "value": 102,
-        "tag": "Melancia",
-        "range": "87.6–242",
-        "emoji": "🍒",
-        "appliesTo": [
-          "Mulher",
-          "Futanari"
-        ]
-      },
-      "buceta": {
-        "value": 4.2,
-        "tag": "Regular",
-        "range": "1.8–4.9",
-        "emoji": "💗",
-        "appliesTo": [
-          "Mulher"
-        ]
-      },
-      "anus": {
-        "value": 9,
-        "tag": "Regular",
-        "range": "4.2–11.9",
-        "emoji": "🍩"
-      },
-      "tamanhoRola": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "🍆",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      },
-      "grossuraRola": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "📏",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      },
-      "bolas": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "🥚",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      }
-    },
-    "experienciaSexual": {
-      "rolasExperimentadas": 200,
-      "contagemSexo": 500
-    },
-    "preferencias": {
-      "fetiche": [
-        "Interracial",
-        "Gangbang",
-        "Bukkake"
-      ],
-      "posicaoFavorita": "Doggy style",
-      "roupaFavorita": "Lingerie vermelha",
-      "ocupacao": "Atriz e criadora"
-    },
-    "descricaoCompleta": "Perfil completo em formato estruturado para navegação estilo catálogo desktop.",
-    "midia": {
-      "imagens": [
-        "./src/Midia/Mia-Khalifa-1.png",
-        "./src/Midia/Mia-Khalifa-2.png",
-        "./src/Midia/Mia-Khalifa-3.png"
-      ],
-      "videos": [],
-      "gifs": [],
-      "contagens": {
-        "imagens": 3,
-        "videos": 0,
-        "gifs": 0
-      }
-    }
-  },
-  {
-    "id": "lara-croft",
-    "identidade": {
-      "nome": "Lara Croft",
-      "genero": "Mulher",
-      "universo": "Tomb Raider",
-      "idade": {
-        "value": 28,
-        "tag": "Vagabunda",
-        "range": "22 a 34",
-        "emoji": "🔥"
-      }
-    },
-    "descricaoCurta": "Arqueóloga aventureira especialista em expedições extremas.",
-    "detalhesFisicosBasicos": {
-      "altura": "168 cm",
-      "peso": "57 kg",
-      "especie": "Humana",
-      "corCabelo": "Castanho",
-      "estiloCabelo": "Rabo de cavalo",
-      "eyeColor": "Castanho",
+      "corCabelo": "Preto",
+      "estiloCabelo": "Longo liso ou ondulado",
+      "olhos": "Castanho escuro",
       "pele": "Clara"
     },
     "medidas": {
-      "ass": {
-        "value": 88,
-        "tag": "Melão",
-        "range": "37.6–97.5",
-        "emoji": "🍑"
-      },
-      "cintura": {
-        "value": 64,
-        "tag": "Atletica",
-        "range": "30.1–80",
-        "emoji": "⏳"
-      },
-      "coxas": {
-        "value": 52,
-        "tag": "Atletica",
-        "range": "20.5–53.6",
-        "emoji": "🦵"
-      },
-      "peitos": {
-        "value": 95,
-        "tag": "Melancia",
-        "range": "87.6–242",
-        "emoji": "🍒",
-        "appliesTo": [
-          "Mulher",
-          "Futanari"
-        ]
-      },
-      "buceta": {
-        "value": 2.6,
-        "tag": "Regular",
-        "range": "1.8–4.9",
-        "emoji": "💗",
-        "appliesTo": [
-          "Mulher"
-        ]
-      },
-      "anus": {
-        "value": 6.1,
-        "tag": "Regular",
-        "range": "4.2–11.9",
-        "emoji": "🍩"
-      },
-      "tamanhoRola": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "🍆",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      },
-      "grossuraRola": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "📏",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      },
-      "bolas": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "🥚",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      }
+      "bunda": { "value": 91, "tag": "Melancia", "range": "37.6–97.5", "emoji": "🍉" },
+      "cintura": { "value": 66, "tag": "Modelo", "range": "9.8–30", "emoji": "👠" },
+      "coxas": { "value": 55, "tag": "Larga", "range": "53.7–148", "emoji": "🦿" },
+      "peitos": { "value": 102, "tag": "Melancia", "range": "87.6–242", "emoji": "🍉", "appliesTo": ["Mulher"] },
+      "buceta": { "value": 8.5, "tag": "Apertada", "range": "0.8–1.7", "emoji": "🔒", "appliesTo": ["Mulher"] },
+      "cu": { "value": 15.0, "tag": "Arrombado", "range": "13.3–36.2", "emoji": "🌪️" },
+      "tamanhoRola": { "value": null, "tag": "", "range": "", "emoji": "🍆", "appliesTo": ["Futanari", "Femboy"] },
+      "grossuraRola": { "value": null, "tag": "", "range": "", "emoji": "📏", "appliesTo": ["Futanari", "Femboy"] },
+      "bolas": { "value": null, "tag": "", "range": "", "emoji": "🥚", "appliesTo": ["Futanari", "Femboy"] }
     },
     "experienciaSexual": {
-      "rolasExperimentadas": 20,
-      "contagemSexo": 40
+      "rolasExperimentadas": 200,
+      "contagemSexo": "Milhares de fodas intensas, DP, anal, garganta profunda, bukkake"
     },
     "preferencias": {
-      "fetiche": [
-        "Aventura",
-        "Dominância"
-      ],
-      "posicaoFavorita": "Cowgirl",
-      "roupaFavorita": "Top tático e shorts",
-      "ocupacao": "Arqueóloga"
+      "fetiche": ["anal sem dó", "deepthroat até engasgar", "cumshot na cara", "garganta usada como buceta", "DP dupla penetração", "humilhação verbal", "roleplay de submissa libanesa"],
+      "posicaoFavorita": "Doggy com puxão de cabelo + anal",
+      "roupaFavorita": "Meia-calça rasgada, calcinha de lado, top cropped sem sutiã, hijab pornô (seu clássico)",
+      "ocupacao": "Ex-atriz pornô / Influencer safada"
     },
-    "descricaoCompleta": "Exploradora disciplinada, resistente e estratégica, com perfil visual para interface estilo swipe.",
+    "descricaoCompleta": "Mia Khalifa explodiu como a rainha da putaria em 2014-2015: boquete lendário, anal voraz, DP sem medo, garganta treinada pra engolir tudo. Peitos siliconados enormes balançando enquanto leva rola em todos os buracos. Hoje curte provocar online, mas o legado é foder sem limites, gozar rios e deixar fãs loucos por mais.",
     "midia": {
-      "imagens": [
-        "./src/Midia/mia-1.svg",
-        "./src/Midia/mia-2.svg"
-      ],
-      "videos": [],
-      "gifs": [],
+      "imagens": ["./src/midia/imagem/MK-1.png","./src/midia/imagem/MK-2.png","./src/midia/imagem/MK-3.png"],
+      "videos": ["./src/midia/video/"],
+      "gifs": ["./src/midia/gif/MK - 1.gif", "./src/midia/gif/MK - 2.gif", "./src/midia/gif/MK - 3.gif", "./src/midia/gif/MK - 4.gif", "./src/midia/gif/MK - 5.gif", "./src/midia/gif/MK - 6.gif", "./src/midia/gif/MK - 7.gif", "./src/midia/gif/MK - 8.gif", "./src/midia/gif/MK - 9.gif", "./src/midia/gif/MK - 10.gif"],
       "contagens": {
-        "imagens": 2,
+        "imagens": 3,
         "videos": 0,
-        "gifs": 0
-      }
-    }
-  },
-  {
-    "id": "felix-noir",
-    "identidade": {
-      "nome": "Felix Noir",
-      "genero": "Femboy",
-      "universo": "Original",
-      "idade": {
-        "value": 24,
-        "tag": "Vagabunda",
-        "range": "22 a 34",
-        "emoji": "🔥"
-      }
-    },
-    "descricaoCurta": "Artista performático de estética neon e presença noturna.",
-    "detalhesFisicosBasicos": {
-      "altura": "173 cm",
-      "peso": "61 kg",
-      "especie": "Humana",
-      "corCabelo": "Preto",
-      "estiloCabelo": "Curto com franja",
-      "eyeColor": "Verde",
-      "pele": "Parda"
-    },
-    "medidas": {
-      "ass": {
-        "value": 83,
-        "tag": "Melão",
-        "range": "37.6–97.5",
-        "emoji": "🍑"
-      },
-      "cintura": {
-        "value": 62,
-        "tag": "Atletica",
-        "range": "30.1–80",
-        "emoji": "⏳"
-      },
-      "coxas": {
-        "value": 49,
-        "tag": "Atletica",
-        "range": "20.5–53.6",
-        "emoji": "🦵"
-      },
-      "peitos": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "🍒",
-        "appliesTo": [
-          "Mulher",
-          "Futanari"
-        ]
-      },
-      "buceta": {
-        "value": 0,
-        "tag": "",
-        "range": "",
-        "emoji": "💗",
-        "appliesTo": [
-          "Mulher"
-        ]
-      },
-      "anus": {
-        "value": 5.3,
-        "tag": "Regular",
-        "range": "4.2–11.9",
-        "emoji": "🍩"
-      },
-      "tamanhoRola": {
-        "value": 14.2,
-        "tag": "Berinjela",
-        "range": "11.5–31.2",
-        "emoji": "🍆",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      },
-      "grossuraRola": {
-        "value": 9.2,
-        "tag": "Pepino",
-        "range": "4.3–11",
-        "emoji": "📏",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      },
-      "bolas": {
-        "value": 3.8,
-        "tag": "Ovos",
-        "range": "3.6–9.6",
-        "emoji": "🥚",
-        "appliesTo": [
-          "Futanari",
-          "Femboy"
-        ]
-      }
-    },
-    "experienciaSexual": {
-      "rolasExperimentadas": 45,
-      "contagemSexo": 95
-    },
-    "preferencias": {
-      "fetiche": [
-        "Exibicionismo",
-        "Roleplay"
-      ],
-      "posicaoFavorita": "Spooning",
-      "roupaFavorita": "Jaqueta cropped e meia arrastão",
-      "ocupacao": "Performer"
-    },
-    "descricaoCompleta": "Perfil original com foco em moda noturna, música eletrônica e identidade visual marcante.",
-    "midia": {
-      "imagens": [
-        "./src/Midia/mia-3.svg",
-        "./src/Midia/mia-2.svg"
-      ],
-      "videos": [],
-      "gifs": [],
-      "contagens": {
-        "imagens": 2,
-        "videos": 0,
-        "gifs": 0
+        "gifs": 10
       }
     }
   }

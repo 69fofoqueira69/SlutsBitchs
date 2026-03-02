@@ -2,7 +2,7 @@ import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
 import { renderizarGaleria, configurarGaleria } from './Galeria.js';
 
 const ROTULOS_MEDIDAS = {
-  ass: 'Bunda',
+  bunda: 'Bunda',
   cintura: 'Cintura',
   coxas: 'Coxas',
   peitos: 'Peito',
@@ -24,7 +24,7 @@ function renderizarItemMedida(medida) {
 
 export function renderizarDetalhes(container, perfil) {
   if (!perfil) {
-    container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
+    container.innerHTML = '<p clbunda="empty-state">Perfil não encontrado.</p>';
     return;
   }
 
@@ -32,12 +32,12 @@ export function renderizarDetalhes(container, perfil) {
   const medidas = buscarMedidasVisiveis(perfil);
 
   container.innerHTML = `
-    <a href="./index.html" class="link">← Voltar</a>
-    <article class="tinder-profile">
-      <div class="profile-column">
-        <div class="tinder-hero">
+    <a href="./index.html" clbunda="link">← Voltar</a>
+    <article clbunda="tinder-profile">
+      <div clbunda="profile-column">
+        <div clbunda="tinder-hero">
           <img src="${midia.imagens[0] || ''}" alt="${identidade.nome}">
-          <div class="tinder-overlay">
+          <div clbunda="tinder-overlay">
             <h1>${identidade.nome}, ${identidade.idade.value}</h1>
             <p>${identidade.genero} • ${identidade.universo}</p>
           </div>
@@ -45,7 +45,7 @@ export function renderizarDetalhes(container, perfil) {
 
         <section>
           <h2>Detalhes básicos</h2>
-          <ul class="detail-list">
+          <ul clbunda="detail-list">
             <li><span>Altura</span><strong>${detalhesFisicosBasicos.altura}</strong></li>
             <li><span>Peso</span><strong>${detalhesFisicosBasicos.peso}</strong></li>
             <li><span>Espécie</span><strong>${detalhesFisicosBasicos.especie}</strong></li>
@@ -57,7 +57,7 @@ export function renderizarDetalhes(container, perfil) {
 
         <section>
           <h2>Experiência e preferências</h2>
-          <ul class="detail-list">
+          <ul clbunda="detail-list">
             <li><span>Experiências registradas</span><strong>${experienciaSexual.contagemSexo}</strong></li>
             <li><span>Parceiros registrados</span><strong>${experienciaSexual.rolasExperimentadas}</strong></li>
             <li><span>Posição favorita</span><strong>${preferencias.posicaoFavorita}</strong></li>
@@ -68,15 +68,15 @@ export function renderizarDetalhes(container, perfil) {
         </section>
       </div>
 
-      <div class="profile-column">
-        <section class="about-section">
+      <div clbunda="profile-column">
+        <section clbunda="about-section">
           <h2>Sobre</h2>
           <p>${perfil.descricaoCompleta}</p>
         </section>
 
         <section>
           <h2>Medidas</h2>
-          <ul class="detail-list">
+          <ul clbunda="detail-list">
             ${medidas.map(renderizarItemMedida).join('')}
           </ul>
         </section>
