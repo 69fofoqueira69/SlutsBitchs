@@ -10,19 +10,15 @@ function itensMidia(midia) {
 
 function embaralhar(array) {
   const copia = [...array];
+
   for (let i = copia.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const randomBuffer = new Uint32Array(1);
+    crypto.getRandomValues(randomBuffer);
+    const j = randomBuffer[0] % (i + 1);
     [copia[i], copia[j]] = [copia[j], copia[i]];
   }
+
   return copia;
-}
-
-function obterItensOrdenados(midia) {
-  if (!Array.isArray(midia.__itensGaleria)) {
-    midia.__itensGaleria = embaralhar(itensMidia(midia));
-  }
-
-  return midia.__itensGaleria;
 }
 
 function selecionarDestaques(itens, limite = 6) {
@@ -36,7 +32,7 @@ function renderizarItemVisualizador(item) {
 function renderizarMiniatura(item, indice) {
   const emblema = item.tipo === 'gif' ? '<span class="media-badge">GIF</span>' : '';
   return `
-    <button class="media-thumb" data-index="${indice}" aria-label="Abrir mídia ${indice + 1}">
+    <button class="media-thumb" data-index="${indice}" data-src="${item.src}" data-tipo="${item.tipo}" aria-label="Abrir mídia ${indice + 1}">
       <img src="${item.src}" alt="Miniatura ${indice + 1}" loading="lazy">
       ${emblema}
     </button>
@@ -44,11 +40,9 @@ function renderizarMiniatura(item, indice) {
 }
 
 export function renderizarGaleria(midia) {
-  const itens = obterItensOrdenados(midia);
+  const itens = embaralhar(itensMidia(midia));
   const destaques = selecionarDestaques(itens);
-  const contagens = midia.contagens || {
-    total: (midia.imagens || []).length + (midia.gifs || []).length
-  };
+  const totalMidias = itens.length;
 
   if (!itens.length) {
     return '<p class="empty-state">Nenhuma mídia cadastrada.</p>';
@@ -58,7 +52,7 @@ export function renderizarGaleria(midia) {
     <section class="media-grid">
       <h2>Mídia</h2>
       <div class="media-counts">
-        <p>Total de mídias: ${contagens.total}</p>
+        <p>Total de mídias: ${totalMidias}</p>
       </div>
 
       <div class="profile-media-grid" id="gallery-thumbs">
@@ -80,8 +74,13 @@ export function renderizarGaleria(midia) {
   `;
 }
 
-export function configurarGaleria(container, midia) {
-  const itens = obterItensOrdenados(midia);
+export function configurarGaleria(container) {
+  const thumbs = [...container.querySelectorAll('.media-thumb')];
+  const itens = thumbs.map((thumb) => ({
+    src: thumb.dataset.src,
+    tipo: thumb.dataset.tipo
+  }));
+
   if (!itens.length) return;
 
   let indiceAtual = 0;

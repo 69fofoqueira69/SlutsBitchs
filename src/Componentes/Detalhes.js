@@ -87,5 +87,5 @@ export function renderizarDetalhes(container, perfil) {
     </article>
   `;
 
-  configurarGaleria(container, midia);
+  configurarGaleria(container);
 }
