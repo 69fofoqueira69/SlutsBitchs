@@ -1,9 +1,11 @@
 import { renderizarCards } from '../Componentes/Card.js';
 import { renderizarPesquisa } from '../Componentes/Pesquisa.js';
+import { renderizarCriadorPerfil } from '../Componentes/CriadorPerfil.js';
 import { buscarPerfils } from '../Dados/Repositorio.js';
 
 const raizPesquisa = document.querySelector('#Pesquisa-root');
 const raizCards = document.querySelector('#Perfis-root');
+const raizAdmin = document.querySelector('#Admin-root');
 const contagemResultados = document.querySelector('#contagem-resultados');
 
 const estado = {
@@ -22,14 +24,23 @@ function filtrarPerfils() {
   }
 }
 
+async function carregarPerfis() {
+  estado.perfils = await buscarPerfils();
+  filtrarPerfils();
+}
+
 async function iniciar() {
   try {
-    estado.perfils = await buscarPerfils();
     renderizarPesquisa(raizPesquisa, (termo) => {
       estado.termoPesquisa = termo;
       filtrarPerfils();
     });
-    filtrarPerfils();
+
+    if (raizAdmin) {
+      renderizarCriadorPerfil(raizAdmin, () => carregarPerfis());
+    }
+
+    await carregarPerfis();
   } catch (erro) {
     raizCards.innerHTML = '<p class="empty-state">Erro ao carregar os perfis.</p>';
     console.error(erro);
