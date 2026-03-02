@@ -24,16 +24,19 @@ function normalizarNomeArquivo(nome) {
 }
 
 function identificarPastaMidia(arquivo) {
-  if (arquivo.type === 'image/gif' || arquivo.name.toLowerCase().endsWith('.gif')) {
-    return 'src/Midia/Gifs';
+  const nome = arquivo.name.toLowerCase();
+  const tipo = (arquivo.type || '').toLowerCase();
+
+  if (tipo === 'image/gif' || nome.endsWith('.gif')) {
+    return 'src/Midia/gifs';
   }
 
-  if (arquivo.type.startsWith('video/')) {
-    return 'src/Midia/Video';
+  if (tipo.startsWith('video/') || /\.(mp4|mov|avi|mkv|webm)$/i.test(nome)) {
+    return 'src/Midia/video';
   }
 
-  if (arquivo.type.startsWith('image/')) {
-    return 'src/Midia/Imagem';
+  if (tipo.startsWith('image/') || /\.(png|jpg|jpeg|webp|svg)$/i.test(nome)) {
+    return 'src/Midia/imagem';
   }
 
   throw new Error(`Tipo de mídia não suportado: ${arquivo.name}`);
@@ -115,9 +118,9 @@ export async function publicarNovoPerfilNoGithub({ owner, repo, branch, token, p
       mensagem: `chore: adiciona mídia ${nomeArquivo}`
     });
 
-    if (pasta.endsWith('/Gifs')) perfil.midia.gifs.push(`./${caminho}`);
-    if (pasta.endsWith('/Video')) perfil.midia.videos.push(`./${caminho}`);
-    if (pasta.endsWith('/Imagem')) perfil.midia.imagens.push(`./${caminho}`);
+    if (pasta.endsWith('/gifs')) perfil.midia.gifs.push(`./${caminho}`);
+    if (pasta.endsWith('/video')) perfil.midia.videos.push(`./${caminho}`);
+    if (pasta.endsWith('/imagem')) perfil.midia.imagens.push(`./${caminho}`);
   }
 
   perfil.midia.contagens = {
