@@ -20,17 +20,12 @@ const CAMPOS_MEDIDAS = {
   bolas: { rotulo: 'bolas', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] }
 };
 
-const CAMPOS_MEDIDAS = {
-  ass: { rotulo: 'bunda', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
-  cintura: { rotulo: 'cintura', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
-  coxas: { rotulo: 'coxas', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
-  peitos: { rotulo: 'peitos', obrigatorioPara: ['Mulher', 'Futanari'], appliesTo: ['Mulher', 'Futanari'] },
-  buceta: { rotulo: 'buceta', obrigatorioPara: ['Mulher'], appliesTo: ['Mulher'] },
-  anus: { rotulo: 'anus', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
-  tamanhoRola: { rotulo: 'tamanho da rola', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] },
-  grossuraRola: { rotulo: 'grossura da rola', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] },
-  bolas: { rotulo: 'bolas', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] }
-};
+function separarListaEmLinhas(valor) {
+  return String(valor || '')
+    .split(/\r?\n/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
 
 function slugify(texto) {
   return texto
@@ -188,6 +183,16 @@ function preencherFormulario(form, perfil) {
   form.elements.gifs.value = (midia.gifs || []).join('\n');
 }
 
+function validarConfiguracaoGithub() {
+  const faltantes = Object.entries(GITHUB_CONFIG_EMBUTIDA)
+    .filter(([, valor]) => !String(valor || '').trim())
+    .map(([chave]) => chave);
+
+  if (faltantes.length) {
+    throw new Error(`Configure os dados do GitHub em GITHUB_CONFIG_EMBUTIDA: ${faltantes.join(', ')}.`);
+  }
+}
+
 export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPerfisAtuais) {
   container.innerHTML = `
     <div class="acoes-admin-topo">
@@ -200,10 +205,9 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
         <input name="modo" type="hidden" value="criar">
         <input name="idPerfil" type="hidden" value="">
         <div class="grade-admin">
-          <label>Token GitHub<input name="token" type="password" required autocomplete="off"></label>
-          <label>Owner<input name="owner" type="text" required placeholder="seu-usuario"></label>
-          <label>Repositório<input name="repo" type="text" required placeholder="SlutsBitchs"></label>
-          <label>Branch<input name="branch" type="text" value="main" required></label>
+          <label class="campo-edicao oculto">Selecionar perfil para editar
+            <select name="perfilExistente" id="perfil-existente"></select>
+          </label>
 
           <label>Nome<input name="nome" type="text" placeholder=""></label>
           <label>Gênero<input name="genero" type="text" value="Mulher"></label>
@@ -277,14 +281,20 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
     titulo.textContent = editando ? 'Editar perfil publicado no GitHub' : 'Criar perfil e publicar no GitHub';
     camposEdicao.forEach((campo) => campo.classList.toggle('oculto', !editando));
 
-    if (editando) {
+    if (editando && selectPerfil) {
       const perfis = typeof obterPerfisAtuais === 'function' ? obterPerfisAtuais() : [];
-      selectPerfil.innerHTML = perfis.map((perfil) => `<option value="${perfil.id}">${perfil.identidade?.nome || perfil.id}</option>`).join('');
+      selectPerfil.innerHTML = perfis
+        .map((perfil) => `<option value="${perfil.id}">${perfil.identidade?.nome || perfil.id}</option>`)
+        .join('');
+
       if (perfis[0]) preencherFormulario(form, perfis[0]);
-    } else {
-      form.reset();
-      form.elements.idPerfil.value = '';
+      status.textContent = perfis.length ? '' : 'Nenhum perfil disponível para edição.';
+      return;
     }
+
+    form.reset();
+    form.elements.idPerfil.value = '';
+    status.textContent = '';
   }
 
   selectPerfil?.addEventListener('change', () => {
@@ -312,6 +322,7 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPe
     const dados = new FormData(form);
 
     try {
+      validarConfiguracaoGithub();
       const perfil = criarPerfilBase(Object.fromEntries(dados.entries()));
       const arquivosMidia = Array.from(dados.getAll('midias')).filter((item) => item instanceof File);
 
