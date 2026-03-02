@@ -7,6 +7,8 @@ Projeto em **HTML + CSS + JavaScript (ES Modules)** para listar personagens em c
 - `src/Dados/Perfils.json`: base mock de perfis com chaves em português (`identidade`, `detalhesFisicosBasicos`, `medidas`, `preferencias`, `midia`).
 - `src/Dados/Parametros.js`: regras de classificação por faixa para idade e medidas.
 - `src/Dados/Repositorio.js`: carregamento, normalização e campos derivados (texto de busca, contagens de mídia, medidas visíveis por gênero).
+- `src/Componentes/CriadorPerfil.js`: formulário administrativo com modo criar/editar, configuração embutida do GitHub e exibição de caminhos de mídia apenas durante edição.
+- `src/Dados/GithubRepositorio.js`: upload direto para GitHub com roteamento automático de arquivos para `src/Midia/imagem`, `src/Midia/video` e `src/Midia/gifs` conforme tipo/extensão.
 - `src/Paginas/Menu.js` + `src/Componentes/Card.js`: busca e grid de cards (imagem + nome + descrição curta).
 - `src/Paginas/Perfil.js` + `src/Componentes/Detalhes.js`: página completa do perfil com layout dividido em duas colunas e galeria.
 - `src/Estilos/Estilo.css`: tema visual e responsividade.
