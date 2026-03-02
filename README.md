@@ -18,4 +18,4 @@ python3 -m http.server 4173
 ```
 
 - Menu: `http://localhost:4173/index.html`
-- Perfil: `http://localhost:4173/Perfil.html?id=mia-khalifa`
+- Perfil: `http://localhost:4173/Perfil.html?id=MK`

@@ -10,6 +10,12 @@ const regrasIdade = [
   { min: 80, max: Number.POSITIVE_INFINITY, tag: 'Gilf', range: '80 ou mais', emoji: '👑' }
 ];
 
+
+const aliasesMedidas = {
+  bunda: 'ass',
+  cu: 'anus'
+};
+
 const regrasMedidas = {
   ass: [
     { min: 7.5, max: 11.2, tag: 'Tábua', range: '7.5–11.2', emoji: '🍑' },
@@ -84,7 +90,8 @@ export function calcularDadosIdade(valorIdade) {
 }
 
 export function calcularDadosMedida(tipo, valor) {
-  const faixa = (regrasMedidas[tipo] || []).find((regra) => emIntervalo(valor, regra.min, regra.max));
+  const tipoNormalizado = aliasesMedidas[tipo] || tipo;
+  const faixa = (regrasMedidas[tipoNormalizado] || []).find((regra) => emIntervalo(valor, regra.min, regra.max));
   return faixa
     ? { value: valor, tag: faixa.tag, range: faixa.range, emoji: faixa.emoji }
     : { value: valor, tag: '', range: '', emoji: '' };
