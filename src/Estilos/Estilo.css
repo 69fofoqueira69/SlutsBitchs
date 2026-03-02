@@ -427,3 +427,74 @@ input {
     min-height: auto;
   }
 }
+
+.topo-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.botao-admin {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+
+.modal-admin {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel);
+  color: var(--text);
+  width: min(840px, 94vw);
+}
+
+.form-admin {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.grade-admin {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.grade-admin label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.grade-admin textarea {
+  min-height: 90px;
+  resize: vertical;
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem;
+}
+
+.status-admin {
+  color: var(--muted);
+  min-height: 1.2rem;
+}
+
+.acoes-admin {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.acoes-admin button {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--panel-soft);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
