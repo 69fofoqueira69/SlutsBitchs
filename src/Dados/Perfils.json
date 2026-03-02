@@ -23,35 +23,118 @@
       "pele": "Clara"
     },
     "medidas": {
-      "bunda": { "value": 91, "tag": "Melancia", "range": "37.6–97.5", "emoji": "🍉" },
-      "cintura": { "value": 66, "tag": "Modelo", "range": "9.8–30", "emoji": "👠" },
-      "coxas": { "value": 55, "tag": "Larga", "range": "53.7–148", "emoji": "🦿" },
-      "peitos": { "value": 102, "tag": "Melancia", "range": "87.6–242", "emoji": "🍉", "appliesTo": ["Mulher"] },
-      "buceta": { "value": 8.5, "tag": "Apertada", "range": "0.8–1.7", "emoji": "🔒", "appliesTo": ["Mulher"] },
-      "cu": { "value": 15.0, "tag": "Arrombado", "range": "13.3–36.2", "emoji": "🌪️" },
-      "tamanhoRola": { "value": null, "tag": "", "range": "", "emoji": "🍆", "appliesTo": ["Futanari", "Femboy"] },
-      "grossuraRola": { "value": null, "tag": "", "range": "", "emoji": "📏", "appliesTo": ["Futanari", "Femboy"] },
-      "bolas": { "value": null, "tag": "", "range": "", "emoji": "🥚", "appliesTo": ["Futanari", "Femboy"] }
+      "bunda": {
+        "value": 91,
+        "tag": "Melancia",
+        "range": "37.6–97.5",
+        "emoji": "🍉"
+      },
+      "cintura": {
+        "value": 66,
+        "tag": "Modelo",
+        "range": "9.8–30",
+        "emoji": "👠"
+      },
+      "coxas": {
+        "value": 55,
+        "tag": "Larga",
+        "range": "53.7–148",
+        "emoji": "🦿"
+      },
+      "peitos": {
+        "value": 102,
+        "tag": "Melancia",
+        "range": "87.6–242",
+        "emoji": "🍉",
+        "appliesTo": [
+          "Mulher"
+        ]
+      },
+      "buceta": {
+        "value": 8.5,
+        "tag": "Apertada",
+        "range": "0.8–1.7",
+        "emoji": "🔒",
+        "appliesTo": [
+          "Mulher"
+        ]
+      },
+      "cu": {
+        "value": 15.0,
+        "tag": "Arrombado",
+        "range": "13.3–36.2",
+        "emoji": "🌪️"
+      },
+      "tamanhoRola": {
+        "value": null,
+        "tag": "",
+        "range": "",
+        "emoji": "🍆",
+        "appliesTo": [
+          "Futanari",
+          "Femboy"
+        ]
+      },
+      "grossuraRola": {
+        "value": null,
+        "tag": "",
+        "range": "",
+        "emoji": "📏",
+        "appliesTo": [
+          "Futanari",
+          "Femboy"
+        ]
+      },
+      "bolas": {
+        "value": null,
+        "tag": "",
+        "range": "",
+        "emoji": "🥚",
+        "appliesTo": [
+          "Futanari",
+          "Femboy"
+        ]
+      }
     },
     "experienciaSexual": {
       "rolasExperimentadas": 200,
       "contagemSexo": "Milhares de fodas intensas, DP, anal, garganta profunda, bukkake"
     },
     "preferencias": {
-      "fetiche": ["anal sem dó", "deepthroat até engasgar", "cumshot na cara", "garganta usada como buceta", "DP dupla penetração", "humilhação verbal", "roleplay de submissa libanesa"],
+      "fetiche": [
+        "anal sem dó",
+        "deepthroat até engasgar",
+        "cumshot na cara",
+        "garganta usada como buceta",
+        "DP dupla penetração",
+        "humilhação verbal",
+        "roleplay de submissa libanesa"
+      ],
       "posicaoFavorita": "Doggy com puxão de cabelo + anal",
       "roupaFavorita": "Meia-calça rasgada, calcinha de lado, top cropped sem sutiã, hijab pornô (seu clássico)",
       "ocupacao": "Ex-atriz pornô / Influencer safada"
     },
     "descricaoCompleta": "Mia Khalifa explodiu como a rainha da putaria em 2014-2015: boquete lendário, anal voraz, DP sem medo, garganta treinada pra engolir tudo. Peitos siliconados enormes balançando enquanto leva rola em todos os buracos. Hoje curte provocar online, mas o legado é foder sem limites, gozar rios e deixar fãs loucos por mais.",
     "midia": {
-      "imagens": ["./src/Midia/Imagem/MK-1.png","./src/Midia/Imagem/MK-2.png","./src/Midia/Imagem/MK-3.png"],
-      "videos": ["./src/Midia/Video/"],
-      "gifs": ["./src/Midia/Gif/MK - 1.gif", "./src/Midia/Gif/MK - 2.gif", "./src/Midia/Gif/MK - 3.gif", "./src/Midia/Gif/MK - 4.gif", "./src/Midia/Gif/MK - 5.gif", "./src/Midia/Gif/MK - 6.gif", "./src/Midia/Gif/MK - 7.gif", "./src/Midia/Gif/MK - 8.gif", "./src/Midia/Gif/MK - 9.gif", "./src/Midia/Gif/MK - 10.gif"],
+      "imagens": [
+        "./src/Midia/Imagem/MK-1.png",
+        "./src/Midia/Imagem/MK-2.png",
+        "./src/Midia/Imagem/MK-3.png"
+      ],
+      "gifs": [
+        "./src/Midia/Gif/MK - 1.gif",
+        "./src/Midia/Gif/MK - 2.gif",
+        "./src/Midia/Gif/MK - 3.gif",
+        "./src/Midia/Gif/MK - 4.gif",
+        "./src/Midia/Gif/MK - 5.gif",
+        "./src/Midia/Gif/MK - 6.gif",
+        "./src/Midia/Gif/MK - 7.gif",
+        "./src/Midia/Gif/MK - 8.gif",
+        "./src/Midia/Gif/MK - 9.gif",
+        "./src/Midia/Gif/MK - 10.gif"
+      ],
       "contagens": {
-        "imagens": 3,
-        "videos": 0,
-        "gifs": 10
+        "total": 13
       }
     }
   }
