@@ -17,6 +17,32 @@ body {
 }
 .container { width: min(1120px, 92vw); margin: 0 auto; padding: 1.5rem 0 2.5rem; }
 h1 { margin-bottom: 0.25rem; }
+
+.bloco-pesquisa,
+.bloco-perfis {
+  background: rgba(35, 16, 40, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.bloco-pesquisa {
+  margin: 1rem 0 1.25rem;
+}
+
+.bloco-perfis {
+  margin-top: 0.4rem;
+}
+
+.bloco-pesquisa h2,
+.bloco-perfis h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.1rem;
+}
+
+.bloco-pesquisa p {
+  margin-top: 0;
+}
 .pesquisa-wrap { display: grid; gap: 0.4rem; margin-bottom: 1.25rem; }
 input {
   background: var(--panel);
