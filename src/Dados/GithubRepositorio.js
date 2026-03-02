@@ -27,9 +27,17 @@ function identificarPastaMidia(arquivo) {
   const nome = arquivo.name.toLowerCase();
   const tipo = (arquivo.type || '').toLowerCase();
 
-  if (tipo === 'image/gif' || nome.endsWith('.gif')) return 'src/Midia/gifs';
-  if (tipo.startsWith('video/') || /\.(mp4|mov|avi|mkv|webm)$/i.test(nome)) return 'src/Midia/video';
-  if (tipo.startsWith('image/') || /\.(png|jpg|jpeg|webp|svg)$/i.test(nome)) return 'src/Midia/imagem';
+  if (tipo === 'image/gif' || nome.endsWith('.gif')) {
+    return 'src/Midia/gifs';
+  }
+
+  if (tipo.startsWith('video/') || /\.(mp4|mov|avi|mkv|webm)$/i.test(nome)) {
+    return 'src/Midia/video';
+  }
+
+  if (tipo.startsWith('image/') || /\.(png|jpg|jpeg|webp|svg)$/i.test(nome)) {
+    return 'src/Midia/imagem';
+  }
 
   throw new Error(`Tipo de mídia não suportado: ${arquivo.name}`);
 }
