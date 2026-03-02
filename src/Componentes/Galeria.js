@@ -10,19 +10,15 @@ function itensMidia(midia) {
 
 function embaralhar(array) {
   const copia = [...array];
+
   for (let i = copia.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const randomBuffer = new Uint32Array(1);
+    crypto.getRandomValues(randomBuffer);
+    const j = randomBuffer[0] % (i + 1);
     [copia[i], copia[j]] = [copia[j], copia[i]];
   }
+
   return copia;
-}
-
-function obterItensOrdenados(midia) {
-  if (!Array.isArray(midia.__itensGaleria)) {
-    midia.__itensGaleria = embaralhar(itensMidia(midia));
-  }
-
-  return midia.__itensGaleria;
 }
 
 function selecionarDestaques(itens, limite = 6) {
@@ -44,11 +40,10 @@ function renderizarMiniatura(item, indice) {
 }
 
 export function renderizarGaleria(midia) {
-  const itens = obterItensOrdenados(midia);
+  const itens = embaralhar(itensMidia(midia));
   const destaques = selecionarDestaques(itens);
-  const contagens = midia.contagens || {
-    total: (midia.imagens || []).length + (midia.gifs || []).length
-  };
+  const totalMidias = itens.length;
+  const itensSerializados = encodeURIComponent(JSON.stringify(itens));
 
   if (!itens.length) {
     return '<p class="empty-state">Nenhuma mídia cadastrada.</p>';
@@ -58,7 +53,7 @@ export function renderizarGaleria(midia) {
     <section class="media-grid">
       <h2>Mídia</h2>
       <div class="media-counts">
-        <p>Total de mídias: ${contagens.total}</p>
+        <p>Total de mídias: ${totalMidias}</p>
       </div>
 
       <div class="profile-media-grid" id="gallery-thumbs">
@@ -67,7 +62,7 @@ export function renderizarGaleria(midia) {
 
       ${itens.length > destaques.length ? '<p class="media-note">Mostrando algumas mídias. Abra qualquer item para navegar por todas.</p>' : ''}
 
-      <dialog id="gallery-modal" class="gallery-modal" aria-hidden="true">
+      <dialog id="gallery-modal" class="gallery-modal" aria-hidden="true" data-items="${itensSerializados}">
         <div class="gallery-dialog">
           <button id="gallery-prev" class="gallery-control" aria-label="Anterior">←</button>
           <div id="gallery-viewer"></div>
@@ -80,14 +75,23 @@ export function renderizarGaleria(midia) {
   `;
 }
 
-export function configurarGaleria(container, midia) {
-  const itens = obterItensOrdenados(midia);
+export function configurarGaleria(container) {
+  const modal = container.querySelector('#gallery-modal');
+  if (!modal) return;
+
+  let itens = [];
+
+  try {
+    itens = JSON.parse(decodeURIComponent(modal.dataset.items || '[]'));
+  } catch {
+    itens = [];
+  }
+
   if (!itens.length) return;
 
   let indiceAtual = 0;
   let toqueInicialX = 0;
 
-  const modal = container.querySelector('#gallery-modal');
   const viewer = container.querySelector('#gallery-viewer');
   const counter = container.querySelector('#gallery-counter');
 
