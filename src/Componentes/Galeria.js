@@ -1,8 +1,31 @@
 function itensMidia(midia) {
-  const imagens = (midia.imagens || []).map((src) => ({ tipo: 'imagem', src }));
-  const gifs = (midia.gifs || []).map((src) => ({ tipo: 'gif', src }));
-  const videos = (midia.videos || []).map((src) => ({ tipo: 'video', src }));
+  const formatar = (tipo, src) => ({ tipo, src });
+  const valido = (src) => typeof src === 'string' && src.trim() && !src.trim().endsWith('/');
+
+  const imagens = (midia.imagens || []).filter(valido).map((src) => formatar('imagem', src));
+  const gifs = (midia.gifs || []).filter(valido).map((src) => formatar('gif', src));
+  const videos = (midia.videos || []).filter(valido).map((src) => formatar('video', src));
+
   return [...imagens, ...gifs, ...videos];
+}
+
+function embaralhar(array) {
+  const copia = [...array];
+  for (let i = copia.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+
+function selecionarDestaques(itens, limite = 6) {
+  if (itens.length <= limite) {
+    return itens.map((item, indice) => ({ item, indiceOriginal: indice }));
+  }
+
+  return embaralhar(
+    itens.map((item, indice) => ({ item, indiceOriginal: indice }))
+  ).slice(0, limite);
 }
 
 function renderizarItemVisualizador(item) {
@@ -34,6 +57,9 @@ function renderizarMiniatura(item, indice) {
 
 export function renderizarGaleria(midia) {
   const itens = itensMidia(midia);
+  const itensPreview = itens.filter((item) => item.tipo !== 'video');
+  const origemDestaques = itensPreview.length ? itensPreview : itens;
+  const destaques = selecionarDestaques(origemDestaques);
   const contagens = midia.contagens || {
     imagens: (midia.imagens || []).length,
     videos: (midia.videos || []).length,
@@ -54,8 +80,10 @@ export function renderizarGaleria(midia) {
       </div>
 
       <div class="profile-media-grid" id="gallery-thumbs">
-        ${itens.map(renderizarMiniatura).join('')}
+        ${destaques.map(({ item, indiceOriginal }) => renderizarMiniatura(item, indiceOriginal)).join('')}
       </div>
+
+      ${itens.length > destaques.length ? '<p class="media-note">Mostrando algumas mídias aleatórias. Abra qualquer item para navegar por todas.</p>' : ''}
 
       <dialog id="gallery-modal" class="gallery-modal" aria-hidden="true">
         <div class="gallery-dialog">
