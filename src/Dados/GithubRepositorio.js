@@ -89,23 +89,28 @@ function arquivoParaBase64(arquivo) {
   });
 }
 
-export async function publicarNovoPerfilNoGithub({ owner, repo, branch, token, perfil, arquivosMidia }) {
-  const arquivoPerfis = await buscarArquivo({
-    owner,
-    repo,
-    branch,
-    path: 'src/Dados/Perfils.json',
-    token
-  });
+function normalizarMidiaDoPerfil(perfil) {
+  const midia = perfil.midia || {};
+  return {
+    ...perfil,
+    midia: {
+      imagens: Array.isArray(midia.imagens) ? midia.imagens : [],
+      videos: Array.isArray(midia.videos) ? midia.videos : [],
+      gifs: Array.isArray(midia.gifs) ? midia.gifs : [],
+      contagens: {
+        imagens: Array.isArray(midia.imagens) ? midia.imagens.length : 0,
+        videos: Array.isArray(midia.videos) ? midia.videos.length : 0,
+        gifs: Array.isArray(midia.gifs) ? midia.gifs.length : 0
+      }
+    }
+  };
+}
 
-  const perfisAtuais = JSON.parse(decodificarBase64(arquivoPerfis.content));
-  perfisAtuais.push(perfil);
-
+async function anexarArquivosMidia({ owner, repo, branch, token, perfil, arquivosMidia }) {
   for (const arquivo of arquivosMidia) {
     const pasta = identificarPastaMidia(arquivo);
     const nomeArquivo = `${Date.now()}-${normalizarNomeArquivo(arquivo.name)}`;
     const caminho = `${pasta}/${nomeArquivo}`;
-
     const base64 = await arquivoParaBase64(arquivo);
 
     await salvarArquivo({
@@ -128,6 +133,24 @@ export async function publicarNovoPerfilNoGithub({ owner, repo, branch, token, p
     videos: perfil.midia.videos.length,
     gifs: perfil.midia.gifs.length
   };
+}
+
+export async function salvarPerfilNoGithub({ owner, repo, branch, token, perfil, arquivosMidia = [], modo = 'criar' }) {
+  const arquivoPerfis = await buscarArquivo({ owner, repo, branch, path: 'src/Dados/Perfils.json', token });
+  const perfisAtuais = JSON.parse(decodificarBase64(arquivoPerfis.content));
+  const perfilNormalizado = normalizarMidiaDoPerfil(perfil);
+
+  await anexarArquivosMidia({ owner, repo, branch, token, perfil: perfilNormalizado, arquivosMidia });
+
+  const indiceExistente = perfisAtuais.findIndex((item) => item.id === perfilNormalizado.id);
+
+  if (modo === 'editar') {
+    if (indiceExistente === -1) throw new Error(`Perfil ${perfilNormalizado.id} não encontrado para edição.`);
+    perfisAtuais[indiceExistente] = perfilNormalizado;
+  } else {
+    if (indiceExistente !== -1) throw new Error(`Já existe um perfil com o id ${perfilNormalizado.id}.`);
+    perfisAtuais.push(perfilNormalizado);
+  }
 
   const perfisAtualizadosBase64 = codificarBase64(JSON.stringify(perfisAtuais, null, 2));
 
@@ -139,6 +162,6 @@ export async function publicarNovoPerfilNoGithub({ owner, repo, branch, token, p
     conteudoBase64: perfisAtualizadosBase64,
     shaAtual: arquivoPerfis.sha,
     token,
-    mensagem: `feat: adiciona perfil ${perfil.id}`
+    mensagem: modo === 'editar' ? `feat: atualiza perfil ${perfilNormalizado.id}` : `feat: adiciona perfil ${perfilNormalizado.id}`
   });
 }

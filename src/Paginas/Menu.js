@@ -37,7 +37,7 @@ async function iniciar() {
     });
 
     if (raizAdmin) {
-      renderizarCriadorPerfil(raizAdmin, () => carregarPerfis());
+      renderizarCriadorPerfil(raizAdmin, () => carregarPerfis(), () => estado.perfils);
     }
 
     await carregarPerfis();

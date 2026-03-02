@@ -1,5 +1,24 @@
 import { calcularDadosIdade, calcularDadosMedida } from '../Dados/Parametros.js';
-import { publicarNovoPerfilNoGithub } from '../Dados/GithubRepositorio.js';
+import { salvarPerfilNoGithub } from '../Dados/GithubRepositorio.js';
+
+const GITHUB_CONFIG_EMBUTIDA = {
+  token: '',
+  owner: '',
+  repo: 'SlutsBitchs',
+  branch: 'main'
+};
+
+const CAMPOS_MEDIDAS = {
+  ass: { rotulo: 'bunda', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  cintura: { rotulo: 'cintura', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  coxas: { rotulo: 'coxas', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  peitos: { rotulo: 'peitos', obrigatorioPara: ['Mulher', 'Futanari'], appliesTo: ['Mulher', 'Futanari'] },
+  buceta: { rotulo: 'buceta', obrigatorioPara: ['Mulher'], appliesTo: ['Mulher'] },
+  anus: { rotulo: 'anus', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
+  tamanhoRola: { rotulo: 'tamanho da rola', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] },
+  grossuraRola: { rotulo: 'grossura da rola', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] },
+  bolas: { rotulo: 'bolas', obrigatorioPara: ['Futanari', 'Femboy'], appliesTo: ['Futanari', 'Femboy'] }
+};
 
 const CAMPOS_MEDIDAS = {
   ass: { rotulo: 'bunda', obrigatorioPara: ['Mulher', 'Futanari', 'Femboy'] },
@@ -122,24 +141,64 @@ function criarPerfilBase(dadosBrutos) {
     },
     descricaoCompleta,
     midia: {
-      imagens: [],
-      videos: [],
-      gifs: [],
-      contagens: {
-        imagens: 0,
-        videos: 0,
-        gifs: 0
-      }
+      imagens: separarListaEmLinhas(dadosBrutos.imagens),
+      videos: separarListaEmLinhas(dadosBrutos.videos),
+      gifs: separarListaEmLinhas(dadosBrutos.gifs),
+      contagens: { imagens: 0, videos: 0, gifs: 0 }
     }
   };
 }
 
-export function renderizarCriadorPerfil(container, aoPublicarComSucesso) {
+function preencherFormulario(form, perfil) {
+  const identidade = perfil.identidade || {};
+  const detalhes = perfil.detalhesFisicosBasicos || {};
+  const medidas = perfil.medidas || {};
+  const experiencia = perfil.experienciaSexual || {};
+  const preferencias = perfil.preferencias || {};
+  const midia = perfil.midia || {};
+
+  form.elements.idPerfil.value = perfil.id || '';
+  form.elements.nome.value = identidade.nome || '';
+  form.elements.genero.value = identidade.genero || 'Mulher';
+  form.elements.universo.value = identidade.universo || '';
+  form.elements.idade.value = identidade.idade?.value || '';
+  form.elements.descricaoCurta.value = perfil.descricaoCurta || '';
+  form.elements.descricaoCompleta.value = perfil.descricaoCompleta || '';
+  form.elements.fetiches.value = (preferencias.fetiche || []).join(', ');
+  form.elements.altura.value = detalhes.altura || '';
+  form.elements.peso.value = detalhes.peso || '';
+  form.elements.especie.value = detalhes.especie || '';
+  form.elements.corCabelo.value = detalhes.corCabelo || '';
+  form.elements.estiloCabelo.value = detalhes.estiloCabelo || '';
+  form.elements.eyeColor.value = detalhes.eyeColor || '';
+  form.elements.pele.value = detalhes.pele || '';
+
+  Object.keys(CAMPOS_MEDIDAS).forEach((campo) => {
+    form.elements[campo].value = medidas[campo]?.value || '';
+  });
+
+  form.elements.rolasExperimentadas.value = experiencia.rolasExperimentadas || '';
+  form.elements.contagemSexo.value = experiencia.contagemSexo || '';
+  form.elements.posicaoFavorita.value = preferencias.posicaoFavorita || '';
+  form.elements.roupaFavorita.value = preferencias.roupaFavorita || '';
+  form.elements.ocupacao.value = preferencias.ocupacao || '';
+
+  form.elements.imagens.value = (midia.imagens || []).join('\n');
+  form.elements.videos.value = (midia.videos || []).join('\n');
+  form.elements.gifs.value = (midia.gifs || []).join('\n');
+}
+
+export function renderizarCriadorPerfil(container, aoPublicarComSucesso, obterPerfisAtuais) {
   container.innerHTML = `
-    <button type="button" class="botao-admin" id="abrir-criador-perfil">Novo perfil</button>
+    <div class="acoes-admin-topo">
+      <button type="button" class="botao-admin" id="abrir-criador-perfil">Novo perfil</button>
+      <button type="button" class="botao-admin" id="abrir-editor-perfil">Editar perfil</button>
+    </div>
     <dialog id="modal-criador-perfil" class="modal-admin">
       <form id="form-criador-perfil" class="form-admin">
-        <h2>Criar perfil e publicar no GitHub</h2>
+        <h2 id="titulo-criador">Criar perfil e publicar no GitHub</h2>
+        <input name="modo" type="hidden" value="criar">
+        <input name="idPerfil" type="hidden" value="">
         <div class="grade-admin">
           <label>Token GitHub<input name="token" type="password" required autocomplete="off"></label>
           <label>Owner<input name="owner" type="text" required placeholder="seu-usuario"></label>
@@ -182,6 +241,16 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso) {
           <label>Mídias (imagens, gifs e vídeos)
             <input name="midias" type="file" multiple accept="image/*,video/*">
           </label>
+
+          <label class="campo-edicao oculto">Caminhos de imagens (1 por linha)
+            <textarea name="imagens" placeholder="./src/Midia/imagem/arquivo.png"></textarea>
+          </label>
+          <label class="campo-edicao oculto">Caminhos de vídeos (1 por linha)
+            <textarea name="videos" placeholder="./src/Midia/video/arquivo.mp4"></textarea>
+          </label>
+          <label class="campo-edicao oculto">Caminhos de gifs (1 por linha)
+            <textarea name="gifs" placeholder="./src/Midia/gifs/arquivo.gif"></textarea>
+          </label>
         </div>
         <p class="status-admin" id="status-criador"></p>
         <div class="acoes-admin">
@@ -192,13 +261,48 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso) {
     </dialog>
   `;
 
-  const abrir = container.querySelector('#abrir-criador-perfil');
+  const abrirNovo = container.querySelector('#abrir-criador-perfil');
+  const abrirEditar = container.querySelector('#abrir-editor-perfil');
   const modal = container.querySelector('#modal-criador-perfil');
   const fechar = container.querySelector('#fechar-criador');
   const form = container.querySelector('#form-criador-perfil');
   const status = container.querySelector('#status-criador');
+  const titulo = container.querySelector('#titulo-criador');
+  const selectPerfil = container.querySelector('#perfil-existente');
+  const camposEdicao = Array.from(container.querySelectorAll('.campo-edicao'));
 
-  abrir?.addEventListener('click', () => modal?.showModal());
+  function trocarModo(modo) {
+    form.elements.modo.value = modo;
+    const editando = modo === 'editar';
+    titulo.textContent = editando ? 'Editar perfil publicado no GitHub' : 'Criar perfil e publicar no GitHub';
+    camposEdicao.forEach((campo) => campo.classList.toggle('oculto', !editando));
+
+    if (editando) {
+      const perfis = typeof obterPerfisAtuais === 'function' ? obterPerfisAtuais() : [];
+      selectPerfil.innerHTML = perfis.map((perfil) => `<option value="${perfil.id}">${perfil.identidade?.nome || perfil.id}</option>`).join('');
+      if (perfis[0]) preencherFormulario(form, perfis[0]);
+    } else {
+      form.reset();
+      form.elements.idPerfil.value = '';
+    }
+  }
+
+  selectPerfil?.addEventListener('change', () => {
+    const perfis = typeof obterPerfisAtuais === 'function' ? obterPerfisAtuais() : [];
+    const perfilSelecionado = perfis.find((item) => item.id === selectPerfil.value);
+    if (perfilSelecionado) preencherFormulario(form, perfilSelecionado);
+  });
+
+  abrirNovo?.addEventListener('click', () => {
+    trocarModo('criar');
+    modal?.showModal();
+  });
+
+  abrirEditar?.addEventListener('click', () => {
+    trocarModo('editar');
+    modal?.showModal();
+  });
+
   fechar?.addEventListener('click', () => modal?.close());
 
   form?.addEventListener('submit', async (evento) => {
@@ -206,18 +310,19 @@ export function renderizarCriadorPerfil(container, aoPublicarComSucesso) {
     status.textContent = 'Enviando...';
 
     const dados = new FormData(form);
-    const token = String(dados.get('token') || '').trim();
-    const owner = String(dados.get('owner') || '').trim();
-    const repo = String(dados.get('repo') || '').trim();
-    const branch = String(dados.get('branch') || '').trim();
 
     try {
       const perfil = criarPerfilBase(Object.fromEntries(dados.entries()));
       const arquivosMidia = Array.from(dados.getAll('midias')).filter((item) => item instanceof File);
 
-      await publicarNovoPerfilNoGithub({ owner, repo, branch, token, perfil, arquivosMidia });
+      await salvarPerfilNoGithub({
+        ...GITHUB_CONFIG_EMBUTIDA,
+        perfil,
+        arquivosMidia,
+        modo: String(dados.get('modo') || 'criar')
+      });
 
-      status.textContent = 'Perfil publicado com sucesso! Atualizando listagem...';
+      status.textContent = 'Perfil enviado com sucesso! Atualizando listagem...';
       modal?.close();
       form.reset();
       aoPublicarComSucesso();

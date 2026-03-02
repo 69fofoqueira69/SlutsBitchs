@@ -444,6 +444,11 @@ input {
   cursor: pointer;
 }
 
+.acoes-admin-topo {
+  display: flex;
+  gap: 0.6rem;
+}
+
 .modal-admin {
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -477,6 +482,18 @@ input {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.6rem;
+}
+
+.grade-admin select {
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem;
+}
+
+.oculto {
+  display: none !important;
 }
 
 .status-admin {
