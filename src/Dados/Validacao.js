@@ -79,7 +79,6 @@ export function validateProfile(profile) {
   const hasRequiredArrays =
     isStringArray(preferencias.fetiche || []) &&
     isStringArray(midia.imagens || []) &&
-    isStringArray(midia.videos || []) &&
     isStringArray(midia.gifs || []);
 
   const ageValue = idade?.value;
@@ -99,9 +98,7 @@ export function validateProfile(profile) {
     typeof midia === 'object' &&
     hasRequiredArrays &&
     typeof midia.contagens === 'object' &&
-    isInteger(midia.contagens.imagens) &&
-    isInteger(midia.contagens.videos) &&
-    isInteger(midia.contagens.gifs);
+    isInteger(midia.contagens.total);
 
   const hasMeasurements = medidas && typeof medidas === 'object' && hasBasicMeasurements(medidas);
 

@@ -4,9 +4,8 @@ function itensMidia(midia) {
 
   const imagens = (midia.imagens || []).filter(valido).map((src) => formatar('imagem', src));
   const gifs = (midia.gifs || []).filter(valido).map((src) => formatar('gif', src));
-  const videos = (midia.videos || []).filter(valido).map((src) => formatar('video', src));
 
-  return [...imagens, ...gifs, ...videos];
+  return [...imagens, ...gifs];
 }
 
 function embaralhar(array) {
@@ -18,34 +17,23 @@ function embaralhar(array) {
   return copia;
 }
 
-function selecionarDestaques(itens, limite = 6) {
-  if (itens.length <= limite) {
-    return itens.map((item, indice) => ({ item, indiceOriginal: indice }));
+function obterItensOrdenados(midia) {
+  if (!Array.isArray(midia.__itensGaleria)) {
+    midia.__itensGaleria = embaralhar(itensMidia(midia));
   }
 
-  return embaralhar(
-    itens.map((item, indice) => ({ item, indiceOriginal: indice }))
-  ).slice(0, limite);
+  return midia.__itensGaleria;
+}
+
+function selecionarDestaques(itens, limite = 6) {
+  return itens.slice(0, limite);
 }
 
 function renderizarItemVisualizador(item) {
-  if (item.tipo === 'video') {
-    return `<video class="gallery-viewer-media" controls autoplay src="${item.src}" aria-label="Vídeo"></video>`;
-  }
-
   return `<img class="gallery-viewer-media" src="${item.src}" alt="Mídia" loading="lazy">`;
 }
 
 function renderizarMiniatura(item, indice) {
-  if (item.tipo === 'video') {
-    return `
-      <button class="media-thumb media-thumb-video" data-index="${indice}" aria-label="Abrir vídeo ${indice + 1}">
-        <video muted playsinline preload="metadata" src="${item.src}"></video>
-        <span class="media-badge">Vídeo</span>
-      </button>
-    `;
-  }
-
   const emblema = item.tipo === 'gif' ? '<span class="media-badge">GIF</span>' : '';
   return `
     <button class="media-thumb" data-index="${indice}" aria-label="Abrir mídia ${indice + 1}">
@@ -56,14 +44,10 @@ function renderizarMiniatura(item, indice) {
 }
 
 export function renderizarGaleria(midia) {
-  const itens = itensMidia(midia);
-  const itensPreview = itens.filter((item) => item.tipo !== 'video');
-  const origemDestaques = itensPreview.length ? itensPreview : itens;
-  const destaques = selecionarDestaques(origemDestaques);
+  const itens = obterItensOrdenados(midia);
+  const destaques = selecionarDestaques(itens);
   const contagens = midia.contagens || {
-    imagens: (midia.imagens || []).length,
-    videos: (midia.videos || []).length,
-    gifs: (midia.gifs || []).length
+    total: (midia.imagens || []).length + (midia.gifs || []).length
   };
 
   if (!itens.length) {
@@ -74,16 +58,14 @@ export function renderizarGaleria(midia) {
     <section class="media-grid">
       <h2>Mídia</h2>
       <div class="media-counts">
-        <p>Imagens: ${contagens.imagens}</p>
-        <p>Vídeos: ${contagens.videos}</p>
-        <p>GIFs: ${contagens.gifs}</p>
+        <p>Total de mídias: ${contagens.total}</p>
       </div>
 
       <div class="profile-media-grid" id="gallery-thumbs">
-        ${destaques.map(({ item, indiceOriginal }) => renderizarMiniatura(item, indiceOriginal)).join('')}
+        ${destaques.map((item, indice) => renderizarMiniatura(item, indice)).join('')}
       </div>
 
-      ${itens.length > destaques.length ? '<p class="media-note">Mostrando algumas mídias aleatórias. Abra qualquer item para navegar por todas.</p>' : ''}
+      ${itens.length > destaques.length ? '<p class="media-note">Mostrando algumas mídias. Abra qualquer item para navegar por todas.</p>' : ''}
 
       <dialog id="gallery-modal" class="gallery-modal" aria-hidden="true">
         <div class="gallery-dialog">
@@ -99,7 +81,7 @@ export function renderizarGaleria(midia) {
 }
 
 export function configurarGaleria(container, midia) {
-  const itens = itensMidia(midia);
+  const itens = obterItensOrdenados(midia);
   if (!itens.length) return;
 
   let indiceAtual = 0;
