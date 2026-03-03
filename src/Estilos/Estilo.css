@@ -246,7 +246,7 @@ p, label, input, textarea, select, .estado-vazio, .contagem-resultados {
   justify-content: space-between;
   gap: .5rem;
 }
-.lista-detalhes li span { color: var(--muted); }
+.lista-detalhes li span { color: inherit; }
 .grade-midias-perfil {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -266,7 +266,7 @@ p, label, input, textarea, select, .estado-vazio, .contagem-resultados {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--muted);
+  color: inherit;
 }
 .contagens-midias p {
   margin: 0;
@@ -439,7 +439,7 @@ p, label, input, textarea, select, .estado-vazio, .contagem-resultados {
   justify-content: space-between;
   gap: .5rem;
 }
-.detail-list li span { color: var(--muted); }
+.detail-list li span { color: inherit; }
 .profile-media-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -449,7 +449,7 @@ p, label, input, textarea, select, .estado-vazio, .contagem-resultados {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--muted);
+  color: inherit;
 }
 .media-counts p { margin: 0; }
 .media-thumb {
