@@ -59,7 +59,7 @@
         "./src/Midia/Gif/MK-9.gif",
         "./src/Midia/Gif/MK-10.gif"
       ],
-      "fotoPrincipal": "./src/Midia/Imagem/MK-1.png"
+      "fotoPrincipal": "./src/Midia/Imagem/MK-3.png"
     }
   },
   {
@@ -118,7 +118,7 @@
         "./src/Midia/Gif/GV-3.gif",
         "./src/Midia/Gif/GV-4.gif"
       ],
-      "fotoPrincipal": "./src/Midia/Imagem/GV-1.png"
+      "fotoPrincipal": "./src/Midia/Imagem/GV-3.png"
     }
   },
   {
@@ -188,7 +188,7 @@
         "./src/Midia/Gif/VM-14.gif",
         "./src/Midia/Gif/VM-15.gif"
       ],
-      "fotoPrincipal": "./src/Midia/Imagem/VM-1.png"
+      "fotoPrincipal": "./src/Midia/Imagem/VM-5.png"
     }
   }
 ]
