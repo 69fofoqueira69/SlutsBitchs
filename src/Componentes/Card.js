@@ -1,4 +1,4 @@
-import { buscarMidiaInicialAleatoria } from './RotacaoMidia.js';
+import { buscarFotoCapa } from './RotacaoMidia.js';
 
 export function renderizarCards(container, perfils) {
   if (!perfils.length) {
@@ -10,7 +10,7 @@ export function renderizarCards(container, perfils) {
     <div class="cards-grid">
       ${perfils
         .map((perfil) => {
-          const capa = buscarMidiaInicialAleatoria(perfil.midia);
+          const capa = buscarFotoCapa(perfil.midia);
 
           return `
             <a href="./Perfil.html?id=${perfil.id}" class="card-link" aria-label="Abrir perfil de ${perfil.identidade.nome}">

@@ -1,5 +1,5 @@
 import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
-import { buscarMidiaInicialAleatoria } from './RotacaoMidia.js';
+import { buscarFotoCapa } from './RotacaoMidia.js';
 import { renderizarGaleria, configurarGaleria } from './Galeria.js';
 
 const ROTULOS_MEDIDAS = {
@@ -32,7 +32,7 @@ export function renderizarDetalhes(container, perfil) {
 
   const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
   const medidas = buscarMedidasVisiveis(perfil);
-  const capa = buscarMidiaInicialAleatoria(midia);
+  const capa = buscarFotoCapa(midia);
 
   container.innerHTML = `
     <a href="./index.html" class="link">← Voltar</a>
