@@ -1,6 +1,30 @@
 import { calcularDadosIdade, calcularDadosMedida } from './Parametros.js';
 
-const CAMINHO_DADOS = new URL('./Perfils.json', import.meta.url).href;
+const CAMINHOS_DADOS = [
+  new URL('./Perfils.json', import.meta.url).href,
+  './src/Dados/Perfils.json',
+  './src/data/Perfils.json'
+];
+
+async function carregarDadosPerfis() {
+  let ultimoErro = null;
+
+  for (const caminho of CAMINHOS_DADOS) {
+    try {
+      const resposta = await fetch(caminho);
+      if (!resposta.ok) {
+        ultimoErro = new Error(`Falha ao carregar perfis em ${caminho} (status ${resposta.status})`);
+        continue;
+      }
+
+      return await resposta.json();
+    } catch (erro) {
+      ultimoErro = erro;
+    }
+  }
+
+  throw ultimoErro || new Error('Falha ao carregar perfis');
+}
 
 function deveExibirMedida(medida, genero) {
   const aplicaPara = medida?.appliesTo;
@@ -48,7 +72,9 @@ function normalizarPerfil(perfil) {
     midia: {
       imagens: midia.imagens || [],
       gifs: midia.gifs || [],
-      fotoPrincipal: midia.fotoPrincipal || ''
+      fotoPrincipal: midia.fotoPrincipal || '',
+      fotoMenu: midia.fotoMenu || '',
+      fotoPerfil: midia.fotoPerfil || ''
     },
     textoPesquisavel: [
       perfil.identidade?.nome,
@@ -72,10 +98,7 @@ export function buscarMedidasVisiveis(perfil) {
 }
 
 export async function buscarPerfils() {
-  const resposta = await fetch(CAMINHO_DADOS);
-  if (!resposta.ok) throw new Error('Falha ao carregar perfis');
-
-  const dados = await resposta.json();
+  const dados = await carregarDadosPerfis();
   if (!Array.isArray(dados)) return [];
 
   return dados
