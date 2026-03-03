@@ -80,7 +80,11 @@ export async function buscarPerfils() {
   const dados = await resposta.json();
   if (!Array.isArray(dados)) return [];
 
-  return dados.map(normalizarPerfil);
+  return dados
+    .map(normalizarPerfil)
+    .sort((a, b) => (a.identidade?.nome || '').localeCompare((b.identidade?.nome || ''), 'pt-BR', {
+      sensitivity: 'base'
+    }));
 }
 
 export async function buscarPerfilPorId(id) {
