@@ -72,7 +72,9 @@ function normalizarPerfil(perfil) {
     midia: {
       imagens: midia.imagens || [],
       gifs: midia.gifs || [],
-      fotoCapa: midia.fotoCapa || ''
+      fotoPrincipal: midia.fotoPrincipal || '',
+      fotoMenu: midia.fotoMenu || '',
+      fotoPerfil: midia.fotoPerfil || ''
     },
     textoPesquisavel: [
       perfil.identidade?.nome,

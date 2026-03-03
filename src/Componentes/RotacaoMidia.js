@@ -7,12 +7,20 @@ function buscarPrimeiraImagemValida(midia = {}) {
   return imagens[0] || '';
 }
 
-export function buscarFotoCapa(midia = {}) {
-  if (valido(midia.fotoCapa)) return midia.fotoCapa;
+export function buscarFotoMenu(midia = {}) {
+  if (valido(midia.fotoMenu)) return midia.fotoMenu;
+  if (valido(midia.fotoPrincipal)) return midia.fotoPrincipal;
+
+  return buscarPrimeiraImagemValida(midia);
+}
+
+export function buscarFotoPerfil(midia = {}) {
+  if (valido(midia.fotoPerfil)) return midia.fotoPerfil;
+  if (valido(midia.fotoPrincipal)) return midia.fotoPrincipal;
 
   return buscarPrimeiraImagemValida(midia);
 }
 
 export function buscarMidiaInicialAleatoria(midia = {}) {
-  return buscarFotoCapa(midia);
+  return buscarFotoPerfil(midia);
 }
