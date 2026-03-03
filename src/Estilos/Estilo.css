@@ -1,27 +1,30 @@
 :root {
   color-scheme: dark;
-  --bg: #120015;
-  --panel: #231028;
-  --panel-soft: #2d1633;
-  --text: #ffe7f6;
-  --muted: #d8aac8;
-  --accent: #ff4fa3;
-  --border: #5f315e;
+  --accent: #fc0fc0;
+  --accent-secondary: #39ff14;
+  --accent-dark: #8b0a6a;
+  --accent-secondary-dark: #1f7d10;
+  --bg: #050505;
+  --panel: color-mix(in srgb, black 84%, var(--accent-dark) 16%);
+  --panel-soft: color-mix(in srgb, black 72%, var(--accent-secondary-dark) 28%);
+  --text: var(--accent-secondary);
+  --muted: var(--accent);
+  --border: color-mix(in srgb, var(--accent-secondary) 72%, var(--accent) 28%);
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
-  background: radial-gradient(circle at top, #2a1135 0%, var(--bg) 45%);
+  background: #000000;
   color: var(--text);
 }
 .container { width: min(1120px, 92vw); margin: 0 auto; padding: 1.5rem 0 2.5rem; }
-h1 { margin-bottom: 0.25rem; }
+h1 { margin-bottom: 0.25rem; color: var(--accent); text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, black 45%); }
 
 .bloco-pesquisa,
 .bloco-perfis {
-  background: rgba(35, 16, 40, 0.6);
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 88%, black 12%);
+  border: 2px solid var(--border);
   border-radius: 14px;
   padding: 1rem;
 }
@@ -58,9 +61,13 @@ h1 { margin-bottom: 0.25rem; }
 input {
   background: var(--panel);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 12px;
   padding: 0.75rem 0.9rem;
+}
+input:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent-secondary) 70%, var(--accent) 30%);
+  outline-offset: 1px;
 }
 .perfis-grid,
 .cards-grid {
@@ -72,7 +79,7 @@ input {
 .card-link { text-decoration: none; color: inherit; display: block; }
 .card {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 18px;
   overflow: hidden;
   height: 100%;
@@ -81,7 +88,7 @@ input {
 .link-card:hover .card,
 .link-card:focus .card,
 .card-link:hover .card,
-.card-link:focus .card { transform: translateY(-4px); border-color: var(--accent); }
+.card-link:focus .card { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-secondary) 55%, transparent); }
 .card img { width: 100%; height: 170px; object-fit: cover; }
 .corpo-card,
 .card-body { padding: 0.75rem; }
@@ -101,11 +108,110 @@ input {
   margin-bottom: 1rem;
   color: var(--text);
   text-decoration: none;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   padding: 0.45rem 0.8rem;
   border-radius: 10px;
   background: var(--panel);
 }
+
+
+/* Tema solicitado: fundo preto e textos alternando rosa/verde */
+
+/* Bordas alternadas: rosa/verde */
+.bloco-pesquisa { border-color: var(--accent); }
+.bloco-perfis { border-color: var(--accent-secondary); }
+
+.perfis-grid .link-card:nth-child(odd) .card,
+.cards-grid .card-link:nth-child(odd) .card,
+.lista-detalhes li:nth-child(odd),
+.detail-list li:nth-child(odd),
+.grade-midias-perfil .miniatura-midia:nth-child(odd),
+.profile-media-grid .media-thumb:nth-child(odd),
+.perfil section:nth-child(odd),
+.tinder-profile section:nth-child(odd) {
+  border-color: var(--accent);
+}
+
+.perfis-grid .link-card:nth-child(even) .card,
+.cards-grid .card-link:nth-child(even) .card,
+.lista-detalhes li:nth-child(even),
+.detail-list li:nth-child(even),
+.grade-midias-perfil .miniatura-midia:nth-child(even),
+.profile-media-grid .media-thumb:nth-child(even),
+.perfil section:nth-child(even),
+.tinder-profile section:nth-child(even) {
+  border-color: var(--accent-secondary);
+}
+
+/* Regra solicitada:
+   - Se borda for rosa: texto ímpar rosa, par verde.
+   - Se borda for verde: texto ímpar verde, par rosa. */
+
+/* Containers com borda rosa */
+.bloco-pesquisa,
+.perfis-grid .link-card:nth-child(odd) .card,
+.cards-grid .card-link:nth-child(odd) .card,
+.perfil section:nth-child(odd),
+.tinder-profile section:nth-child(odd) {
+  --text-odd: var(--accent);
+  --text-even: var(--accent-secondary);
+}
+
+/* Containers com borda verde */
+.bloco-perfis,
+.perfis-grid .link-card:nth-child(even) .card,
+.cards-grid .card-link:nth-child(even) .card,
+.perfil section:nth-child(even),
+.tinder-profile section:nth-child(even) {
+  --text-odd: var(--accent-secondary);
+  --text-even: var(--accent);
+}
+
+/* Aplica alternância de texto dentro das bordas */
+.bloco-pesquisa > :nth-child(odd),
+.bloco-perfis > :nth-child(odd),
+.card-body > :nth-child(odd),
+.corpo-card > :nth-child(odd),
+.sobreposicao-perfil > :nth-child(odd),
+.tinder-overlay > :nth-child(odd),
+.contagens-midias > :nth-child(odd),
+.media-counts > :nth-child(odd),
+.perfil section > :nth-child(odd),
+.tinder-profile section > :nth-child(odd) {
+  color: var(--text-odd, var(--accent-secondary));
+}
+
+.bloco-pesquisa > :nth-child(even),
+.bloco-perfis > :nth-child(even),
+.card-body > :nth-child(even),
+.corpo-card > :nth-child(even),
+.sobreposicao-perfil > :nth-child(even),
+.tinder-overlay > :nth-child(even),
+.contagens-midias > :nth-child(even),
+.media-counts > :nth-child(even),
+.perfil section > :nth-child(even),
+.tinder-profile section > :nth-child(even) {
+  color: var(--text-even, var(--accent));
+}
+
+/* Itens de lista seguem a mesma alternância da própria borda */
+.lista-detalhes li:nth-child(odd),
+.detail-list li:nth-child(odd) {
+  color: var(--accent);
+}
+.lista-detalhes li:nth-child(even),
+.detail-list li:nth-child(even) {
+  color: var(--accent-secondary);
+}
+
+/* Texto fora de containers com borda: verde */
+body > :not(.container),
+.container > :not(section):not(header),
+.topo-pagina p,
+p, label, input, textarea, select, .estado-vazio, .contagem-resultados {
+  color: var(--accent-secondary);
+}
+
 .perfil {
   display: flex;
   flex-direction: column;
@@ -130,7 +236,7 @@ input {
 }
 .perfil section {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 16px;
   padding: 1rem;
 }
@@ -139,7 +245,7 @@ input {
   min-height: 320px;
   border-radius: 22px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
 }
 .heroi-perfil img {
   width: 100%;
@@ -151,7 +257,7 @@ input {
   position: absolute;
   inset: auto 0 0 0;
   padding: 1.25rem;
-  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 65%);
+  background: linear-gradient(transparent 0%, color-mix(in srgb, var(--accent-dark) 56%, var(--accent-secondary-dark) 44%) 70%);
 }
 .lista-detalhes {
   list-style: none;
@@ -161,7 +267,7 @@ input {
   gap: .65rem;
 }
 .lista-detalhes li {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--panel-soft);
   border-radius: 10px;
   padding: .6rem .75rem;
@@ -181,7 +287,7 @@ input {
   height: 220px;
   object-fit: cover;
   border-radius: 12px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
 }
 .grade-midias h2 {
   margin-top: 0;
@@ -199,7 +305,7 @@ input {
   position: relative;
   display: block;
   width: 100%;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   background: var(--panel-soft);
@@ -220,8 +326,8 @@ input {
   position: absolute;
   right: .5rem;
   bottom: .5rem;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--accent-dark) 55%, var(--accent-secondary-dark) 45%);
+  border: 2px solid var(--border);
   border-radius: 999px;
   padding: .2rem .55rem;
   font-size: .72rem;
@@ -239,7 +345,7 @@ input {
 .modal-galeria.is-open {
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.78);
+  background: color-mix(in srgb, black 58%, var(--accent-dark) 42%);
   position: fixed;
   inset: 0;
 }
@@ -247,7 +353,7 @@ input {
   position: relative;
   width: min(92vw, 900px);
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 14px;
   padding: 1rem 3.2rem;
 }
@@ -262,16 +368,16 @@ input {
   max-height: 75vh;
   border-radius: 10px;
   object-fit: contain;
-  background: #050405;
+  background: color-mix(in srgb, black 64%, var(--accent-secondary-dark) 36%);
 }
 .controle-galeria,
 .fechar-galeria {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
-  background: rgba(13, 6, 16, 0.9);
+  background: color-mix(in srgb, var(--panel) 90%, black 10%);
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 999px;
@@ -317,7 +423,7 @@ input {
 }
 .tinder-profile section {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 16px;
   padding: 1rem;
 }
@@ -326,7 +432,7 @@ input {
   min-height: 420px;
   border-radius: 22px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
 }
 .tinder-hero img {
   width: 100%;
@@ -338,7 +444,7 @@ input {
   position: absolute;
   inset: auto 0 0 0;
   padding: 1.25rem;
-  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 65%);
+  background: linear-gradient(transparent 0%, color-mix(in srgb, var(--accent-dark) 56%, var(--accent-secondary-dark) 44%) 70%);
 }
 .about-section {
   display: flex;
@@ -354,7 +460,7 @@ input {
   gap: .65rem;
 }
 .detail-list li {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--panel-soft);
   border-radius: 10px;
   padding: .6rem .75rem;
@@ -380,7 +486,7 @@ input {
   position: relative;
   display: block;
   width: 100%;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   background: var(--panel-soft);
@@ -401,8 +507,8 @@ input {
   position: absolute;
   right: .5rem;
   bottom: .5rem;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--accent-dark) 55%, var(--accent-secondary-dark) 45%);
+  border: 2px solid var(--border);
   border-radius: 999px;
   padding: .2rem .55rem;
   font-size: .72rem;
@@ -426,7 +532,7 @@ input {
 .gallery-modal.is-open {
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.78);
+  background: color-mix(in srgb, black 58%, var(--accent-dark) 42%);
   position: fixed;
   inset: 0;
 }
@@ -434,7 +540,7 @@ input {
   position: relative;
   width: min(92vw, 900px);
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 14px;
   padding: 1rem 3.2rem;
 }
@@ -443,16 +549,16 @@ input {
   max-height: 75vh;
   border-radius: 10px;
   object-fit: contain;
-  background: #050405;
+  background: color-mix(in srgb, black 64%, var(--accent-secondary-dark) 36%);
 }
 .gallery-control,
 .gallery-close {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
-  background: rgba(13, 6, 16, 0.9);
+  background: color-mix(in srgb, var(--panel) 90%, black 10%);
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 999px;
@@ -492,7 +598,7 @@ input {
 }
 
 .botao-admin {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
   background: var(--panel);
   border-radius: 10px;
@@ -506,7 +612,7 @@ input {
 }
 
 .modal-admin {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 14px;
   background: var(--panel);
   color: var(--text);
@@ -535,7 +641,7 @@ input {
   resize: vertical;
   background: var(--panel-soft);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 10px;
   padding: 0.6rem;
 }
@@ -543,7 +649,7 @@ input {
 .grade-admin select {
   background: var(--panel-soft);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 10px;
   padding: 0.6rem;
 }
@@ -564,7 +670,7 @@ input {
 }
 
 .acoes-admin button {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
   background: var(--panel-soft);
   border-radius: 10px;
