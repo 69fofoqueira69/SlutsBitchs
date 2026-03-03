@@ -3,8 +3,8 @@ function emIntervalo(valor, min, max) {
 }
 
 const regrasIdade = [
-  { min: 14, max: 21, tag: 'Putinha', range: '14 a 21', emoji: '🧷' },
-  { min: 22, max: 34, tag: 'Vagabunda', range: '22 a 34', emoji: '🔥' },
+  { min: 18, max: 24, tag: 'Putinha', range: '18 a 24', emoji: '🧷' },
+  { min: 25, max: 34, tag: 'Vagabunda', range: '25 a 34', emoji: '🔥' },
   { min: 35, max: 59, tag: 'Milf', range: '35 a 59', emoji: '🍷' },
   { min: 60, max: 79, tag: 'Madura', range: '60 a 79', emoji: '🖤' },
   { min: 80, max: Number.POSITIVE_INFINITY, tag: 'Gilf', range: '80 ou mais', emoji: '👑' }
