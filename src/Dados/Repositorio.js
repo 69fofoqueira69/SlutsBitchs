@@ -1,6 +1,6 @@
 import { calcularDadosIdade, calcularDadosMedida } from './Parametros.js';
 
-const CAMINHO_DADOS = './src/Dados/Perfils.json';
+const CAMINHO_DADOS = new URL('./Perfils.json', import.meta.url).href;
 
 function deveExibirMedida(medida, genero) {
   const aplicaPara = medida?.appliesTo;
