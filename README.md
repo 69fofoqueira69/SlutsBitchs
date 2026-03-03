@@ -4,7 +4,7 @@ Projeto em **HTML + CSS + JavaScript (ES Modules)** para listar personagens em c
 
 ## Arquitetura (curta)
 
-- `src/Dados/Perfils.json`: base mock de perfis com chaves em português (`identidade`, `detalhesFisicosBasicos`, `medidas`, `preferencias`, `midia`).
+- `src/Dados/Perfils.json`: base mock de perfis com chaves em português (`identidade`, `detalhesFisicosBasicos`, `medidas`, `preferencias`, `midia`) e controle de capa por contexto (`midia.fotoMenu` e `midia.fotoPerfil`).
 - `src/Dados/Parametros.js`: regras de classificação por faixa para idade e medidas.
 - `src/Dados/Repositorio.js`: carregamento, normalização e campos derivados (texto de busca, total de mídias de imagens+GIFs e medidas visíveis por gênero).
 - `src/Paginas/Menu.js` + `src/Componentes/Card.js`: busca e grid de cards (imagem + nome + descrição curta).

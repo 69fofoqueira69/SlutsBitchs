@@ -48,7 +48,9 @@ function normalizarPerfil(perfil) {
     midia: {
       imagens: midia.imagens || [],
       gifs: midia.gifs || [],
-      fotoPrincipal: midia.fotoPrincipal || ''
+      fotoPrincipal: midia.fotoPrincipal || '',
+      fotoMenu: midia.fotoMenu || '',
+      fotoPerfil: midia.fotoPerfil || ''
     },
     textoPesquisavel: [
       perfil.identidade?.nome,
