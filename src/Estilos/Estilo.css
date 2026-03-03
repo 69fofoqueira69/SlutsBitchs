@@ -1,26 +1,27 @@
 :root {
   color-scheme: dark;
-  --bg: #120015;
-  --panel: #231028;
-  --panel-soft: #2d1633;
-  --text: #ffe7f6;
-  --muted: #d8aac8;
-  --accent: #ff4fa3;
-  --border: #5f315e;
+  --bg: #071103;
+  --panel: #1a121a;
+  --panel-soft: #251b25;
+  --text: #ffe8fb;
+  --muted: #d8ffd2;
+  --accent: #fc0fc0;
+  --accent-secondary: #39ff14;
+  --border: #39ff14;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
-  background: radial-gradient(circle at top, #2a1135 0%, var(--bg) 45%);
+  background: radial-gradient(circle at top, #fc0fc0 0%, #2a0d2c 30%, var(--bg) 72%);
   color: var(--text);
 }
 .container { width: min(1120px, 92vw); margin: 0 auto; padding: 1.5rem 0 2.5rem; }
-h1 { margin-bottom: 0.25rem; }
+h1 { margin-bottom: 0.25rem; color: var(--accent); }
 
 .bloco-pesquisa,
 .bloco-perfis {
-  background: rgba(35, 16, 40, 0.6);
+  background: rgba(18, 18, 16, 0.7);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 1rem;
@@ -62,6 +63,10 @@ input {
   border-radius: 12px;
   padding: 0.75rem 0.9rem;
 }
+input:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 1px;
+}
 .perfis-grid,
 .cards-grid {
   display: grid;
@@ -81,7 +86,7 @@ input {
 .link-card:hover .card,
 .link-card:focus .card,
 .card-link:hover .card,
-.card-link:focus .card { transform: translateY(-4px); border-color: var(--accent); }
+.card-link:focus .card { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-secondary) 55%, transparent); }
 .card img { width: 100%; height: 170px; object-fit: cover; }
 .corpo-card,
 .card-body { padding: 0.75rem; }
