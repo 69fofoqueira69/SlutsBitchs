@@ -52,5 +52,66 @@
         "gifs": 10
       }
     }
+  },
+
+
+
+  {
+    "id": "GV",
+    "identidade": {
+      "nome": "Gina Valentina",
+      "genero": "Mulher",
+      "universo": "Realidade",
+      "idade": {
+        "value": 29,
+        "tag": "Vagabunda",
+        "range": "25–34",
+        "emoji": "🔥"
+      }
+    },
+    "descricaoCurta": "Vadia brasileira insaciável que vive de cu arrombado e rola na garganta.",
+    "detalhesFisicosBasicos": {
+      "altura": "157 cm",
+      "peso": "52 kg",
+      "especie": "Humana",
+      "corCabelo": "Preto",
+      "estiloCabelo": "Longo ondulado",
+      "olhos": "Castanhos",
+      "pele": "Morena"
+    },
+    "medidas": {
+      "bunda": { "value": 35.2, "tag": "Pêssego", "range": "11.3–37.5", "emoji": "🍑" },
+      "cintura": { "value": 23.5, "tag": "Modelo", "range": "9.8–30", "emoji": "⏳" },
+      "coxas": { "value": 29.0, "tag": "Atlética", "range": "20.5–53.6", "emoji": "🦵" },
+      "peitos": { "value": 22.0, "tag": "Cereja", "range": "10.3–33.5", "emoji": "🍒", "appliesTo": ["Mulher", "Futanari"] },
+      "buceta": { "value": 3.8, "tag": "Regular", "range": "1.8–4.9", "emoji": "💗", "appliesTo": ["Mulher"] },
+      "cu": { "value": 8.5, "tag": "Regular", "range": "4.2–11.9", "emoji": "🍩" },
+      "tamanhoRola": { "value": null, "tag": "", "range": "", "emoji": "🍆", "appliesTo": ["Futanari", "Femboy"] },
+      "grossuraRola": { "value": null, "tag": "", "range": "", "emoji": "📏", "appliesTo": ["Futanari", "Femboy"] },
+      "bolas": { "value": null, "tag": "", "range": "", "emoji": "🥚", "appliesTo": ["Futanari", "Femboy"] }
+    },
+    "experienciaSexual": {
+      "rolasExperimentadas": 280,
+      "contagemSexo": 520
+    },
+    "preferencias": {
+      "fetiche": ["Anal bruto", "Gangbang", "Porra na boca"],
+      "posicaoFavorita": "De quatro",
+      "roupaFavorita": "Lingerie preta",
+      "ocupacao": "Pornôstar"
+    },
+    "descricaoCompleta": "Gina Valentina é a vadia brasileira mais safada do pornô, uma puta latina insaciável que virou lenda chupando rola grossa até o talo e abrindo o cu pra ser destruído por dezenas de paus sem parar. Com seu corpo moreno perfeito, peitos cereja durinhos, bunda pêssego empinada e buceta regular que pinga sem parar, ela adora ser tratada como um buraco vivo: toma anal bruto sem piedade, gangbang com vários machos ao mesmo tempo, engole porra quente na garganta e na cara até ficar encharcada. Totalmente viciada em creampie, bukkake, deepthroat e ser filmada gozando como uma cachorra no cio, Gina vive só pra dar o cu, engolir leite e implorar por mais rola 24 horas por dia.",
+    "midia": {
+      "imagens": ["./src/Midia/Imagem/GV-1.png", "./src/Midia/Imagem/GV-2.png", "./src/Midia/Imagem/GV-3.png", "./src/Midia/Imagem/GV-4.png", "./src/Midia/Imagem/GV-5.png"],
+      "gifs": ["./src/Midia/Gif/GV-1.gif", "./src/Midia/Gif/GV-2.gif", "./src/Midia/Gif/GV-3.gif", "./src/Midia/Gif/GV-4.gif"]
+      "contagens": {
+        "imagens": 5,
+        "gifs": 4
+      }
+    }
   }
+
+
+
+  
 ]
