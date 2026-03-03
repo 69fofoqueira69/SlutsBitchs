@@ -1,5 +1,6 @@
 import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
 import { buscarMidiaInicialAleatoria } from './RotacaoMidia.js';
+import { renderizarGaleria, configurarGaleria } from './Galeria.js';
 
 const ROTULOS_MEDIDAS = {
   bunda: 'Bunda',
@@ -20,6 +21,7 @@ function renderizarItemMedida(medida) {
       <strong>${medida.value} cm · ${medida.tag || '—'}</strong>
     </li>
   `;
+
 }
 
 export function renderizarDetalhes(container, perfil) {
@@ -84,14 +86,10 @@ export function renderizarDetalhes(container, perfil) {
           </ul>
         </section>
 
-        <section>
-          <h2>Foto principal</h2>
-          <p>Para trocar a foto principal, altere o campo <strong>midia.fotoPrincipal</strong> no arquivo <strong>src/Dados/Perfils.json</strong>.</p>
-          <ul class="lista-detalhes">
-            <li><span>Caminho atual</span><strong>${midia?.fotoPrincipal || 'Não definido'}</strong></li>
-          </ul>
-        </section>
+        ${renderizarGaleria(midia)}
       </div>
     </article>
   `;
+
+  configurarGaleria(container);
 }

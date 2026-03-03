@@ -282,3 +282,149 @@ input:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+.media-grid {
+  border-color: var(--verde);
+  color: var(--rosa);
+}
+
+.media-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: inherit;
+}
+
+.media-counts p {
+  margin: 0;
+}
+
+.profile-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.media-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 2px solid;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--painel-suave);
+  padding: 0;
+  cursor: pointer;
+}
+
+.profile-media-grid .media-thumb:nth-child(odd) {
+  border-color: var(--rosa);
+  color: var(--verde);
+}
+
+.profile-media-grid .media-thumb:nth-child(even) {
+  border-color: var(--verde);
+  color: var(--rosa);
+}
+
+.media-thumb img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.media-thumb:hover,
+.media-thumb:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
+.media-badge {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: color-mix(in srgb, var(--rosa-escuro) 55%, var(--verde-escuro) 45%);
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.72rem;
+}
+
+.media-note {
+  margin: 0.75rem 0 0;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+.gallery-modal {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  display: none;
+}
+
+.gallery-modal.is-open {
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, black 58%, var(--rosa-escuro) 42%);
+  position: fixed;
+  inset: 0;
+}
+
+.gallery-dialog {
+  position: relative;
+  width: min(92vw, 900px);
+  background: var(--painel);
+  border: 2px solid var(--rosa);
+  color: var(--verde);
+  border-radius: 14px;
+  padding: 1rem 3.2rem;
+}
+
+.gallery-viewer-media {
+  width: 100%;
+  max-height: 75vh;
+  border-radius: 10px;
+  object-fit: contain;
+  background: color-mix(in srgb, black 64%, var(--verde-escuro) 36%);
+}
+
+.gallery-control,
+.gallery-close {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px solid var(--rosa);
+  color: var(--verde);
+  background: color-mix(in srgb, var(--painel) 90%, black 10%);
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#gallery-prev { left: 0.6rem; }
+#gallery-next { right: 0.6rem; }
+
+.gallery-close {
+  top: 0.8rem;
+  right: 0.8rem;
+  transform: none;
+}
+
+.gallery-counter {
+  text-align: center;
+  margin: 0.75rem 0 0;
+  color: inherit;
+}
+
+@media (max-width: 900px) {
+  .profile-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

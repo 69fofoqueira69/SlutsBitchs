@@ -88,6 +88,18 @@
         "./src/Midia/Imagem/MK-2.png",
         "./src/Midia/Imagem/MK-3.png"
       ],
+      "gifs": [
+        "./src/Midia/Gif/MK-1.gif",
+        "./src/Midia/Gif/MK-2.gif",
+        "./src/Midia/Gif/MK-3.gif",
+        "./src/Midia/Gif/MK-4.gif",
+        "./src/Midia/Gif/MK-5.gif",
+        "./src/Midia/Gif/MK-6.gif",
+        "./src/Midia/Gif/MK-7.gif",
+        "./src/Midia/Gif/MK-8.gif",
+        "./src/Midia/Gif/MK-9.gif",
+        "./src/Midia/Gif/MK-10.gif"
+      ],
       "fotoPrincipal": "./src/Midia/Imagem/MK-1.png"
     }
   },
@@ -182,6 +194,12 @@
         "./src/Midia/Imagem/GV-4.png",
         "./src/Midia/Imagem/GV-5.png"
       ],
+      "gifs": [
+        "./src/Midia/Gif/GV-1.gif",
+        "./src/Midia/Gif/GV-2.gif",
+        "./src/Midia/Gif/GV-3.gif",
+        "./src/Midia/Gif/GV-4.gif"
+      ],
       "fotoPrincipal": "./src/Midia/Imagem/GV-1.png"
     }
   },
@@ -275,6 +293,23 @@
         "./src/Midia/Imagem/VM-3.png",
         "./src/Midia/Imagem/VM-4.png",
         "./src/Midia/Imagem/VM-5.png"
+      ],
+      "gifs": [
+        "./src/Midia/Gif/VM-1.gif",
+        "./src/Midia/Gif/VM-2.gif",
+        "./src/Midia/Gif/VM-3.gif",
+        "./src/Midia/Gif/VM-4.gif",
+        "./src/Midia/Gif/VM-5.gif",
+        "./src/Midia/Gif/VM-6.gif",
+        "./src/Midia/Gif/VM-7.gif",
+        "./src/Midia/Gif/VM-8.gif",
+        "./src/Midia/Gif/VM-9.gif",
+        "./src/Midia/Gif/VM-10.gif",
+        "./src/Midia/Gif/VM-11.gif",
+        "./src/Midia/Gif/VM-12.gif",
+        "./src/Midia/Gif/VM-13.gif",
+        "./src/Midia/Gif/VM-14.gif",
+        "./src/Midia/Gif/VM-15.gif"
       ],
       "fotoPrincipal": "./src/Midia/Imagem/VM-1.png"
     }
