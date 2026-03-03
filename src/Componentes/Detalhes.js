@@ -1,6 +1,6 @@
 import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
-import { renderizarGaleria, configurarGaleria } from './Galeria.js';
 import { buscarMidiaInicialAleatoria } from './RotacaoMidia.js';
+import { renderizarGaleria, configurarGaleria } from './Galeria.js';
 
 const ROTULOS_MEDIDAS = {
   bunda: 'Bunda',
@@ -21,6 +21,7 @@ function renderizarItemMedida(medida) {
       <strong>${medida.value} cm · ${medida.tag || '—'}</strong>
     </li>
   `;
+
 }
 
 export function renderizarDetalhes(container, perfil) {
