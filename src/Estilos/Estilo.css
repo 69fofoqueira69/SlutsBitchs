@@ -144,64 +144,34 @@ input:focus-visible {
 }
 
 /* Regra solicitada:
-   - Se borda for rosa: texto ímpar verde, par rosa.
-   - Se borda for verde: texto ímpar rosa, par verde. */
+   - Se borda for rosa: texto verde.
+   - Se borda for verde: texto rosa. */
 
-/* Containers com borda rosa */
+/* Containers com borda rosa -> texto verde */
 .bloco-pesquisa,
 .perfis-grid .link-card:nth-child(odd) .card,
 .cards-grid .card-link:nth-child(odd) .card,
 .perfil section:nth-child(odd),
 .tinder-profile section:nth-child(odd) {
-  --text-odd: var(--accent-secondary);
-  --text-even: var(--accent);
+  --text-invertido-borda: var(--accent-secondary);
 }
 
-/* Containers com borda verde */
+/* Containers com borda verde -> texto rosa */
 .bloco-perfis,
 .perfis-grid .link-card:nth-child(even) .card,
 .cards-grid .card-link:nth-child(even) .card,
 .perfil section:nth-child(even),
 .tinder-profile section:nth-child(even) {
-  --text-odd: var(--accent);
-  --text-even: var(--accent-secondary);
+  --text-invertido-borda: var(--accent);
 }
 
-/* Aplica alternância de texto dentro das bordas */
-.bloco-pesquisa > :nth-child(odd),
-.bloco-perfis > :nth-child(odd),
-.card-body > :nth-child(odd),
-.corpo-card > :nth-child(odd),
-.sobreposicao-perfil > :nth-child(odd),
-.tinder-overlay > :nth-child(odd),
-.contagens-midias > :nth-child(odd),
-.media-counts > :nth-child(odd),
-.perfil section > :nth-child(odd),
-.tinder-profile section > :nth-child(odd) {
-  color: var(--text-odd, var(--accent-secondary));
-}
-
-.bloco-pesquisa > :nth-child(even),
-.bloco-perfis > :nth-child(even),
-.card-body > :nth-child(even),
-.corpo-card > :nth-child(even),
-.sobreposicao-perfil > :nth-child(even),
-.tinder-overlay > :nth-child(even),
-.contagens-midias > :nth-child(even),
-.media-counts > :nth-child(even),
-.perfil section > :nth-child(even),
-.tinder-profile section > :nth-child(even) {
-  color: var(--text-even, var(--accent));
-}
-
-/* Itens de lista seguem a mesma alternância da própria borda */
-.lista-detalhes li:nth-child(odd),
-.detail-list li:nth-child(odd) {
-  color: var(--accent-secondary);
-}
-.lista-detalhes li:nth-child(even),
-.detail-list li:nth-child(even) {
-  color: var(--accent);
+/* Aplica texto invertido da borda para todo conteúdo interno da box */
+.bloco-pesquisa :is(h1, h2, h3, h4, h5, h6, p, span, li, a, strong, em, small, label),
+.bloco-perfis :is(h1, h2, h3, h4, h5, h6, p, span, li, a, strong, em, small, label),
+.card :is(h1, h2, h3, h4, h5, h6, p, span, li, a, strong, em, small, label),
+.perfil section :is(h1, h2, h3, h4, h5, h6, p, span, li, a, strong, em, small, label),
+.tinder-profile section :is(h1, h2, h3, h4, h5, h6, p, span, li, a, strong, em, small, label) {
+  color: var(--text-invertido-borda, var(--accent-secondary));
 }
 
 /* Texto fora de containers com borda: verde */
