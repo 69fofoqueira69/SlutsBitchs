@@ -12,7 +12,7 @@ const estado = {
 };
 
 function filtrarPerfils() {
-  const termo = estado.termoPesquisa.trim().toLowerCase();
+  const termo = estado.termoPesquisa;
   const filtrados = estado.perfils.filter((perfil) => perfil.textoPesquisavel.includes(termo));
 
   renderizarCards(raizCards, filtrados);
@@ -33,7 +33,6 @@ async function iniciar() {
       estado.termoPesquisa = termo;
       filtrarPerfils();
     });
-
 
     await carregarPerfis();
   } catch (erro) {

@@ -21,10 +21,6 @@ function embaralhar(array) {
   return copia;
 }
 
-function selecionarDestaques(itens, limite = 6) {
-  return itens.slice(0, limite);
-}
-
 function renderizarItemVisualizador(item) {
   return `<img class="gallery-viewer-media" src="${item.src}" alt="Mídia" loading="lazy">`;
 }
@@ -41,7 +37,7 @@ function renderizarMiniatura(item, indice) {
 
 export function renderizarGaleria(midia) {
   const itens = embaralhar(itensMidia(midia));
-  const destaques = selecionarDestaques(itens);
+  const destaques = itens.slice(0, 6);
   const totalMidias = itens.length;
   const itensCodificados = encodeURIComponent(JSON.stringify(itens));
 
