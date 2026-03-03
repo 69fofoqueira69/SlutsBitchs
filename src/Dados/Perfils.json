@@ -8,48 +8,60 @@
       "idade": {
         "value": 33,
         "tag": "Vagabunda",
-        "range": "25-34",
+        "range": "25–34",
         "emoji": "🔥"
       }
     },
-    "descricaoCurta": "Libanesa ex-pornstar com peitos melancia e bunda gigante.",
+    "descricaoCurta": "Libanesa nascida no pornô que virou lenda ao gravar com véu e engolir rola até o fundo.",
     "detalhesFisicosBasicos": {
-      "altura": "157cm",
-      "peso": "55kg",
+      "altura": "157 cm",
+      "peso": "55 kg",
       "especie": "Humana",
       "corCabelo": "Preto",
-      "estiloCabelo": "Longo ondulado",
-      "olhos": "Castanhos",
-      "pele": "Morena"
+      "estiloCabelo": "Longo liso",
+      "olhos": "Castanhos escuros",
+      "pele": "Morena clara"
     },
     "medidas": {
-      "bunda": { "value": 150, "tag": "Melancia", "range": "97.6–270", "emoji": "🍑" },
-      "cintura": { "value": 20, "tag": "Modelo", "range": "9.8–30", "emoji": "⏳" },
-      "coxas": { "value": 70, "tag": "Larga", "range": "53.7–148", "emoji": "🦵" },
-      "peitos": { "value": 160, "tag": "Melancia", "range": "87.6–242", "emoji": "🍒", "appliesTo": ["Mulher", "Futanari"] },
-      "buceta": { "value": 22, "tag": "Arrombada", "range": "13.3–36.2", "emoji": "💗", "appliesTo": ["Mulher"] },
-      "cu": { "value": 45, "tag": "Arrombado", "range": "33–87", "emoji": "🍩" },
-      "tamanhoRola": { "value": null, "tag": "", "range": "", "emoji": "🍆", "appliesTo": ["Futanari", "Femboy"] },
-      "grossuraRola": { "value": null, "tag": "", "range": "", "emoji": "📏", "appliesTo": ["Futanari", "Femboy"] },
-      "bolas": { "value": null, "tag": "", "range": "", "emoji": "🥚", "appliesTo": ["Futanari", "Femboy"] }
+      "bunda": { "value": 42.0, "tag": "Melão", "range": "37.6–97.5", "emoji": "🍑" },
+      "cintura": { "value": 26.0, "tag": "Modelo", "range": "9.8–30", "emoji": "⏳" },
+      "coxas": { "value": 32.0, "tag": "Atlética", "range": "20.5–53.6", "emoji": "🦵" },
+      "peitos": { "value": 38.0, "tag": "Melão", "range": "33.6–87.5", "emoji": "🍒", "appliesTo": ["Mulher", "Futanari"] },
+      "buceta": { "value": 6.0, "tag": "Larga", "range": "5–13.2", "emoji": "💗", "appliesTo": ["Mulher"] },
+      "cu": { "value": 10.0, "tag": "Regular", "range": "4.2–11.9", "emoji": "🍩" }
     },
     "experienciaSexual": {
-      "rolasExperimentadas": 250,
-      "contagemSexo": 500
+      "rolasExperimentadas": 150,
+      "contagemSexo": 300
     },
     "preferencias": {
-      "fetiche": ["Interracial", "Deepthroat", "Gangbang"],
-      "posicaoFavorita": "De quatro",
-      "roupaFavorita": "Hijab + fio dental rendado",
+      "fetiche": ["Garganta profunda", "Pornô com véu", "Sexo com gringos"],
+      "posicaoFavorita": "Missionário",
+      "roupaFavorita": "Véu árabe com lingerie",
       "ocupacao": "Atriz pornô"
     },
-    "descricaoCompleta": "Mia Khalifa engole rola até o fundo, leva porrada na buceta e cu arrombado, peitos balançando enquanto goza feito vadia insaciável.",
+    "descricaoCompleta": "Mia Khalifa nasceu no meio do pornô em Beirute, filha de produtores libaneses que filmavam cenas em casa desde que ela era bebê. Cresceu vendo rolas grossas e bucetas sendo fodidas, por isso aos 18 já gravava com véu na cabeça chupando até engasgar enquanto olhava pra câmera. Seu corpo moreno curvilíneo, peitos pesados e bunda empinada viraram marca registrada em cenas de sexo interracial onde ela gemia alto em árabe e deixava porra escorrer no véu. A vadia muçulmana que transformou o véu em símbolo de putaria total.",
     "midia": {
-      "imagens": ["./src/Midia/Imagem/MK-1.png", "./src/Midia/Imagem/MK-2.png", "./src/Midia/Imagem/MK-3.png"],
-      "gifs": ["./src/Midia/Gif/MK-1.gif", "./src/Midia/Gif/MK-2.gif", "./src/Midia/Gif/MK-3.gif", "./src/Midia/Gif/MK-4.gif", "./src/Midia/Gif/MK-5.gif", "./src/Midia/Gif/MK-6.gif", "./src/Midia/Gif/MK-7.gif", "./src/Midia/Gif/MK-8.gif", "./src/Midia/Gif/MK-9.gif","./src/Midia/Gif/MK-10.gif"],
+      "imagens": [
+        "./src/Midia/Imagem/MK-1.png",
+        "./src/Midia/Imagem/MK-2.png",
+        "./src/Midia/Imagem/MK-3.png"
+      ],
+      "gifs": [
+        "./src/Midia/Gif/MK-1.gif",
+        "./src/Midia/Gif/MK-2.gif",
+        "./src/Midia/Gif/MK-3.gif",
+        "./src/Midia/Gif/MK-4.gif",
+        "./src/Midia/Gif/MK-5.gif",
+        "./src/Midia/Gif/MK-6.gif",
+        "./src/Midia/Gif/MK-7.gif",
+        "./src/Midia/Gif/MK-8.gif",
+        "./src/Midia/Gif/MK-9.gif",
+        "./src/Midia/Gif/MK-10.gif"
+      ],
       "contagens": {
-        "imagens": 0,
-        "gifs": 0
+        "imagens": 3,
+        "gifs": 10
       }
     }
   },
@@ -62,45 +74,104 @@
       "idade": {
         "value": 29,
         "tag": "Vagabunda",
-        "range": "25-34",
+        "range": "25–34",
         "emoji": "🔥"
       }
     },
-    "descricaoCurta": "Brasileira petite com cu arrombado e squirting louca.",
+    "descricaoCurta": "Brasileirinha nascida no set que esguicha pra todo lado enquanto sorri e fala safadeza.",
     "detalhesFisicosBasicos": {
-      "altura": "157cm",
-      "peso": "48kg",
+      "altura": "157 cm",
+      "peso": "50 kg",
       "especie": "Humana",
-      "corCabelo": "Castanho",
-      "estiloCabelo": "Longo liso",
+      "corCabelo": "Preto",
+      "estiloCabelo": "Longo ondulado",
       "olhos": "Castanhos",
       "pele": "Morena"
     },
     "medidas": {
-      "bunda": { "value": 80, "tag": "Melão", "range": "37.6–97.5", "emoji": "🍑" },
-      "cintura": { "value": 22, "tag": "Modelo", "range": "9.8–30", "emoji": "⏳" },
-      "coxas": { "value": 45, "tag": "Atlética", "range": "20.5–53.6", "emoji": "🦵" },
-      "peitos": { "value": 25, "tag": "Cereja", "range": "10.3–33.5", "emoji": "🍒", "appliesTo": ["Mulher", "Futanari"] },
-      "buceta": { "value": 20, "tag": "Arrombada", "range": "13.3–36.2", "emoji": "💗", "appliesTo": ["Mulher"] },
-      "cu": { "value": 50, "tag": "Arrombado", "range": "33–87", "emoji": "🍩" },
-      "tamanhoRola": { "value": null, "tag": "", "range": "", "emoji": "🍆", "appliesTo": ["Futanari", "Femboy"] },
-      "grossuraRola": { "value": null, "tag": "", "range": "", "emoji": "📏", "appliesTo": ["Futanari", "Femboy"] },
-      "bolas": { "value": null, "tag": "", "range": "", "emoji": "🥚", "appliesTo": ["Futanari", "Femboy"] }
+      "bunda": { "value": 35.0, "tag": "Pêssego", "range": "11.3–37.5", "emoji": "🍑" },
+      "cintura": { "value": 24.0, "tag": "Modelo", "range": "9.8–30", "emoji": "⏳" },
+      "coxas": { "value": 28.0, "tag": "Atlética", "range": "20.5–53.6", "emoji": "🦵" },
+      "peitos": { "value": 28.0, "tag": "Cereja", "range": "10.3–33.5", "emoji": "🍒", "appliesTo": ["Mulher", "Futanari"] },
+      "buceta": { "value": 4.5, "tag": "Regular", "range": "1.8–4.9", "emoji": "💗", "appliesTo": ["Mulher"] },
+      "cu": { "value": 9.0, "tag": "Regular", "range": "4.2–11.9", "emoji": "🍩" }
     },
     "experienciaSexual": {
-      "rolasExperimentadas": 350,
-      "contagemSexo": 700
+      "rolasExperimentadas": 400,
+      "contagemSexo": 800
     },
     "preferencias": {
-      "fetiche": ["Anal", "Squirting", "Creampie"],
-      "posicaoFavorita": "Cavalgada reversa",
-      "roupaFavorita": "Fio dental transparente + meias 7/8",
+      "fetiche": ["Esguicho", "Sexo bruto", "Conversinha safada em português"],
+      "posicaoFavorita": "Cavalgada de costas",
+      "roupaFavorita": "Short jeans rasgado",
       "ocupacao": "Atriz pornô"
     },
-    "descricaoCompleta": "Gina Valentina quica forte até jorrar squirt, abre o cu pra rola grossa e pede creampie sem parar.",
+    "descricaoCompleta": "Gina Valentina nasceu literalmente dentro de um estúdio no Brasil, filha de uma atriz e um diretor que gravavam cenas ao vivo enquanto ela ainda era bebê. Cresceu brincando entre refletores e rolas, por isso aos 18 já chegava sorrindo e esguichando pra todo lado em cenas de sexo bruto. Seu corpo pequenino, peitinhos durinhos e bundinha redonda viraram sensação porque ela fala safadeza em português enquanto goza jorrando e pedindo tapa na cara. A brasileirinha safada que nasceu pra ser fodida sorrindo.",
     "midia": {
-      "imagens": ["./src/Midia/Imagem/GV-1.png", "./src/Midia/Imagem/GV-2.png", "./src/Midia/Imagem/GV-3.png", "./src/Midia/Imagem/GV-4.png", "./src/Midia/Imagem/GV-5.png"],
-      "gifs": ["./src/Midia/Gif/GV-1.gif", "./src/Midia/Gif/GV-2.gif", "./src/Midia/Gif/GV-3.gif", "./src/Midia/Gif/GV-4.gif"],
+      "imagens": [
+        "./src/Midia/Imagem/GV-1.png",
+        "./src/Midia/Imagem/GV-2.png",
+        "./src/Midia/Imagem/GV-3.png",
+        "./src/Midia/Imagem/GV-4.png",
+        "./src/Midia/Imagem/GV-5.png"
+      ],
+      "gifs": [
+        "./src/Midia/Gif/GV-1.gif",
+        "./src/Midia/Gif/GV-2.gif",
+        "./src/Midia/Gif/GV-3.gif",
+        "./src/Midia/Gif/GV-4.gif"
+      ],
+      "contagens": {
+        "imagens": 5,
+        "gifs": 4
+      }
+    }
+  },
+  {
+    "id": "VM",
+    "identidade": {
+      "nome": "Violet Myers",
+      "genero": "Mulher",
+      "universo": "Realidade",
+      "idade": {
+        "value": 29,
+        "tag": "Vagabunda",
+        "range": "25–34",
+        "emoji": "🔥"
+      }
+    },
+    "descricaoCurta": "Latina de curvas enormes nascida pra sufocar rola entre peitos gigantes.",
+    "detalhesFisicosBasicos": {
+      "altura": "160 cm",
+      "peso": "67 kg",
+      "especie": "Humana",
+      "corCabelo": "Preto",
+      "estiloCabelo": "Longo ondulado",
+      "olhos": "Castanhos",
+      "pele": "Morena"
+    },
+    "medidas": {
+      "bunda": { "value": 43.0, "tag": "Melão", "range": "37.6–97.5", "emoji": "🍑" },
+      "cintura": { "value": 28.0, "tag": "Modelo", "range": "9.8–30", "emoji": "⏳" },
+      "coxas": { "value": 42.0, "tag": "Atlética", "range": "20.5–53.6", "emoji": "🦵" },
+      "peitos": { "value": 95.0, "tag": "Melancia", "range": "87.6–242", "emoji": "🍒", "appliesTo": ["Mulher", "Futanari"] },
+      "buceta": { "value": 7.0, "tag": "Larga", "range": "5–13.2", "emoji": "💗", "appliesTo": ["Mulher"] },
+      "cu": { "value": 14.0, "tag": "Largo", "range": "12–32", "emoji": "🍩" }
+    },
+    "experienciaSexual": {
+      "rolasExperimentadas": 220,
+      "contagemSexo": 450
+    },
+    "preferencias": {
+      "fetiche": ["Foda nos peitos", "Adoração aos seios", "Estilo cachorrinho"],
+      "posicaoFavorita": "De quatro",
+      "roupaFavorita": "Top cropped bem apertado",
+      "ocupacao": "Atriz pornô"
+    },
+    "descricaoCompleta": "Violet Myers nasceu nos Estados Unidos dentro de uma família de produtores de conteúdo adulto, com a mãe gravando cenas de peitos enormes enquanto ela ainda mamava. Desde pequena viu peitos sendo adorados e rolas sendo esmagadas entre melancias, por isso aos 18 já usava os próprios peitos gigantes naturais como arma principal. Corpo cheio de curvas, cintura fina e bundão redondo fazem qualquer cena virar adoração: ela balança os peitos na cara do cara, sufoca rola entre eles até ele gozar no colo e ainda pede mais enquanto leva tapa na bunda em posição de quatro. A latina que nasceu pra ser o sonho molhado de quem ama peitos pesados e curvas que não cabem na tela.",
+    "midia": {
+      "imagens": ["./src/Midia/Imagem/VM-1.png"],
+      "gifs": ["./src/Midia/Gif/VM-1.gif"],
       "contagens": {
         "imagens": 0,
         "gifs": 0
