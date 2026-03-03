@@ -1,28 +1,30 @@
 :root {
   color-scheme: dark;
-  --bg: #071103;
-  --panel: #1a121a;
-  --panel-soft: #251b25;
-  --text: #ffe8fb;
-  --muted: #d8ffd2;
   --accent: #fc0fc0;
   --accent-secondary: #39ff14;
-  --border: #39ff14;
+  --bg: color-mix(in srgb, var(--accent) 55%, var(--accent-secondary) 45%);
+  --panel: color-mix(in srgb, var(--accent) 78%, var(--accent-secondary) 22%);
+  --panel-soft: color-mix(in srgb, var(--accent) 64%, var(--accent-secondary) 36%);
+  --text: var(--accent-secondary);
+  --muted: var(--accent);
+  --border: var(--accent-secondary);
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
-  background: radial-gradient(circle at top, #fc0fc0 0%, #2a0d2c 30%, var(--bg) 72%);
+  background: radial-gradient(circle at 15% 10%, var(--accent) 0%, transparent 42%),
+    radial-gradient(circle at 85% 0%, var(--accent-secondary) 0%, transparent 45%),
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 65%, var(--accent-secondary) 35%) 0%, var(--bg) 100%);
   color: var(--text);
 }
 .container { width: min(1120px, 92vw); margin: 0 auto; padding: 1.5rem 0 2.5rem; }
-h1 { margin-bottom: 0.25rem; color: var(--accent); }
+h1 { margin-bottom: 0.25rem; color: var(--accent); text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 70%, var(--accent-secondary) 30%); }
 
 .bloco-pesquisa,
 .bloco-perfis {
-  background: rgba(18, 18, 16, 0.7);
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 72%, transparent);
+  border: 2px solid var(--border);
   border-radius: 14px;
   padding: 1rem;
 }
@@ -59,7 +61,7 @@ h1 { margin-bottom: 0.25rem; color: var(--accent); }
 input {
   background: var(--panel);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 12px;
   padding: 0.75rem 0.9rem;
 }
@@ -77,7 +79,7 @@ input:focus-visible {
 .card-link { text-decoration: none; color: inherit; display: block; }
 .card {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 18px;
   overflow: hidden;
   height: 100%;
@@ -106,7 +108,7 @@ input:focus-visible {
   margin-bottom: 1rem;
   color: var(--text);
   text-decoration: none;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   padding: 0.45rem 0.8rem;
   border-radius: 10px;
   background: var(--panel);
@@ -135,7 +137,7 @@ input:focus-visible {
 }
 .perfil section {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 16px;
   padding: 1rem;
 }
@@ -144,7 +146,7 @@ input:focus-visible {
   min-height: 320px;
   border-radius: 22px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
 }
 .heroi-perfil img {
   width: 100%;
@@ -156,7 +158,7 @@ input:focus-visible {
   position: absolute;
   inset: auto 0 0 0;
   padding: 1.25rem;
-  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 65%);
+  background: linear-gradient(transparent 0%, color-mix(in srgb, var(--accent) 65%, var(--accent-secondary) 35%) 70%);
 }
 .lista-detalhes {
   list-style: none;
@@ -166,7 +168,7 @@ input:focus-visible {
   gap: .65rem;
 }
 .lista-detalhes li {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--panel-soft);
   border-radius: 10px;
   padding: .6rem .75rem;
@@ -186,7 +188,7 @@ input:focus-visible {
   height: 220px;
   object-fit: cover;
   border-radius: 12px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
 }
 .grade-midias h2 {
   margin-top: 0;
@@ -204,7 +206,7 @@ input:focus-visible {
   position: relative;
   display: block;
   width: 100%;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   background: var(--panel-soft);
@@ -225,8 +227,8 @@ input:focus-visible {
   position: absolute;
   right: .5rem;
   bottom: .5rem;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--accent) 55%, var(--accent-secondary) 45%);
+  border: 2px solid var(--border);
   border-radius: 999px;
   padding: .2rem .55rem;
   font-size: .72rem;
@@ -244,7 +246,7 @@ input:focus-visible {
 .modal-galeria.is-open {
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.78);
+  background: color-mix(in srgb, var(--accent) 60%, var(--accent-secondary) 40%);
   position: fixed;
   inset: 0;
 }
@@ -252,7 +254,7 @@ input:focus-visible {
   position: relative;
   width: min(92vw, 900px);
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 14px;
   padding: 1rem 3.2rem;
 }
@@ -267,16 +269,16 @@ input:focus-visible {
   max-height: 75vh;
   border-radius: 10px;
   object-fit: contain;
-  background: #050405;
+  background: color-mix(in srgb, var(--accent) 58%, var(--accent-secondary) 42%);
 }
 .controle-galeria,
 .fechar-galeria {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
-  background: rgba(13, 6, 16, 0.9);
+  background: color-mix(in srgb, var(--panel) 85%, var(--accent) 15%);
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 999px;
@@ -322,7 +324,7 @@ input:focus-visible {
 }
 .tinder-profile section {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 16px;
   padding: 1rem;
 }
@@ -331,7 +333,7 @@ input:focus-visible {
   min-height: 420px;
   border-radius: 22px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
 }
 .tinder-hero img {
   width: 100%;
@@ -343,7 +345,7 @@ input:focus-visible {
   position: absolute;
   inset: auto 0 0 0;
   padding: 1.25rem;
-  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 65%);
+  background: linear-gradient(transparent 0%, color-mix(in srgb, var(--accent) 65%, var(--accent-secondary) 35%) 70%);
 }
 .about-section {
   display: flex;
@@ -359,7 +361,7 @@ input:focus-visible {
   gap: .65rem;
 }
 .detail-list li {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--panel-soft);
   border-radius: 10px;
   padding: .6rem .75rem;
@@ -385,7 +387,7 @@ input:focus-visible {
   position: relative;
   display: block;
   width: 100%;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   background: var(--panel-soft);
@@ -406,8 +408,8 @@ input:focus-visible {
   position: absolute;
   right: .5rem;
   bottom: .5rem;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--accent) 55%, var(--accent-secondary) 45%);
+  border: 2px solid var(--border);
   border-radius: 999px;
   padding: .2rem .55rem;
   font-size: .72rem;
@@ -431,7 +433,7 @@ input:focus-visible {
 .gallery-modal.is-open {
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.78);
+  background: color-mix(in srgb, var(--accent) 60%, var(--accent-secondary) 40%);
   position: fixed;
   inset: 0;
 }
@@ -439,7 +441,7 @@ input:focus-visible {
   position: relative;
   width: min(92vw, 900px);
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 14px;
   padding: 1rem 3.2rem;
 }
@@ -448,16 +450,16 @@ input:focus-visible {
   max-height: 75vh;
   border-radius: 10px;
   object-fit: contain;
-  background: #050405;
+  background: color-mix(in srgb, var(--accent) 58%, var(--accent-secondary) 42%);
 }
 .gallery-control,
 .gallery-close {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
-  background: rgba(13, 6, 16, 0.9);
+  background: color-mix(in srgb, var(--panel) 85%, var(--accent) 15%);
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 999px;
@@ -497,7 +499,7 @@ input:focus-visible {
 }
 
 .botao-admin {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
   background: var(--panel);
   border-radius: 10px;
@@ -511,7 +513,7 @@ input:focus-visible {
 }
 
 .modal-admin {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 14px;
   background: var(--panel);
   color: var(--text);
@@ -540,7 +542,7 @@ input:focus-visible {
   resize: vertical;
   background: var(--panel-soft);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 10px;
   padding: 0.6rem;
 }
@@ -548,7 +550,7 @@ input:focus-visible {
 .grade-admin select {
   background: var(--panel-soft);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 10px;
   padding: 0.6rem;
 }
@@ -569,7 +571,7 @@ input:focus-visible {
 }
 
 .acoes-admin button {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--text);
   background: var(--panel-soft);
   border-radius: 10px;
