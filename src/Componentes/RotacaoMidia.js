@@ -35,34 +35,16 @@ export function serializarMidias(midia) {
   return encodeURIComponent(JSON.stringify(listaMidias(midia)));
 }
 
-export function configurarRotacaoMidia(container, seletorImagem, intervaloMs = 2500) {
-  const timersAnteriores = container.__rotacaoMidiaTimers || [];
-  timersAnteriores.forEach((timer) => clearInterval(timer));
+export function configurarRotacaoMidia(container, seletorImagem) {
+  if (!container) return;
 
-  const timers = [];
-
-  container.querySelectorAll(seletorImagem).forEach((imagem) => {
+  const imagens = container.querySelectorAll(seletorImagem);
+  imagens.forEach((imagem) => {
     const lista = JSON.parse(decodeURIComponent(imagem.dataset.midias || '[]'));
-
     if (!lista.length) return;
 
-    const estado = {
-      indiceAtual: indiceAleatorio(lista.length),
-      tentativas: 0
-    };
-
-    imagem.src = lista[estado.indiceAtual];
-    configurarFallbackImagem(imagem, lista, estado);
-
-    if (lista.length <= 1) return;
-
-    const timer = setInterval(() => {
-      estado.indiceAtual = (estado.indiceAtual + 1) % lista.length;
-      imagem.src = lista[estado.indiceAtual];
-    }, intervaloMs);
-
-    timers.push(timer);
+    if (!imagem.src) {
+      imagem.src = lista[indiceAleatorio(lista.length)];
+    }
   });
-
-  container.__rotacaoMidiaTimers = timers;
 }

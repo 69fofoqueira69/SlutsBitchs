@@ -144,8 +144,8 @@ input:focus-visible {
 }
 
 /* Regra solicitada:
-   - Se borda for rosa: texto ímpar rosa, par verde.
-   - Se borda for verde: texto ímpar verde, par rosa. */
+   - Se borda for rosa: texto ímpar verde, par rosa.
+   - Se borda for verde: texto ímpar rosa, par verde. */
 
 /* Containers com borda rosa */
 .bloco-pesquisa,
@@ -153,8 +153,8 @@ input:focus-visible {
 .cards-grid .card-link:nth-child(odd) .card,
 .perfil section:nth-child(odd),
 .tinder-profile section:nth-child(odd) {
-  --text-odd: var(--accent);
-  --text-even: var(--accent-secondary);
+  --text-odd: var(--accent-secondary);
+  --text-even: var(--accent);
 }
 
 /* Containers com borda verde */
@@ -163,8 +163,8 @@ input:focus-visible {
 .cards-grid .card-link:nth-child(even) .card,
 .perfil section:nth-child(even),
 .tinder-profile section:nth-child(even) {
-  --text-odd: var(--accent-secondary);
-  --text-even: var(--accent);
+  --text-odd: var(--accent);
+  --text-even: var(--accent-secondary);
 }
 
 /* Aplica alternância de texto dentro das bordas */
@@ -197,11 +197,11 @@ input:focus-visible {
 /* Itens de lista seguem a mesma alternância da própria borda */
 .lista-detalhes li:nth-child(odd),
 .detail-list li:nth-child(odd) {
-  color: var(--accent);
+  color: var(--accent-secondary);
 }
 .lista-detalhes li:nth-child(even),
 .detail-list li:nth-child(even) {
-  color: var(--accent-secondary);
+  color: var(--accent);
 }
 
 /* Texto fora de containers com borda: verde */
