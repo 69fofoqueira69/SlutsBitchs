@@ -99,6 +99,18 @@ export function configurarGaleria(container) {
   function renderizarAtual() {
     viewer.innerHTML = renderizarItemVisualizador(itens[indiceAtual]);
     counter.textContent = `${indiceAtual + 1} / ${itens.length}`;
+
+    const imagemAtual = viewer.querySelector('.gallery-viewer-media');
+    if (!imagemAtual) return;
+
+    imagemAtual.addEventListener('error', () => {
+      if (itens.length <= 1) {
+        viewer.innerHTML = '<p class="empty-state">Falha ao carregar mídia.</p>';
+        return;
+      }
+
+      proximo();
+    }, { once: true });
   }
 
   function abrirModal(indice = 0) {
