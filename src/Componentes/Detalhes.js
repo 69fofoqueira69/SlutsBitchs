@@ -1,5 +1,4 @@
 import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
-import { renderizarGaleria, configurarGaleria } from './Galeria.js';
 import { buscarMidiaInicialAleatoria } from './RotacaoMidia.js';
 
 const ROTULOS_MEDIDAS = {
@@ -85,10 +84,14 @@ export function renderizarDetalhes(container, perfil) {
           </ul>
         </section>
 
-        ${renderizarGaleria(midia)}
+        <section>
+          <h2>Foto principal</h2>
+          <p>Para trocar a foto principal, altere o campo <strong>midia.fotoPrincipal</strong> no arquivo <strong>src/Dados/Perfils.json</strong>.</p>
+          <ul class="lista-detalhes">
+            <li><span>Caminho atual</span><strong>${midia?.fotoPrincipal || 'Não definido'}</strong></li>
+          </ul>
+        </section>
       </div>
     </article>
   `;
-
-  configurarGaleria(container);
 }
