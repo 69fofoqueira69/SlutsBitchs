@@ -62,7 +62,8 @@
       "contagens": {
         "imagens": 3,
         "gifs": 10
-      }
+      },
+      "fotoPrincipal": "./src/Midia/Imagem/MK-1.png"
     }
   },
   {
@@ -124,7 +125,8 @@
       "contagens": {
         "imagens": 5,
         "gifs": 4
-      }
+      },
+      "fotoPrincipal": "./src/Midia/Imagem/GV-1.png"
     }
   },
   {
@@ -197,7 +199,8 @@
       "contagens": {
         "imagens": 5,
         "gifs": 15
-      }
+      },
+      "fotoPrincipal": "./src/Midia/Imagem/VM-1.png"
     }
   }
 ]

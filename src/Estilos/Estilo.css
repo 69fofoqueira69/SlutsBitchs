@@ -165,6 +165,21 @@ input:focus-visible {
   --text-invertido-borda: var(--accent);
 }
 
+/* Em boxes mais internas, a cor segue a borda mais interna */
+.lista-detalhes li:nth-child(odd),
+.detail-list li:nth-child(odd),
+.grade-midias-perfil .miniatura-midia:nth-child(odd),
+.profile-media-grid .media-thumb:nth-child(odd) {
+  --text-invertido-borda: var(--accent-secondary);
+}
+
+.lista-detalhes li:nth-child(even),
+.detail-list li:nth-child(even),
+.grade-midias-perfil .miniatura-midia:nth-child(even),
+.profile-media-grid .media-thumb:nth-child(even) {
+  --text-invertido-borda: var(--accent);
+}
+
 /* Aplica texto invertido da borda para todo conteúdo interno da box */
 .bloco-pesquisa :is(h1, h2, h3, h4, h5, h6, p, span, li, a, strong, em, small, label),
 .bloco-perfis :is(h1, h2, h3, h4, h5, h6, p, span, li, a, strong, em, small, label),

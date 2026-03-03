@@ -1,4 +1,4 @@
-import { buscarMidiaInicialAleatoria, serializarMidias, configurarRotacaoMidia } from './RotacaoMidia.js';
+import { buscarMidiaInicialAleatoria } from './RotacaoMidia.js';
 
 export function renderizarCards(container, perfils) {
   if (!perfils.length) {
@@ -11,12 +11,11 @@ export function renderizarCards(container, perfils) {
       ${perfils
         .map((perfil) => {
           const capa = buscarMidiaInicialAleatoria(perfil.midia);
-          const midiasSerializadas = serializarMidias(perfil.midia);
 
           return `
             <a href="./Perfil.html?id=${perfil.id}" class="card-link" aria-label="Abrir perfil de ${perfil.identidade.nome}">
               <article class="card">
-                <img class="card-media-rotativa" src="${capa}" data-midias="${midiasSerializadas}" alt="${perfil.identidade.nome}" loading="lazy">
+                <img class="card-media-principal" src="${capa}" alt="${perfil.identidade.nome}" loading="lazy">
                 <div class="card-body">
                   <h3>${perfil.identidade.nome}</h3>
                   <p class="subtitle">${perfil.descricaoCurta}</p>
@@ -29,5 +28,4 @@ export function renderizarCards(container, perfils) {
     </div>
   `;
 
-  configurarRotacaoMidia(container, '.card-media-rotativa', 2200);
 }
