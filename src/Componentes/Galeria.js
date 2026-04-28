@@ -1,11 +1,9 @@
-function itensMidia(midia) {
-  const formatar = (tipo, src) => ({ tipo, src });
-  const valido = (src) => typeof src === 'string' && src.trim() && !src.trim().endsWith('/');
+function formatarItem(tipo, src) {
+  return { tipo, src };
+}
 
-  const imagens = (midia.imagens || []).filter(valido).map((src) => formatar('imagem', src));
-  const gifs = (midia.gifs || []).filter(valido).map((src) => formatar('gif', src));
-
-  return [...imagens, ...gifs];
+function srcValido(src) {
+  return typeof src === 'string' && src.trim() && !src.trim().endsWith('/');
 }
 
 function embaralhar(array) {
@@ -21,145 +19,83 @@ function embaralhar(array) {
   return copia;
 }
 
-function renderizarItemVisualizador(item) {
-  return `<img class="gallery-viewer-media" src="${item.src}" alt="Mídia" loading="lazy">`;
+export function listarMidias(midia, comEmbaralhamento = true) {
+  const imagens = (midia?.imagens || []).filter(srcValido).map((src) => formatarItem('imagem', src));
+  const gifs = (midia?.gifs || []).filter(srcValido).map((src) => formatarItem('gif', src));
+  const itens = [...imagens, ...gifs];
+
+  return comEmbaralhamento ? embaralhar(itens) : itens;
 }
 
-function renderizarMiniatura(item, indice) {
+function miniatura(item, indice) {
   const emblema = item.tipo === 'gif' ? '<span class="media-badge">GIF</span>' : '';
   return `
-    <button class="media-thumb" data-index="${indice}" data-src="${item.src}" data-tipo="${item.tipo}" aria-label="Abrir mídia ${indice + 1}">
+    <button class="media-thumb media-thumb-galeria" data-index="${indice}" aria-label="Abrir mídia ${indice + 1}">
       <img src="${item.src}" alt="Miniatura ${indice + 1}" loading="lazy">
       ${emblema}
     </button>
   `;
 }
 
-export function renderizarGaleria(midia) {
-  const itens = embaralhar(itensMidia(midia));
-  const destaques = itens.slice(0, 6);
-  const totalMidias = itens.length;
-  const itensCodificados = encodeURIComponent(JSON.stringify(itens));
-
-  if (!itens.length) {
-    return '<p class="empty-state">Nenhuma mídia cadastrada.</p>';
+export function renderizarPaginaGaleria(container, perfil) {
+  if (!perfil) {
+    container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
+    return;
   }
 
-  return `
-    <section class="media-grid">
-      <h2>Mídia</h2>
-      <div class="media-counts">
-        <p>Total de mídias: ${totalMidias}</p>
+  const itens = listarMidias(perfil.midia, false);
+
+  if (!itens.length) {
+    container.innerHTML = `
+      <a href="./Perfil.html?id=${perfil.id}" class="link">← Voltar para perfil</a>
+      <p class="empty-state">Nenhuma mídia cadastrada.</p>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <article class="pagina-galeria">
+      <div class="acoes-perfil-topo">
+        <a href="./Perfil.html?id=${perfil.id}" class="link">← Voltar</a>
       </div>
 
-      <div class="profile-media-grid" id="gallery-thumbs">
-        ${destaques.map((item, indice) => renderizarMiniatura(item, indice)).join('')}
+      <div class="layout-galeria-jogo">
+        <section class="painel-thumbs-galeria">
+          <h1>Galeria de ${perfil.identidade.nome}</h1>
+          <div class="profile-media-grid profile-media-grid-galeria" id="gallery-thumbs-page">
+            ${itens.map((item, indice) => miniatura(item, indice)).join('')}
+          </div>
+        </section>
+
+        <section class="destaque-galeria" id="gallery-highlight">
+          <img class="gallery-viewer-media" src="${itens[0].src}" alt="Mídia em destaque">
+          <p class="gallery-counter" id="gallery-counter-page">1 / ${itens.length}</p>
+        </section>
       </div>
-
-      <div id="gallery-data" data-items="${itensCodificados}" hidden></div>
-
-      ${itens.length > destaques.length ? '<p class="media-note">Mostrando algumas mídias. Abra qualquer item para navegar por todas.</p>' : ''}
-
-      <dialog id="gallery-modal" class="gallery-modal" aria-hidden="true">
-        <div class="gallery-dialog">
-          <button id="gallery-prev" class="gallery-control" aria-label="Anterior">←</button>
-          <div id="gallery-viewer"></div>
-          <button id="gallery-next" class="gallery-control" aria-label="Próximo">→</button>
-          <button id="gallery-close" class="gallery-close" aria-label="Fechar">×</button>
-          <p id="gallery-counter" class="gallery-counter"></p>
-        </div>
-      </dialog>
-    </section>
+    </article>
   `;
 }
 
-export function configurarGaleria(container) {
-  const thumbs = [...container.querySelectorAll('.media-thumb')];
-  const dadosGaleria = container.querySelector('#gallery-data');
-  const itens = dadosGaleria
-    ? JSON.parse(decodeURIComponent(dadosGaleria.dataset.items || '[]'))
-    : thumbs.map((thumb) => ({
-      src: thumb.dataset.src,
-      tipo: thumb.dataset.tipo
-    }));
+export function configurarPaginaGaleria(container) {
+  const thumbs = [...container.querySelectorAll('.media-thumb-galeria')];
+  const destaque = container.querySelector('#gallery-highlight .gallery-viewer-media');
+  const contador = container.querySelector('#gallery-counter-page');
 
-  if (!itens.length) return;
+  if (!thumbs.length || !destaque || !contador) return;
 
-  let indiceAtual = 0;
-  let toqueInicialX = 0;
+  const total = thumbs.length;
 
-  const modal = container.querySelector('#gallery-modal');
-  const viewer = container.querySelector('#gallery-viewer');
-  const counter = container.querySelector('#gallery-counter');
-
-  function renderizarAtual() {
-    viewer.innerHTML = renderizarItemVisualizador(itens[indiceAtual]);
-    counter.textContent = `${indiceAtual + 1} / ${itens.length}`;
-
-    const imagemAtual = viewer.querySelector('.gallery-viewer-media');
-    if (!imagemAtual) return;
-
-    imagemAtual.addEventListener('error', () => {
-      if (itens.length <= 1) {
-        viewer.innerHTML = '<p class="empty-state">Falha ao carregar mídia.</p>';
-        return;
-      }
-
-      proximo();
-    }, { once: true });
-  }
-
-  function abrirModal(indice = 0) {
-    indiceAtual = indice;
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    renderizarAtual();
-  }
-
-  function fecharModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-
-  function proximo() {
-    indiceAtual = (indiceAtual + 1) % itens.length;
-    renderizarAtual();
-  }
-
-  function anterior() {
-    indiceAtual = (indiceAtual - 1 + itens.length) % itens.length;
-    renderizarAtual();
-  }
-
-  container.querySelectorAll('.media-thumb').forEach((thumb) => {
+  thumbs.forEach((thumb, indice) => {
     thumb.addEventListener('click', () => {
-      abrirModal(Number(thumb.dataset.index));
+      const imagem = thumb.querySelector('img');
+      if (!imagem?.src) return;
+
+      destaque.src = imagem.src;
+      contador.textContent = `${indice + 1} / ${total}`;
+      thumbs.forEach((item) => item.classList.remove('is-active'));
+      thumb.classList.add('is-active');
     });
   });
 
-  container.querySelector('#gallery-close').addEventListener('click', fecharModal);
-  container.querySelector('#gallery-next').addEventListener('click', proximo);
-  container.querySelector('#gallery-prev').addEventListener('click', anterior);
-
-  document.addEventListener('keydown', (event) => {
-    if (!modal.classList.contains('is-open')) return;
-    if (event.key === 'Escape') fecharModal();
-    if (event.key === 'ArrowRight') proximo();
-    if (event.key === 'ArrowLeft') anterior();
-  });
-
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) fecharModal();
-  });
-
-  modal.addEventListener('touchstart', (event) => {
-    toqueInicialX = event.changedTouches[0].clientX;
-  });
-
-  modal.addEventListener('touchend', (event) => {
-    const delta = event.changedTouches[0].clientX - toqueInicialX;
-    if (Math.abs(delta) < 40) return;
-    if (delta < 0) proximo();
-    else anterior();
-  });
+  thumbs[0].classList.add('is-active');
 }
