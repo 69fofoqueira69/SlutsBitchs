@@ -1,49 +1,61 @@
 import { buscarFotoPerfil } from './RotacaoMidia.js';
 
+function obterTituloPerfil(perfil) {
+  return perfil?.preferencias?.ocupacao || perfil?.identidade?.idade?.tag || 'Sem título';
+}
+
 export function renderizarDetalhes(container, perfil) {
   if (!perfil) {
     container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
     return;
   }
 
-  const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
+  const { identidade, preferencias, detalhesFisicosBasicos, midia } = perfil;
   const capa = buscarFotoPerfil(midia);
+  const imagemFundo = midia?.fotoMenu || capa;
+  const titulo = obterTituloPerfil(perfil);
 
   container.innerHTML = `
-    <article class="perfil perfil-modelo-jogo">
-      <div class="acoes-perfil-topo">
-        <a href="./index.html" class="link">← Voltar</a>
-        <a href="./Galeria.html?id=${perfil.id}" class="link">Ver galeria →</a>
-      </div>
+    <article class="perfil-layout" style="--perfil-bg: url('${imagemFundo}')">
+      <div class="background"></div>
 
-      <div class="layout-perfil-jogo">
-        <div class="painel-esquerdo-perfil-jogo">
-          <div class="cards-esquerda-perfil-jogo">
-            <section class="painel-info-perfil-jogo">
-              <h1>${identidade.nome}</h1>
-              <p>${identidade.genero} • ${identidade.universo}</p>
-              <ul class="lista-detalhes">
-                <li><span>Idade</span><strong>${identidade.idade.value} anos</strong></li>
-                <li><span>Altura</span><strong>${detalhesFisicosBasicos.altura}</strong></li>
-                <li><span>Peso</span><strong>${detalhesFisicosBasicos.peso}</strong></li>
-                <li><span>Experiências</span><strong>${experienciaSexual.contagemSexo}</strong></li>
-                <li><span>Parceiros</span><strong>${experienciaSexual.rolasExperimentadas}</strong></li>
-                <li><span>Ocupação</span><strong>${preferencias.ocupacao}</strong></li>
-              </ul>
-            </section>
+      <div class="container perfil-container">
+        <div class="left-panel">
+          <div class="back-button">
+            <a href="./index.html" class="btn-layout">⬅ Voltar</a>
+          </div>
 
-            <section class="secao-sobre">
-              <h2>Biografia</h2>
+          <div class="info-card">
+            <div class="character-name">${identidade.nome}</div>
+
+            <div class="info-list">
+              <div class="info-item"><strong>Título:</strong> ${titulo}</div>
+              <div class="info-item"><strong>Idade:</strong> ${identidade.idade.value} anos</div>
+              <div class="info-item"><strong>Sexo:</strong> ${identidade.genero}</div>
+              <div class="info-item"><strong>Profissão:</strong> ${preferencias.ocupacao}</div>
+              <div class="info-item"><strong>Altura:</strong> ${detalhesFisicosBasicos.altura}</div>
+            </div>
+
+            <div class="biography">
+              <h3>Biografia</h3>
               <p>${perfil.descricaoCompleta}</p>
-            </section>
+            </div>
+          </div>
+
+          <div class="bottom-buttons">
+            <a href="./Galeria.html?id=${perfil.id}" class="btn-layout">🖼 Galeria</a>
+            <button id="btnRoupas" class="btn-layout" type="button">👗 Roupas</button>
           </div>
         </div>
 
-        <section class="heroi-perfil heroi-perfil-jogo">
-          <img class="perfil-media-principal" src="${capa}" alt="${identidade.nome}">
-        </section>
+        <div class="character">
+          <img src="${capa}" alt="${identidade.nome}" id="characterImage">
+        </div>
       </div>
-
     </article>
   `;
+
+  container.querySelector('#btnRoupas')?.addEventListener('click', () => {
+    window.alert('A seção de roupas estará disponível em breve.');
+  });
 }
