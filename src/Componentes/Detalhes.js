@@ -1,20 +1,25 @@
 import { buscarFotoPerfil } from './RotacaoMidia.js';
 
+// Decide qual título mostrar no card principal do perfil.
 function obterTituloPerfil(perfil) {
   return perfil?.preferencias?.ocupacao || perfil?.identidade?.idade?.tag || 'Sem título';
 }
 
+// Renderiza a página de detalhes de um único perfil.
 export function renderizarDetalhes(container, perfil) {
+  // Estado vazio quando o id não existe.
   if (!perfil) {
     container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
     return;
   }
 
+  // Dados usados no template da página.
   const { identidade, preferencias, detalhesFisicosBasicos, midia } = perfil;
   const capa = buscarFotoPerfil(midia);
   const imagemFundo = midia?.fotoMenu || capa;
   const titulo = obterTituloPerfil(perfil);
 
+  // Template principal da tela de perfil.
   container.innerHTML = `
     <article class="perfil-layout" style="--perfil-bg: url('${imagemFundo}')">
       <div class="background"></div>
@@ -55,6 +60,7 @@ export function renderizarDetalhes(container, perfil) {
     </article>
   `;
 
+  // Placeholder para recurso que ainda será implementado.
   container.querySelector('#btnRoupas')?.addEventListener('click', () => {
     window.alert('A seção de roupas estará disponível em breve.');
   });

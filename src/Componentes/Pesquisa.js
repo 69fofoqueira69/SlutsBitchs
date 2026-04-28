@@ -1,3 +1,4 @@
+// Renderiza o campo de busca e conecta o callback da página.
 export function renderizarPesquisa(container, aoPesquisar) {
   container.innerHTML = `
     <div class="search-wrap">
@@ -7,7 +8,11 @@ export function renderizarPesquisa(container, aoPesquisar) {
   `;
 
   const input = container.querySelector('#search-input');
+
+  // Dispara pesquisa a cada digitação.
   if (input) {
-    input.addEventListener('input', (evento) => aoPesquisar(evento.target.value.trim().toLowerCase()));
+    input.addEventListener('input', (evento) => {
+      aoPesquisar(evento.target.value.trim().toLowerCase());
+    });
   }
 }
