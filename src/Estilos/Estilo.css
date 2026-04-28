@@ -170,6 +170,35 @@ input:focus-visible {
   margin: 0 auto;
 }
 
+.layout-perfil-jogo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.painel-esquerdo-perfil-jogo {
+  min-width: 0;
+}
+
+.cards-esquerda-perfil-jogo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  height: 100%;
+}
+
+.painel-info-perfil-jogo,
+.cards-esquerda-perfil-jogo .secao-sobre {
+  min-height: 100%;
+}
+
+.cards-esquerda-perfil-jogo .secao-sobre p {
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+}
+
 .linha-perfil {
   width: 100%;
   display: grid;
@@ -192,6 +221,16 @@ input:focus-visible {
   padding: 1rem;
 }
 
+.cards-esquerda-perfil-jogo section:nth-child(odd) {
+  border-color: var(--rosa);
+  color: var(--verde);
+}
+
+.cards-esquerda-perfil-jogo section:nth-child(even) {
+  border-color: var(--verde);
+  color: var(--rosa);
+}
+
 .linha-perfil .heroi-perfil {
   border-color: var(--rosa);
   color: var(--verde);
@@ -211,6 +250,8 @@ input:focus-visible {
   position: relative;
   min-height: 320px;
   border: 2px solid;
+  border-color: var(--rosa);
+  color: var(--verde);
   border-radius: 22px;
   overflow: hidden;
 }
@@ -274,6 +315,14 @@ input:focus-visible {
 @media (max-width: 900px) {
   .secao-sobre {
     min-height: auto;
+  }
+
+  .layout-perfil-jogo {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-esquerda-perfil-jogo {
+    grid-template-columns: 1fr;
   }
 }
 
