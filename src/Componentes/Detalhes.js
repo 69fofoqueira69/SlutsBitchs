@@ -27,6 +27,13 @@ export function renderizarDetalhes(container, perfil) {
           <p class="biografia-wireframe">${perfil.descricaoCompleta}</p>
         </section>
 
+        <nav class="menu-lateral-wireframe" aria-label="Ações do perfil">
+          <a href="./Galeria.html?id=${perfil.id}" class="menu-item-wireframe">GALERIA</a>
+          <button type="button" class="menu-item-wireframe">DIÁRIO</button>
+          <button type="button" class="menu-item-wireframe">FAVORITA</button>
+          <a href="./index.html" class="menu-item-wireframe">SAIR</a>
+        </nav>
+
         <section class="card-wireframe card-wireframe-imagem">
           <img class="perfil-wireframe-img" src="${capa}" alt="${identidade.nome}">
         </section>
