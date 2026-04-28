@@ -6,7 +6,6 @@ Projeto em **HTML + CSS + JavaScript (ES Modules)** com menu de perfis, página 
 
 - `src/data/perfis.json`: base mock principal com dados brutos dos perfis.
 - `src/Dados/Repositorio.js`: camada de acesso/normalização dos dados vindos do JSON.
-- `src/Dados/Parametros.js`: regras simples de classificação por faixa de idade.
 - `src/Componentes/`: componentes reutilizáveis da interface (`Card`, `Detalhes`, `Galeria`, `Pesquisa`).
 - `src/Paginas/`: scripts de entrada por página (`Menu.js`, `Perfil.js`, `Galeria.js`).
 - `src/Estilos/Estilo.css`: estilos globais, responsividade e layout visual.

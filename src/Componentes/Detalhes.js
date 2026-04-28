@@ -1,27 +1,15 @@
 import { buscarFotoPerfil } from './RotacaoMidia.js';
 
-// Decide qual título mostrar no card principal do perfil.
-function obterTituloPerfil(perfil) {
-  return perfil?.preferencias?.ocupacao || perfil?.identidade?.idade?.tag || 'Sem título';
-}
-
-// Renderiza a página de detalhes de um único perfil.
 export function renderizarDetalhes(container, perfil) {
-  // Estado vazio quando o id não existe.
   if (!perfil) {
     container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
     return;
   }
 
-  // Dados usados no template da página.
-  const { identidade, preferencias, detalhesFisicosBasicos, midia } = perfil;
-  const capa = buscarFotoPerfil(midia);
-  const imagemFundo = midia?.fotoMenu || capa;
-  const titulo = obterTituloPerfil(perfil);
+  const capa = buscarFotoPerfil(perfil.midia);
 
-  // Template principal da tela de perfil.
   container.innerHTML = `
-    <article class="perfil-layout" style="--perfil-bg: url('${imagemFundo}')">
+    <article class="perfil-layout" style="--perfil-bg: url('${capa}')">
       <div class="background"></div>
 
       <div class="container perfil-container">
@@ -31,37 +19,28 @@ export function renderizarDetalhes(container, perfil) {
           </div>
 
           <div class="info-card">
-            <div class="character-name">${identidade.nome}</div>
+            <div class="character-name">${perfil.nome}</div>
 
             <div class="info-list">
-              <div class="info-item"><strong>Título:</strong> ${titulo}</div>
-              <div class="info-item"><strong>Idade:</strong> ${identidade.idade.value} anos</div>
-              <div class="info-item"><strong>Sexo:</strong> ${identidade.genero}</div>
-              <div class="info-item"><strong>Profissão:</strong> ${preferencias.ocupacao}</div>
-              <div class="info-item"><strong>Altura:</strong> ${detalhesFisicosBasicos.altura}</div>
+              <div class="info-item"><strong>Título:</strong> ${perfil.titulo}</div>
+              <div class="info-item"><strong>Idade:</strong> ${perfil.idade}</div>
             </div>
 
             <div class="biography">
               <h3>Biografia</h3>
-              <p>${perfil.descricaoCompleta}</p>
+              <p>${perfil.biografia}</p>
             </div>
           </div>
 
           <div class="bottom-buttons">
             <a href="./Galeria.html?id=${perfil.id}" class="btn-layout">🖼 Galeria</a>
-            <button id="btnRoupas" class="btn-layout" type="button">👗 Roupas</button>
           </div>
         </div>
 
         <div class="character">
-          <img src="${capa}" alt="${identidade.nome}" id="characterImage">
+          <img src="${capa}" alt="${perfil.nome}" id="characterImage">
         </div>
       </div>
     </article>
   `;
-
-  // Placeholder para recurso que ainda será implementado.
-  container.querySelector('#btnRoupas')?.addEventListener('click', () => {
-    window.alert('A seção de roupas estará disponível em breve.');
-  });
 }

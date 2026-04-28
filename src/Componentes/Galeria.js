@@ -1,21 +1,13 @@
-// Valida caminhos de mídia antes de renderizar no HTML.
 function srcValido(src) {
   return typeof src === 'string' && src.trim() && !src.trim().endsWith('/');
 }
 
-// Converte um caminho simples para o formato padrão da galeria.
-function formatarItem(tipo, src) {
-  return { tipo, src };
-}
-
-// Cria a lista final de mídias sem embaralhar (ordem fixa e previsível).
 function listarMidias(midia) {
-  const imagens = (midia?.imagens || []).filter(srcValido).map((src) => formatarItem('imagem', src));
-  const gifs = (midia?.gifs || []).filter(srcValido).map((src) => formatarItem('gif', src));
+  const imagens = (midia?.imagens || []).filter(srcValido).map((src) => ({ tipo: 'imagem', src }));
+  const gifs = (midia?.gifs || []).filter(srcValido).map((src) => ({ tipo: 'gif', src }));
   return [...imagens, ...gifs];
 }
 
-// Template de um botão de miniatura da galeria.
 function miniatura(item, indice) {
   const emblema = item.tipo === 'gif' ? '<span class="media-badge">GIF</span>' : '';
 
@@ -27,7 +19,6 @@ function miniatura(item, indice) {
   `;
 }
 
-// Renderiza a página completa de galeria do perfil.
 export function renderizarPaginaGaleria(container, perfil) {
   if (!perfil) {
     container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
@@ -36,7 +27,6 @@ export function renderizarPaginaGaleria(container, perfil) {
 
   const itens = listarMidias(perfil.midia);
 
-  // Mensagem amigável quando não há mídias cadastradas.
   if (!itens.length) {
     container.innerHTML = `
       <a href="./Perfil.html?id=${perfil.id}" class="link">← Voltar para perfil</a>
@@ -53,7 +43,7 @@ export function renderizarPaginaGaleria(container, perfil) {
 
       <div class="layout-galeria-jogo">
         <section class="painel-thumbs-galeria">
-          <h1>Galeria de ${perfil.identidade.nome}</h1>
+          <h1>Galeria de ${perfil.nome}</h1>
           <div class="profile-media-grid profile-media-grid-galeria" id="gallery-thumbs-page">
             ${itens.map((item, indice) => miniatura(item, indice)).join('')}
           </div>
@@ -68,7 +58,6 @@ export function renderizarPaginaGaleria(container, perfil) {
   `;
 }
 
-// Conecta eventos para trocar a mídia em destaque ao clicar nas miniaturas.
 export function configurarPaginaGaleria(container) {
   const thumbs = [...container.querySelectorAll('.media-thumb-galeria')];
   const destaque = container.querySelector('#gallery-highlight .gallery-viewer-media');
@@ -90,6 +79,5 @@ export function configurarPaginaGaleria(container) {
     });
   });
 
-  // Deixa o primeiro item marcado como ativo na abertura da tela.
   thumbs[0].classList.add('is-active');
 }

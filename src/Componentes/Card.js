@@ -1,14 +1,11 @@
 import { buscarFotoMenu } from './RotacaoMidia.js';
 
-// Renderiza os cards do menu principal.
 export function renderizarCards(container, perfils) {
-  // Estado vazio quando a pesquisa não encontra itens.
   if (!perfils.length) {
     container.innerHTML = '<p class="empty-state">Nenhum perfil encontrado.</p>';
     return;
   }
 
-  // Monta toda a grade de cards com link para a página de perfil.
   container.innerHTML = `
     <div class="cards-grid">
       ${perfils
@@ -16,12 +13,12 @@ export function renderizarCards(container, perfils) {
           const capa = buscarFotoMenu(perfil.midia);
 
           return `
-            <a href="./Perfil.html?id=${perfil.id}" class="card-link" aria-label="Abrir perfil de ${perfil.identidade.nome}">
+            <a href="./Perfil.html?id=${perfil.id}" class="card-link" aria-label="Abrir perfil de ${perfil.nome}">
               <article class="card">
-                <img class="card-media-principal" src="${capa}" alt="${perfil.identidade.nome}" loading="lazy">
+                <img class="card-media-principal" src="${capa}" alt="${perfil.nome}" loading="lazy">
                 <div class="card-body">
-                  <h3>${perfil.identidade.nome}</h3>
-                  <p class="subtitle">${perfil.descricaoCurta}</p>
+                  <h3>${perfil.nome}</h3>
+                  <p class="subtitle">${perfil.biografia}</p>
                 </div>
               </article>
             </a>
