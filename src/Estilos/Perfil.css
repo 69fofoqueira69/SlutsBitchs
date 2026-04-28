@@ -1,0 +1,147 @@
+body.pagina-perfil-wireframe {
+  margin: 0;
+  min-height: 100vh;
+  background: #d9d9d9;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+}
+
+.pagina-perfil-wireframe .container.Perfil-pagina {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#Perfil-root {
+  min-height: 100vh;
+}
+
+.perfil-wireframe-page {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 40px 36px 26px;
+}
+
+.perfil-wireframe-btn {
+  position: absolute;
+  top: 48px;
+  width: 174px;
+  height: 72px;
+  border: 4px solid #0f0f0f;
+  color: #111;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 18px;
+  font-size: 42px;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  background: transparent;
+}
+
+.perfil-wireframe-btn-back {
+  left: 40px;
+}
+
+.perfil-wireframe-btn-gallery {
+  right: 68px;
+}
+
+.perfil-wireframe-info,
+.perfil-wireframe-media {
+  position: absolute;
+  border: 4px solid #111;
+  background: transparent;
+}
+
+.perfil-wireframe-info {
+  top: 152px;
+  left: 34px;
+  width: min(40vw, 520px);
+  height: calc(100vh - 176px);
+  padding: 20px;
+}
+
+.perfil-wireframe-info p {
+  margin: 0 0 8px;
+  font-size: clamp(18px, 2vw, 43px);
+  line-height: 1.12;
+}
+
+.perfil-wireframe-info h1 {
+  margin: 8px 0 8px;
+  font-size: clamp(18px, 2vw, 43px);
+  line-height: 1.1;
+}
+
+.perfil-wireframe-bio {
+  display: grid;
+  gap: 4px;
+}
+
+.perfil-wireframe-bio span {
+  font-size: clamp(18px, 2vw, 43px);
+  line-height: 1.2;
+}
+
+.perfil-wireframe-media {
+  top: 146px;
+  right: 34px;
+  width: min(35.5vw, 500px);
+  height: calc(100vh - 154px);
+  overflow: hidden;
+}
+
+.perfil-wireframe-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  .perfil-wireframe-btn {
+    font-size: 32px;
+    width: 150px;
+    height: 64px;
+  }
+
+  .perfil-wireframe-info p,
+  .perfil-wireframe-info h1,
+  .perfil-wireframe-bio span {
+    font-size: clamp(16px, 2.6vw, 30px);
+  }
+}
+
+@media (max-width: 900px) {
+  .perfil-wireframe-page {
+    padding: 20px;
+  }
+
+  .perfil-wireframe-btn,
+  .perfil-wireframe-info,
+  .perfil-wireframe-media {
+    position: static;
+  }
+
+  .perfil-wireframe-btn {
+    margin-bottom: 12px;
+  }
+
+  .perfil-wireframe-btn-gallery {
+    margin-bottom: 20px;
+  }
+
+  .perfil-wireframe-info,
+  .perfil-wireframe-media {
+    width: 100%;
+    height: auto;
+    min-height: 360px;
+  }
+
+  .perfil-wireframe-media {
+    margin-top: 16px;
+  }
+}

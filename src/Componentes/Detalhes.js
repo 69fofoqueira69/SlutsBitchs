@@ -1,49 +1,41 @@
 import { buscarFotoPerfil } from './RotacaoMidia.js';
 
+function formatarBiografia(texto = '') {
+  return texto
+    .split(/\n+/)
+    .filter(Boolean)
+    .map((linha) => `<span>${linha}</span>`)
+    .join('');
+}
+
 export function renderizarDetalhes(container, perfil) {
   if (!perfil) {
     container.innerHTML = '<p class="empty-state">Perfil não encontrado.</p>';
     return;
   }
 
-  const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
+  const { identidade, preferencias, experienciaSexual, midia } = perfil;
   const capa = buscarFotoPerfil(midia);
 
   container.innerHTML = `
-    <article class="perfil perfil-modelo-jogo">
-      <div class="acoes-perfil-topo">
-        <a href="./index.html" class="link">← Voltar</a>
-        <a href="./Galeria.html?id=${perfil.id}" class="link">Ver galeria →</a>
-      </div>
+    <article class="perfil-wireframe-page">
+      <a href="./index.html" class="perfil-wireframe-btn perfil-wireframe-btn-back">VOLTAR</a>
+      <a href="./Galeria.html?id=${perfil.id}" class="perfil-wireframe-btn perfil-wireframe-btn-gallery">GALERIA</a>
 
-      <div class="layout-perfil-jogo">
-        <div class="painel-esquerdo-perfil-jogo">
-          <div class="cards-esquerda-perfil-jogo">
-            <section class="painel-info-perfil-jogo">
-              <h1>${identidade.nome}</h1>
-              <p>${identidade.genero} • ${identidade.universo}</p>
-              <ul class="lista-detalhes">
-                <li><span>Idade</span><strong>${identidade.idade.value} anos</strong></li>
-                <li><span>Altura</span><strong>${detalhesFisicosBasicos.altura}</strong></li>
-                <li><span>Peso</span><strong>${detalhesFisicosBasicos.peso}</strong></li>
-                <li><span>Experiências</span><strong>${experienciaSexual.contagemSexo}</strong></li>
-                <li><span>Parceiros</span><strong>${experienciaSexual.rolasExperimentadas}</strong></li>
-                <li><span>Ocupação</span><strong>${preferencias.ocupacao}</strong></li>
-              </ul>
-            </section>
+      <section class="perfil-wireframe-info">
+        <p><strong>NOME:</strong> ${identidade.nome}</p>
+        <p><strong>IDADE:</strong> ${identidade.idade.value}</p>
+        <p><strong>GENERO:</strong> ${identidade.genero}</p>
+        <p><strong>OCUPAÇÃO:</strong> ${preferencias.ocupacao}</p>
+        <p><strong>Quantidade de Sexo:</strong> ${experienciaSexual.contagemSexo}</p>
 
-            <section class="secao-sobre">
-              <h2>Biografia</h2>
-              <p>${perfil.descricaoCompleta}</p>
-            </section>
-          </div>
-        </div>
+        <h1>BIOGRAFIA:</h1>
+        <div class="perfil-wireframe-bio">${formatarBiografia(perfil.descricaoCompleta)}</div>
+      </section>
 
-        <section class="heroi-perfil heroi-perfil-jogo">
-          <img class="perfil-media-principal" src="${capa}" alt="${identidade.nome}">
-        </section>
-      </div>
-
+      <section class="perfil-wireframe-media" aria-label="Imagem do perfil">
+        <img src="${capa}" alt="Imagem de ${identidade.nome}">
+      </section>
     </article>
   `;
 }
