@@ -6,28 +6,26 @@ export function renderizarDetalhes(container, perfil) {
     return;
   }
 
-  const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
+  const { identidade, preferencias, experienciaSexual, midia } = perfil;
   const capa = buscarFotoPerfil(midia);
 
   container.innerHTML = `
     <article class="perfil perfil-modelo-wireframe">
-      <div class="acoes-perfil-topo acoes-wireframe">
-        <a href="./index.html" class="link link-wireframe">VOLTAR</a>
-        <a href="./Galeria.html?id=${perfil.id}" class="link link-wireframe">GALERIA</a>
+      <div class="topo-wireframe">
+        <a href="./index.html" class="link-wireframe botao-wireframe-esquerda">VOLTAR</a>
+        <a href="./Galeria.html?id=${perfil.id}" class="link-wireframe botao-wireframe-direita">GALERIA</a>
       </div>
 
       <div class="layout-perfil-wireframe">
         <section class="painel-info-wireframe">
           <p><strong>NOME:</strong> ${identidade.nome}</p>
           <p><strong>IDADE:</strong> ${identidade.idade.value}</p>
-          <p><strong>GÊNERO:</strong> ${identidade.genero}</p>
+          <p><strong>GENERO:</strong> ${identidade.genero}</p>
           <p><strong>OCUPAÇÃO:</strong> ${preferencias.ocupacao}</p>
-          <p><strong>QUANTIDADE DE SEXO:</strong> ${experienciaSexual.contagemSexo}</p>
+          <p><strong>Quantidade de Sexo:</strong> ${experienciaSexual.contagemSexo}</p>
 
           <h2>BIOGRAFIA:</h2>
           <p class="bio-wireframe">${perfil.descricaoCompleta}</p>
-          <p><strong>ALTURA:</strong> ${detalhesFisicosBasicos.altura}</p>
-          <p><strong>PESO:</strong> ${detalhesFisicosBasicos.peso}</p>
         </section>
 
         <section class="painel-imagem-wireframe">
