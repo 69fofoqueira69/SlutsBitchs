@@ -571,3 +571,137 @@ input:focus-visible {
     min-height: 360px;
   }
 }
+
+.Perfil-pagina {
+  background: #e9ecef;
+  min-height: 100vh;
+}
+
+.perfil-layout-duas-colunas {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  gap: 1.2rem;
+  color: #111;
+}
+
+.topo-perfil-wf {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.botao-topo-perfil {
+  display: inline-block;
+  text-decoration: none;
+  color: #111;
+  background: #f6f6f6;
+  border: 4px solid #111;
+  border-radius: 0;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  padding: 0.7rem 1.3rem;
+  min-width: 170px;
+  text-align: center;
+}
+
+.conteudo-perfil-wf {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.info-perfil-wf,
+.imagem-perfil-wf {
+  background: #f6f6f6;
+  border: 4px solid #111;
+  padding: 1.2rem;
+}
+
+.info-perfil-wf {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.info-perfil-wf h1 {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.4vw, 2.35rem);
+}
+
+.lista-info-perfil-wf {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+  font-size: clamp(1.1rem, 1.7vw, 1.7rem);
+  line-height: 1.25;
+}
+
+.lista-info-perfil-wf li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.lista-info-perfil-wf span {
+  font-weight: 900;
+}
+
+.biografia-perfil-wf {
+  width: 100%;
+  border: 4px solid #111;
+  padding: 0.85rem;
+  margin-top: 0.2rem;
+  min-height: 240px;
+}
+
+.biografia-perfil-wf h2 {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.2rem, 2vw, 1.9rem);
+}
+
+.biografia-perfil-wf p {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+.imagem-perfil-wf {
+  flex: 0.9;
+  min-height: 620px;
+  display: flex;
+}
+
+.imagem-perfil-wf img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+  border: 4px solid #111;
+}
+
+@media (max-width: 900px) {
+  .conteudo-perfil-wf {
+    flex-direction: column;
+  }
+
+  .imagem-perfil-wf {
+    min-height: 420px;
+  }
+
+  .imagem-perfil-wf img {
+    min-height: 420px;
+  }
+
+  .botao-topo-perfil {
+    min-width: 140px;
+  }
+}

@@ -6,44 +6,37 @@ export function renderizarDetalhes(container, perfil) {
     return;
   }
 
-  const { identidade, detalhesFisicosBasicos, preferencias, experienciaSexual, midia } = perfil;
+  const { identidade, preferencias, experienciaSexual, midia } = perfil;
   const capa = buscarFotoPerfil(midia);
 
   container.innerHTML = `
-    <article class="perfil perfil-modelo-jogo">
-      <div class="acoes-perfil-topo">
-        <a href="./index.html" class="link">← Voltar</a>
-        <a href="./Galeria.html?id=${perfil.id}" class="link">Ver galeria →</a>
+    <article class="perfil perfil-layout-duas-colunas">
+      <div class="topo-perfil-wf">
+        <a href="./index.html" class="botao-topo-perfil">VOLTAR</a>
+        <a href="./Galeria.html?id=${perfil.id}" class="botao-topo-perfil">GALERIA</a>
       </div>
 
-      <div class="layout-perfil-jogo">
-        <div class="painel-esquerdo-perfil-jogo">
-          <div class="cards-esquerda-perfil-jogo">
-            <section class="painel-info-perfil-jogo">
-              <h1>${identidade.nome}</h1>
-              <p>${identidade.genero} • ${identidade.universo}</p>
-              <ul class="lista-detalhes">
-                <li><span>Idade</span><strong>${identidade.idade.value} anos</strong></li>
-                <li><span>Altura</span><strong>${detalhesFisicosBasicos.altura}</strong></li>
-                <li><span>Peso</span><strong>${detalhesFisicosBasicos.peso}</strong></li>
-                <li><span>Experiências</span><strong>${experienciaSexual.contagemSexo}</strong></li>
-                <li><span>Parceiros</span><strong>${experienciaSexual.rolasExperimentadas}</strong></li>
-                <li><span>Ocupação</span><strong>${preferencias.ocupacao}</strong></li>
-              </ul>
-            </section>
+      <div class="conteudo-perfil-wf">
+        <section class="info-perfil-wf">
+          <h1>${identidade.nome}</h1>
+          <ul class="lista-info-perfil-wf">
+            <li><span>NOME:</span> <strong>${identidade.nome}</strong></li>
+            <li><span>IDADE:</span> <strong>${identidade.idade.value}</strong></li>
+            <li><span>GÊNERO:</span> <strong>${identidade.genero}</strong></li>
+            <li><span>OCUPAÇÃO:</span> <strong>${preferencias.ocupacao}</strong></li>
+            <li><span>QUANTIDADE DE SEXO:</span> <strong>${experienciaSexual.contagemSexo}</strong></li>
+          </ul>
 
-            <section class="secao-sobre">
-              <h2>Biografia</h2>
-              <p>${perfil.descricaoCompleta}</p>
-            </section>
+          <div class="biografia-perfil-wf">
+            <h2>BIOGRAFIA:</h2>
+            <p>${perfil.descricaoCompleta}</p>
           </div>
-        </div>
+        </section>
 
-        <section class="heroi-perfil heroi-perfil-jogo">
+        <section class="imagem-perfil-wf" aria-label="Imagem principal do perfil">
           <img class="perfil-media-principal" src="${capa}" alt="${identidade.nome}">
         </section>
       </div>
-
     </article>
   `;
 }
