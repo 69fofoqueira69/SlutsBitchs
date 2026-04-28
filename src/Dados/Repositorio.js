@@ -1,88 +1,74 @@
-import { calcularDadosIdade, calcularDadosMedida } from './Parametros.js';
+import { calcularDadosIdade } from './Parametros.js';
+import { personagens } from './Personagens.js';
 
-const CAMINHOS_DADOS = [
-  new URL('./Perfils.json', import.meta.url).href,
-  './src/Dados/Perfils.json',
-  './src/data/Perfils.json'
-];
+function mapearSexoParaGenero(sexo) {
+  if (sexo === 108) return 'Mulher';
+  if (sexo === 109) return 'Homem';
+  return 'Não informado';
+}
 
-async function carregarDadosPerfis() {
-  let ultimoErro = null;
+function extrairIdade(idadeTexto) {
+  const idadeNumerica = Number.parseInt(String(idadeTexto || '').match(/\d+/)?.[0] || '0', 10);
+  return Number.isFinite(idadeNumerica) ? idadeNumerica : 0;
+}
 
-  for (const caminho of CAMINHOS_DADOS) {
-    try {
-      const resposta = await fetch(caminho);
-      if (!resposta.ok) {
-        ultimoErro = new Error(`Falha ao carregar perfis em ${caminho} (status ${resposta.status})`);
-        continue;
-      }
+function separarMidias(midias = []) {
+  const imagens = [];
+  const gifs = [];
 
-      return await resposta.json();
-    } catch (erro) {
-      ultimoErro = erro;
+  for (const item of midias) {
+    if (!item?.completo) continue;
+
+    if (item.tipo === 'gif') {
+      gifs.push(item.completo);
+      continue;
+    }
+
+    if (item.tipo === 'imagem') {
+      imagens.push(item.completo);
     }
   }
 
-  throw ultimoErro || new Error('Falha ao carregar perfis');
+  return { imagens, gifs };
 }
 
-function deveExibirMedida(medida, genero) {
-  const aplicaPara = medida?.appliesTo;
-  if (!aplicaPara || !aplicaPara.length) return true;
-  return aplicaPara.includes(genero);
-}
-
-function comMedidasCalculadas(perfil) {
-  const saida = {};
-  const entradas = Object.entries(perfil.medidas || {});
-
-  for (const [chave, medida] of entradas) {
-    const valor = Number(medida?.value ?? 0);
-    const calculado = calcularDadosMedida(chave, valor);
-
-    saida[chave] = {
-      value: valor,
-      tag: medida?.tag || calculado.tag,
-      range: medida?.range || calculado.range,
-      emoji: medida?.emoji || calculado.emoji,
-      appliesTo: medida?.appliesTo || []
-    };
-  }
-
-  return saida;
-}
-
-function normalizarPerfil(perfil) {
-  const valorIdade = Number(perfil?.identidade?.idade?.value ?? 0);
-  const idadeCalculada = calcularDadosIdade(valorIdade);
-  const midia = perfil.midia || {};
+function normalizarPerfil(personagem) {
+  const idadeValor = extrairIdade(personagem.idade);
+  const idadeCalculada = calcularDadosIdade(idadeValor);
+  const { imagens, gifs } = separarMidias(personagem.midias);
+  const fotoPrincipal = imagens[0] || gifs[0] || '';
 
   return {
-    ...perfil,
+    id: personagem.id,
     identidade: {
-      ...perfil.identidade,
+      nome: personagem.nome,
+      genero: mapearSexoParaGenero(personagem.sexo),
+      universo: 'Realidade',
       idade: {
-        value: valorIdade,
-        tag: perfil?.identidade?.idade?.tag || idadeCalculada.tag,
-        range: perfil?.identidade?.idade?.range || idadeCalculada.range,
-        emoji: perfil?.identidade?.idade?.emoji || idadeCalculada.emoji
+        value: idadeValor,
+        tag: personagem.titulo || idadeCalculada.tag,
+        range: idadeCalculada.range,
+        emoji: idadeCalculada.emoji
       }
     },
-    medidas: comMedidasCalculadas(perfil),
-    midia: {
-      imagens: midia.imagens || [],
-      gifs: midia.gifs || [],
-      fotoPrincipal: midia.fotoPrincipal || '',
-      fotoMenu: midia.fotoMenu || '',
-      fotoPerfil: midia.fotoPerfil || ''
+    descricaoCurta: personagem.biografia,
+    descricaoCompleta: personagem.biografia,
+    detalhesFisicosBasicos: {
+      altura: 'Não informado'
     },
-    textoPesquisavel: [
-      perfil.identidade?.nome,
-      perfil.identidade?.universo,
-      perfil.descricaoCurta,
-      perfil.descricaoCompleta,
-      ...(perfil.preferencias?.fetiche || [])
-    ]
+    preferencias: {
+      ocupacao: personagem.titulo || 'Não informado',
+      fetiche: []
+    },
+    medidas: {},
+    midia: {
+      imagens,
+      gifs,
+      fotoPrincipal,
+      fotoMenu: fotoPrincipal,
+      fotoPerfil: fotoPrincipal
+    },
+    textoPesquisavel: [personagem.nome, personagem.titulo, personagem.biografia]
       .filter(Boolean)
       .join(' ')
       .toLowerCase()
@@ -90,18 +76,11 @@ function normalizarPerfil(perfil) {
 }
 
 export function buscarMedidasVisiveis(perfil) {
-  const genero = perfil.identidade?.genero;
-
-  return Object.entries(perfil.medidas || {})
-    .filter(([, medida]) => deveExibirMedida(medida, genero))
-    .map(([chave, medida]) => ({ chave, ...medida }));
+  return Object.entries(perfil.medidas || {}).map(([chave, medida]) => ({ chave, ...medida }));
 }
 
 export async function buscarPerfils() {
-  const dados = await carregarDadosPerfis();
-  if (!Array.isArray(dados)) return [];
-
-  return dados
+  return personagens
     .map(normalizarPerfil)
     .sort((a, b) => (a.identidade?.nome || '').localeCompare((b.identidade?.nome || ''), 'pt-BR', {
       sensitivity: 'base'
