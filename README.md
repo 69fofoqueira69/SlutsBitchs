@@ -8,7 +8,8 @@ Projeto em **HTML + CSS + JavaScript (ES Modules)** para listar personagens em c
 - `src/Dados/Parametros.js`: regras de classificação por faixa para idade e medidas.
 - `src/Dados/Repositorio.js`: carregamento, normalização e campos derivados (texto de busca, total de mídias de imagens+GIFs e medidas visíveis por gênero).
 - `src/Paginas/Menu.js` + `src/Componentes/Card.js`: busca e grid de cards (imagem + nome + descrição curta).
-- `src/Paginas/Perfil.js` + `src/Componentes/Detalhes.js`: página completa do perfil com layout dividido em duas colunas e galeria.
+- `src/Paginas/Perfil.js` + `src/Componentes/Detalhes.js`: página inicial do perfil no estilo jogo, com imagem principal ao lado do painel de informações e ações rápidas.
+- `src/Paginas/Galeria.js` + `src/Componentes/Galeria.js`: página dedicada de galeria com grade de miniaturas e preview lateral da mídia selecionada.
 - `src/Estilos/Estilo.css`: tema visual e responsividade.
 
 ## Rodar localmente

@@ -1,6 +1,5 @@
 import { buscarMedidasVisiveis } from '../Dados/Repositorio.js';
 import { buscarFotoPerfil } from './RotacaoMidia.js';
-import { renderizarGaleria, configurarGaleria } from './Galeria.js';
 
 const ROTULOS_MEDIDAS = {
   bunda: 'Bunda',
@@ -21,7 +20,6 @@ function renderizarItemMedida(medida) {
       <strong>${medida.value} cm · ${medida.tag || '—'}</strong>
     </li>
   `;
-
 }
 
 export function renderizarDetalhes(container, perfil) {
@@ -35,34 +33,35 @@ export function renderizarDetalhes(container, perfil) {
   const capa = buscarFotoPerfil(midia);
 
   container.innerHTML = `
-    <a href="./index.html" class="link">← Voltar</a>
-    <article class="perfil">
-      <div class="linha-perfil">
-        <div class="heroi-perfil">
-          <img class="perfil-media-principal" src="${capa}" alt="${identidade.nome}">
-          <div class="sobreposicao-perfil">
-            <h1>${identidade.nome}, ${identidade.idade.value}</h1>
-            <p>${identidade.genero} • ${identidade.universo}</p>
-          </div>
-        </div>
+    <article class="perfil perfil-modelo-jogo">
+      <div class="acoes-perfil-topo">
+        <a href="./index.html" class="link">← Voltar</a>
+        <a href="./Galeria.html?id=${perfil.id}" class="link">Ver galeria →</a>
+      </div>
 
-        <section class="secao-sobre">
-          <h2>Sobre</h2>
-          <p>${perfil.descricaoCompleta}</p>
+      <div class="cabecalho-perfil-jogo">
+        <section class="heroi-perfil heroi-perfil-jogo">
+          <img class="perfil-media-principal" src="${capa}" alt="${identidade.nome}">
+        </section>
+
+        <section class="painel-info-perfil-jogo">
+          <h1>${identidade.nome}</h1>
+          <p>${identidade.genero} • ${identidade.universo}</p>
+          <ul class="lista-detalhes">
+            <li><span>Idade</span><strong>${identidade.idade.value} anos</strong></li>
+            <li><span>Altura</span><strong>${detalhesFisicosBasicos.altura}</strong></li>
+            <li><span>Peso</span><strong>${detalhesFisicosBasicos.peso}</strong></li>
+            <li><span>Experiências</span><strong>${experienciaSexual.contagemSexo}</strong></li>
+            <li><span>Parceiros</span><strong>${experienciaSexual.rolasExperimentadas}</strong></li>
+            <li><span>Ocupação</span><strong>${preferencias.ocupacao}</strong></li>
+          </ul>
         </section>
       </div>
 
       <div class="linha-perfil">
-        <section>
-          <h2>Detalhes básicos</h2>
-          <ul class="lista-detalhes">
-            <li><span>Altura</span><strong>${detalhesFisicosBasicos.altura}</strong></li>
-            <li><span>Peso</span><strong>${detalhesFisicosBasicos.peso}</strong></li>
-            <li><span>Espécie</span><strong>${detalhesFisicosBasicos.especie}</strong></li>
-            <li><span>Cabelo</span><strong>${detalhesFisicosBasicos.corCabelo} · ${detalhesFisicosBasicos.estiloCabelo}</strong></li>
-            <li><span>Olhos</span><strong>${detalhesFisicosBasicos.olhos}</strong></li>
-            <li><span>Pele</span><strong>${detalhesFisicosBasicos.pele}</strong></li>
-          </ul>
+        <section class="secao-sobre">
+          <h2>Sobre</h2>
+          <p>${perfil.descricaoCompleta}</p>
         </section>
 
         <section>
@@ -72,24 +71,6 @@ export function renderizarDetalhes(container, perfil) {
           </ul>
         </section>
       </div>
-
-      <div class="linha-perfil">
-        <section>
-          <h2>Experiência e preferências</h2>
-          <ul class="lista-detalhes">
-            <li><span>Experiências registradas</span><strong>${experienciaSexual.contagemSexo}</strong></li>
-            <li><span>Parceiros registrados</span><strong>${experienciaSexual.rolasExperimentadas}</strong></li>
-            <li><span>Posição favorita</span><strong>${preferencias.posicaoFavorita}</strong></li>
-            <li><span>Roupa favorita</span><strong>${preferencias.roupaFavorita}</strong></li>
-            <li><span>Ocupação</span><strong>${preferencias.ocupacao}</strong></li>
-            <li><span>Interesses</span><strong>${(preferencias.fetiche || []).join(', ') || '—'}</strong></li>
-          </ul>
-        </section>
-
-        ${renderizarGaleria(midia)}
-      </div>
     </article>
   `;
-
-  configurarGaleria(container);
 }
