@@ -1,10 +1,13 @@
 import { buscarPerfilPorId } from '../Dados/Repositorio.js';
 import { configurarPaginaGaleria, renderizarPaginaGaleria } from '../Componentes/Galeria.js';
 
+// Elemento raiz da página de galeria.
 const raizGaleria = document.getElementById('Galeria-root');
 
+// Ponto de entrada da tela de galeria.
 async function iniciar() {
   try {
+    // Lê o id do perfil a partir da query string (ex: ?id=MK).
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 

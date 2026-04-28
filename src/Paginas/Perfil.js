@@ -1,10 +1,13 @@
 import { buscarPerfilPorId } from '../Dados/Repositorio.js';
 import { renderizarDetalhes } from '../Componentes/Detalhes.js';
 
+// Elemento raiz da página de perfil.
 const raizPerfil = document.getElementById('Perfil-root');
 
+// Ponto de entrada da tela de perfil.
 async function iniciar() {
   try {
+    // Lê o id do perfil a partir da query string (ex: ?id=MK).
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 

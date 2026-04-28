@@ -1,11 +1,14 @@
 import { buscarFotoMenu } from './RotacaoMidia.js';
 
+// Renderiza os cards do menu principal.
 export function renderizarCards(container, perfils) {
+  // Estado vazio quando a pesquisa não encontra itens.
   if (!perfils.length) {
     container.innerHTML = '<p class="empty-state">Nenhum perfil encontrado.</p>';
     return;
   }
 
+  // Monta toda a grade de cards com link para a página de perfil.
   container.innerHTML = `
     <div class="cards-grid">
       ${perfils
@@ -27,5 +30,4 @@ export function renderizarCards(container, perfils) {
         .join('')}
     </div>
   `;
-
 }
