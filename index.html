@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Metadados básicos e responsividade -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Perfis</title>
-  <link rel="stylesheet" href="./src/Estilos/Estilo.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Catálogo</title>
+
+<link rel="stylesheet" href="./css/global.css">
+<link rel="stylesheet" href="./css/index.css">
+
 </head>
 <body>
-  <!-- Estrutura principal da página de menu -->
-  <main class="container">
-    <header class="topo-pagina">
-      <h1>Catálogo de Perfis</h1>
-    </header>
 
-    <!-- Bloco de busca -->
-    <section class="bloco-pesquisa">
-      <h2>Pesquisa de perfis</h2>
-      <p>Busque perfis e clique em qualquer área do card para abrir a página completa.</p>
-      <div id="Pesquisa-root"></div>
-    </section>
+<div class="container">
 
-    <!-- Bloco de listagem de cards -->
-    <section class="bloco-perfis">
-      <h2>Perfis disponíveis</h2>
-      <p id="contagem-resultados" class="contagem-resultados"></p>
-      <div id="Perfis-root"></div>
-    </section>
-  </main>
+  <h1>Catálogo de Perfis</h1>
 
-  <!-- Script de entrada da página inicial -->
-  <script type="module" src="./src/Paginas/Menu.js"></script>
+  <div class="pesquisa">
+
+    <input
+      type="text"
+      id="buscar"
+      placeholder="Buscar perfil..."
+    >
+
+  </div>
+
+  <div id="contador"></div>
+
+  <div
+    class="cards"
+    id="cards"
+  ></div>
+
+</div>
+
+<script src="./js/dados.js"></script>
+<script src="./js/index.js"></script>
+
 </body>
 </html>
